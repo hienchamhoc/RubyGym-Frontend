@@ -1,0 +1,89 @@
+:root {
+    --header-height: 60px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(to bottom right, #190504, #500B04);
+    height: var(--header-height);
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    z-index: 1;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--header-height);
+    width: 100%;
+}
+
+.logo-img {
+    width: 50px;
+}
+
+.header-navbar {
+
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.nav-item a {
+    text-decoration: none;
+    color: white;
+    position: relative;
+}
+
+.nav-item a::after {
+    content: " ";
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 2px;
+    position: absolute;
+    top: 100%;
+    background-color: red;
+    display: none;
+}
+
+.nav-item a:hover {
+    color: red;
+}
+
+.nav-item a:hover::after {
+    display: block;
+}
+
+.active {
+    color: red;
+}
+
+.header-login {
+    background-color: red;
+    border-radius: 3px;
+    animation: appear ease-in 0.4s;
+}
+
+.login-btn {
+    display: block;
+    text-decoration: none;
+    padding: 8px 8px;
+    border: 1px solid red;
+    border-radius: 3px;
+    color: white;
+    position: relative;
+    background-color: transparent;
+}
