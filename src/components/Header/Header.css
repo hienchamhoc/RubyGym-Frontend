@@ -9,7 +9,7 @@
     right: 0;
     background-image: linear-gradient(to bottom right, #190504, #500B04);
     height: var(--header-height);
-    color: white;
+    color: black;
     font-size: 16px;
     font-weight: 400;
     z-index: 1;
@@ -27,9 +27,7 @@
     width: 50px;
 }
 
-.header-navbar {
-
-}
+.header-navbar {}
 
 .nav-list {
     list-style: none;
