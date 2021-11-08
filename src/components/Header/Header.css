@@ -1,26 +1,11 @@
 .header {
-<<<<<<< HEAD
-    <<<<<<< HEAD position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-image: linear-gradient(to bottom right, #190504, #500B04);
-    height: var(--header-height);
-    color: black;
-    font-size: 16px;
-    font-weight: 400;
-    z-index: 1;
-    =======height: 68px;
-=======
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 68px;
->>>>>>> refs/remotes/origin/main
     width: 100%;
     background-color: #2C0803;
-    >>>>>>>refs/remotes/origin/main
 }
 
 .header-wrapper {
@@ -42,9 +27,7 @@
     justify-content: center;
 }
 
-<<<<<<< HEAD .header-navbar {}
-
-=======.img-logo {
+.img-logo {
     display: block;
     height: 50px;
     margin-left: 4px;
@@ -55,7 +38,7 @@
     height: 30px;
 }
 
->>>>>>>refs/remotes/origin/main .nav-list {
+.nav-list {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -63,7 +46,7 @@
 }
 
 .nav-item {
-    color: white;
+    color: black;
     padding: 0 16px;
     text-transform: uppercase;
 }
