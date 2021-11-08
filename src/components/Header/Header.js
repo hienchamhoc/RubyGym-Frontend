@@ -3,6 +3,8 @@ import { useEffect } from "react"
 import { Link, NavLink } from "react-router-dom";
 import './Header.css'
 import logo from './../../imgs/logo.png';
+import loginicon from './../../imgs/login-icon.png';
+import logoheading from './../../imgs/RUBYGYM.png';
 
 
 function Header() {
@@ -13,7 +15,7 @@ function Header() {
                     <div className="logo-navbar">
                         <div className="header-logo">
                             <img src={logo} alt="" className="img-logo" />
-                            <h2 className="header-logo-heading">RUBYGYM</h2>
+                            <img src={logoheading} alt="" className="img-heading" />
                         </div>
                         <nav className="header-navbar">
                             <ul className="nav-list">
@@ -25,6 +27,7 @@ function Header() {
                         </nav>
                     </div>
                     <div className="header-login">
+                        <img src={loginicon} alt="" className="login-icon" />
                         <div className="login-heading">Đăng nhập</div>
                     </div>
                 </div>
