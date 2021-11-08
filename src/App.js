@@ -9,7 +9,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 function App() {
     return (
         <Router>
-            {window.location.pathname === '/login' ? null : <Header />}
+            <Header />
             <Routes>
                 <Route path="/" exact element={<Home />} />
                 <Route path="/about" exact element={<About />} />
