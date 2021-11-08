@@ -6,13 +6,21 @@
 
 .header-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
 }
 
+.logo-navbar {
+    display: flex;
+    align-items: center;
+
+}
+
 .header-logo {
     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .img-logo {
@@ -21,7 +29,7 @@
 }
 
 .header-logo-heading {
-    color: red;
+    color: #C20518;
 }
 
 .nav-list {
@@ -33,5 +41,10 @@
 
 .nav-item {
     color: white;
-    
+    padding: 0 16px;
+    text-transform: uppercase;
+}
+
+.login-heading {
+    color: white;
 }
