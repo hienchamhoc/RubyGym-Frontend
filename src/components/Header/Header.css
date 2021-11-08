@@ -1,0 +1,37 @@
+.header {
+    height: 68px;
+    width: 100%;
+    background-color: #2C0803;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.header-logo {
+    display: flex;
+}
+
+.img-logo {
+    display: block;
+    height: 50px;
+}
+
+.header-logo-heading {
+    color: red;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-item {
+    color: white;
+    
+}
