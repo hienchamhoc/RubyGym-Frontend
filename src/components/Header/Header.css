@@ -43,12 +43,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.nav-item {
     color: white;
     padding: 0 16px;
     text-transform: uppercase;
+
+}
+
+.nav-item {
+    
 }
 
 .header-login {
