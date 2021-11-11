@@ -41,7 +41,7 @@ function Login() {
                                 className={role === 'admin' ? "role-detail role-active" : "role-detail"}
                                 onClick={() => setRole('admin')}
                             >
-                                <i class="fas fa-user"></i>
+                                <i class="fas fa-user-lock"></i>
                                 Quản trị viên
                             </div>
                             <div className="role-detail-wrapper">
@@ -56,7 +56,7 @@ function Login() {
                                     className={role === 'customer' ? "role-detail role-active" : "role-detail"}
                                     onClick={() => setRole('customer')}
                                 >
-                                    <i class="fas fa-users-cog"></i>
+                                    <i class="fas fa-user"></i>
                                     Học viên
                                 </div>
                             </div>
@@ -82,7 +82,7 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
-                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
+                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn "}>Đăng nhập</button>
                         </form>
                     </div>
                 </div>
