@@ -78,6 +78,19 @@
     font-size: 14px;
     cursor: pointer;
     border-radius: 4px;
+    transition: all ease 0.1s;
+    position: relative;
+    opacity: 0.7;
+}
+
+.role-detail:hover {
+    opacity: 1;
+}
+
+.role-active {
+    background-color: #C20518;
+    color: white;
+    opacity: 1;
 }
 
 .role-detail-wrapper {
@@ -112,9 +125,6 @@
     margin-bottom: 20px;
 }
 
-
-
-
 .userinput {
     box-shadow: 0 0 3px #ccc;
     margin-top: 10px;
@@ -130,9 +140,14 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: red;
+    background-color: #C20518;
     border: none;
     color: white;
     border-radius: 4px;
     cursor: pointer;
+}
+
+.usersubmit-btn.inactive {
+    background-color: #c9c9c9;
+    cursor: default;
 }

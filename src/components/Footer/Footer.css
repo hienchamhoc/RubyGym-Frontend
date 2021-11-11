@@ -10,12 +10,10 @@
     margin-top: 20px;
     line-height: 1.7;
 }
-.footer-item2 {
-    margin-left: 20px;
-    margin-top: 75px;
-}
-.footer-item3 {
-    margin-left: 30px;
+
+.footer-item a {
+    color: #23A7F2;
+    text-decoration: none;
 }
 
 .footer-heading {
@@ -26,24 +24,8 @@
     padding: 5px 0;
 }
 
-.footer-branch {
-    padding-bottom: 20px;
-}
 
 .branch-address {
-    margin: 0;
-    padding: 4px 0;
-    font-size: 13px;
-    font-weight: 300;
-    color: white;
-}
-
-.footer-branch a {
-    font-size: 13px;
-    color:  rgb(253, 167, 167);
-}
-
-.footer-time {
     margin: 0;
     padding: 4px 0;
     font-size: 13px;
