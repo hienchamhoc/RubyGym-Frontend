@@ -7,7 +7,7 @@ function Homepage() {
         <>
             <Header />
             <Banner />
-            <Footer/>
+            <Footer />
         </>
     )
 }

@@ -41,11 +41,11 @@ function Footer() {
                                 <b className="branch-address">Twitter:</b>&nbsp;
                                 <a href="https://twitter.com/POTUS" >twitter.com/RubyGym</a><br />
                             </div>
-
                         </div>
                     </div>
                     <div className="col l-3">
                         <div className="footer-item footer-item4">
+
                             <h1 className="footer-heading">Thời gian</h1>
                             <div className="footer-time">
                                 <h3 >Thứ Hai - Chủ Nhật: 6:00 - 22:00</h3>
