@@ -1,5 +1,149 @@
+
+.loginwrapper {
+    display: block;
+    width: 200px;
+    height: 500px;
+}
+
+.loginwrapper-left {
+    display: inline-block;
+    width: 60%;
+    height: 500px;
+}
+
+.loginwrapper-right {
+    display: inline-block;
+    width: 40%;
+    background-image: url('./../../store/imgs/moi.png');
+    height: 500px;
+}
+
+.loginwrapper img {
+    height: 100%;
+    width: 100%;
+}
+
+/* /===================== */
+
+.login-wrapper {
+    height: 60px;
+}
+
+.login-header-wrapper {
+    height: 60px;
+    width: 100%;
+    background-color: #350409;
+}
+
 .login-header {
-    height: 68px;
+    height: 60px;
+}
+
+.login-header-logo {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-body {
+    height: 500px;
     width: 100%;
     background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.login-body-wrapper {
+    border-radius: 4px;
+    /* height: 480px; */
+    width: 400px;
+    background-color: white;
+    padding: 30px 25px;
+}
+
+.login-body-heading {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.login-role {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+}
+
+.role-detail {
+    padding: 4px;
+    background-color: #c9c9c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    /* margin: 0 4px; */
+    width: 100%;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.role-detail-wrapper {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.role-detail-wrapper .role-detail{
+    width: 50%;
+}
+
+
+.role-detail-wrapper .role-detail:first-child {
+    margin-right: 10px;
+}
+
+.role-detail i {
+    padding: 0 15px 0 10px;
+}
+
+.role-detail img {
+    display: block;
+    width: 25px;
+    padding: 0 5px;
+}
+
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+
+.userinput {
+    box-shadow: 0 0 3px #ccc;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    outline: none;
+}
+
+.usersubmit-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
 }

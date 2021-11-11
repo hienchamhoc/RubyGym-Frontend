@@ -1,7 +1,5 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { Link } from 'react-router-dom';
-import { Login } from '../components'
+import React from 'react'
+import { Footer, Login } from '../components'
 import * as Actions from '../store/actions'
 
 function Loginpage() {
@@ -18,7 +16,10 @@ function Loginpage() {
     // }, [])
 
     return (
-        <Login/>
+        <>
+            <Login />
+            {/* <Footer /> */}
+        </>
     )
 }
 
