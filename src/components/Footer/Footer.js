@@ -26,7 +26,6 @@ function Footer() {
                     <div className="col l-3">
                         <div className="footer-item footer-item3">
                             <h1 className="footer-heading">Thông tin liên hệ</h1>
-<<<<<<< HEAD
                             <div className="footer-branch">
                                 <b className="branch-address">Facebook:</b>&nbsp;
                                 <a href="https://www.facebook.com/locfugoflollow" >facebook.com/RubyGym</a><br />
@@ -37,17 +36,6 @@ function Footer() {
                                 <b className="branch-address">Twitter:</b>&nbsp;
                                 <a href="https://twitter.com/POTUS" >twitter.com/RubyGym</a><br />
                             </div>
-=======
-                            <b className="branch-address">Facebook:</b>&nbsp;
-                            <a href="https://www.facebook.com/locfugoflollow" >facebook.com/RubyGym</a><br />
-                            <b className="branch-address">Youtube: </b>&nbsp;
-                            <a href="https://www.youtube.com/channel/UCGXfojmxq5qZnoKRj8ZA7bA" >Youtube.com/RubyGym</a><br />
-                            <b className="branch-address">Instagram: </b>&nbsp;
-                            <a href="https://www.instagram.com/cristiano/" >instagram.com/RubyGym</a><br />
-                            <b className="branch-address">Twitter:</b>&nbsp;
-                            <a href="https://twitter.com/POTUS" >twitter.com/RubyGym</a><br />
-
->>>>>>> 2e15818dab5c55a32a40d9e6204831e6659ecc16
                         </div>
                     </div>
                     <div className="col l-3">
