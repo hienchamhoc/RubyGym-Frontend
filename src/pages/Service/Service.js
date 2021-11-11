@@ -9,7 +9,6 @@ class Service extends Component {
                 <div >
                     <h1>Day la trang dich vu</h1>
                     <h1>Day la trang dich vu</h1>
-                    <h1>Day la trang dich vu</h1>
                 </div>
             </div>
         );

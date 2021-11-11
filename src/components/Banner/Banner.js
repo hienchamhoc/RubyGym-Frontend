@@ -13,16 +13,16 @@ function Banner() {
             <s id="s4" />
             <div className="slider">
                 <div>
-                    <img src="{pic1}" />
+                    <img src={pic1} />
                 </div>
                 <div>
-                    <img src="{pic2}" />
+                    <img src={pic2} />
                 </div>
                 <div>
-                    <img src="{pic3}" />
+                    <img src={pic3} />
                 </div>
                 <div>
-                    <img src="{pic4}" />
+                    <img src={pic4} />
                 </div>
             </div>
             <div className="prevNext">

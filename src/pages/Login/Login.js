@@ -17,8 +17,10 @@ class Login extends Component {
         return (
             <div className="login-body">
                 <div className="container">
-                    <div className="brand-logo" />
-                    <div className="brand-title">RUBYGYM</div>
+                    <div className="brand-top">
+                        <div className="brand-logo" />
+                        <div className="brand-title">RUBYGYM</div>
+                    </div>
                     <form onSubmit={this.handleSubmit}>
                         <label>
                             <p className="brand-select">Chọn vai trò đăng nhập</p>
