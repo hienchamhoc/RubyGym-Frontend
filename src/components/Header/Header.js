@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import './Header.css'
 import logo from './../../store/imgs/logo.png';
 
 
+=======
+import React from "react";
+import { Link } from "react-router-dom";
+import './Header.css'
+import logo from './../../imgs/logo.png';
+import loginicon from './../../imgs/login-icon.png';
+import logoheading from './../../imgs/RUBYGYM.png';
+>>>>>>> 05ddadc622ee7547456bb38cf5927f9c79a0a14b
 function Header() {
 
     let [showOption, setShowOpTion] = useState(false);
@@ -22,6 +31,7 @@ function Header() {
                             <Link to='/' className="logo-name">RUBYGYM</Link>
                         </div>
                         <nav className="header-navbar">
+<<<<<<< HEAD
                             <ul className="nav-list">
                                 <li className="nav-item"><NavLink to="/">Trang chủ</NavLink></li>
                                 <li className="nav-item"><NavLink to="/">Dịch vụ</NavLink></li>
@@ -32,6 +42,20 @@ function Header() {
                     <div className="header-login">
                         <Link to='/login'><i className="fas fa-user login-icon"></i></Link>
                         <Link to='/login'>Đăng nhập</Link>
+=======
+                            <div className="nav-list">
+                                <Link to='/' className="nav-item">Trang chủ</Link>
+                                <Link to='/service' >Dịch vụ</Link>
+                                <Link to='/feedback' >Góp ý</Link>
+                            </div>
+                        </nav>
+                    </div>
+                    <div className="header-login">
+                        <Link to='/login'>
+                            <img src={loginicon} alt="" className="login-icon" />
+                            <div className="login-heading">Đăng nhập</div>
+                        </Link>
+>>>>>>> 05ddadc622ee7547456bb38cf5927f9c79a0a14b
                     </div>
                     <div className="header-user" onClick={handleShowOption}>
                         <h2 className="header-user-name">Nguyễn Quang Dũng</h2>

@@ -1,0 +1,132 @@
+
+.login-body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #ecf0f3;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    place-items: center;
+    overflow: hidden;
+    font-family: poppins;
+}
+
+.container {
+    
+    position: relative;
+    width: 350px;
+    height: 500px;
+    border-radius: 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    background: #ecf0f3;
+    box-shadow: 14px 14px 20px #cbced1, -14px -14px 20px white;
+}
+
+.brand-logo {
+    display: block;
+    width: 100px;
+    height: 100px;
+    background: url('../../imgs/logo.png');
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-position-y: center;
+    background-position-x: center;
+    margin: auto;
+    border-radius: 50%;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 10px #cbced1, -7px -7px 10px white;
+}
+
+.brand-title {
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 1.8rem;
+    color: #C20518;
+    letter-spacing: 2px;
+
+}
+.brand-select    {
+    margin-top: 10px;
+    font-weight: 900;
+    font-size: 1.3rem;
+    color: black;
+    letter-spacing: 1px;
+}
+select{
+    position: relative;
+    font-family: Arial;
+    background-color:#C9C9C9;
+    border-radius: 5px;
+
+    -webkit-appearance:none;
+    
+}
+
+.inputs {
+    text-align: left;
+    margin-top: 30px;
+}
+
+label,
+input,
+button {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+label {
+    margin-bottom: 4px;
+}
+
+label:nth-of-type(2) {
+    margin-top: 12px;
+}
+
+input::placeholder {
+    color: gray;
+}
+
+input {
+    background: #ecf0f3;
+    padding: 10px;
+    padding-left: 20px;
+    height: 50px;
+    font-size: 14px;
+    border-radius: 50px;
+    box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
+}
+
+button {
+    margin-top: 20px;
+    background: #C20518;
+    height: 40px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 900;
+    box-shadow: 6px 6px 6px #cbced1, -6px -6px 6px white;
+    transition: 0.5s;
+}
+
+button:hover {
+    box-shadow: none;
+}
+
+.login-back {
+    position: absolute;
+    font-size: 30px;
+    top: 4px;
+    right: 4px;
+    text-decoration: none;
+    color: black;
+    background: #C20518;
+    border-radius: 10px;
+    padding: 2px;
+} 
+
