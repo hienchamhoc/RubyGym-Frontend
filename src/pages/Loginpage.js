@@ -18,7 +18,7 @@ function Loginpage() {
     return (
         <>
             <Login />
-            {/* <Footer /> */}
+            {/* <Footer/> */}
         </>
     )
 }
