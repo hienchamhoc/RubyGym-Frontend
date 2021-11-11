@@ -1,20 +1,31 @@
 .footer {
-    background-color: #ddd;
+    background-color: rgb(109, 0, 0);
+}
+.grid {
+    height: 200px;
 }
 
 .footer-item {
-    background-color: #ccc;
-    padding: 10px;
+    /* background-color: #ccc; */
+    padding: 10px;  
     height: 100%;
+    width: 100%;
     margin-top: 20px;
-    line-height: 1.5;
+    line-height: 1.7;
+}
+.footer-item2 {
+    margin-left: 20px;
+    margin-top: 75px;
+}
+.footer-item3 {
+    margin-left: 30px;
 }
 
 .footer-heading {
     text-transform: uppercase;
-    margin: 0;
+    margin: 10px;
     font-size: 20px;
-    color: #333;
+    color: rgb(255, 255, 255);
     font-weight: 500;
     padding: 10px 0;
 }
@@ -28,7 +39,7 @@
     padding-bottom: 4px;
     font-size: 18px;
     font-weight: 400;
-    color: red;
+    color: rgb(212, 212, 212);
 }
 
 .branch-address {
@@ -36,10 +47,15 @@
     padding: 4px 0;
     font-size: 13px;
     font-weight: 300;
+    color: white;
 }
 .footer-branch a {
     font-size: 15px;
-    color:  rgb(172, 20, 20);
+    color:  rgb(253, 167, 167);
+
+}
+.footer-time {
+    color: rgb(255, 204, 204);
 }
 
 .footer-copyright {
