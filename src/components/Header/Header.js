@@ -45,9 +45,7 @@ function Header() {
                             </div>
                         }
                     </div>
-                    
                     {showOption && <div className="virtual-modal" onClick={handleShowOption} ></div>}
-
                 </div>
             </div>
         </header>

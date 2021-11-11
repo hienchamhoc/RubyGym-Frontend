@@ -80,6 +80,11 @@
     border-radius: 4px;
 }
 
+.role-active {
+    background-color: #C20518;
+    color: white;
+}
+
 .role-detail-wrapper {
     margin-top: 10px;
     width: 100%;
