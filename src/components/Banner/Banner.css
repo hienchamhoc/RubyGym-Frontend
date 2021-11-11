@@ -1,8 +1,4 @@
 
-.slider {
-    margin-top: 60px;
-}
-
 .slider-wrapper {
     /* margin-top: 60px; */
     width: 100%;
@@ -15,8 +11,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: 2px solid rgb(243, 60, 60);
     position: absolute;
@@ -36,8 +32,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
     border: 2px solid rgb(243, 60, 60);
     position: absolute;
@@ -57,7 +53,7 @@
 
 .slides {
     display: flex;
-    width: 400%;
+    width: 500%;
     height: 510px;
 }
 
@@ -66,7 +62,7 @@
 }
 
 .slide {
-    width: 25%;
+    width: 20%;
     transition: all ease 1.5s;
 }
 
@@ -88,7 +84,7 @@
 
 .manual-btn,
 .navigation-auto div  {
-    padding: 5px;
+    padding: 4px;
     border: 2px solid rgb(243, 60, 60);
     border-radius: 50%;
     cursor: pointer;
@@ -107,19 +103,22 @@
 }
 
 #radio1:checked ~ .first {
-    margin-left: 0;
+    margin-left: 0%;
 }
 
 #radio2:checked ~ .first {
-    margin-left: -25%;
+    margin-left: -20%;
 }
 
 #radio3:checked ~ .first {
-    margin-left: -50%
+    margin-left: -40%
 }
 
 #radio4:checked ~ .first {
-    margin-left: -75%;
+    margin-left: -60%;
+}
+#radio5:checked ~ .first {
+    margin-left: -80%;
 }
 
 #radio1:checked ~ .navigation-auto .navigation-auto1 {
@@ -138,6 +137,11 @@
 }
 
 #radio4:checked ~ .navigation-auto .navigation-auto4 {
+    background-color: rgb(243, 60, 60);
+    opacity: 1;
+}
+
+#radio5:checked ~ .navigation-auto .navigation-auto5 {
     background-color: rgb(243, 60, 60);
     opacity: 1;
 }

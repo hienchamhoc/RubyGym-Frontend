@@ -1,9 +1,9 @@
 :root {
-    --header-height: 60px;
+    --header-height: 75px;
 }
 
 .header {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
@@ -32,15 +32,22 @@
 
 .logo-img {
     display: block;
-    height: 50px;
+    height: 60px;
+    margin-left: 4px;
 }
 
 .logo-name {
-    font-size: 35px;
-    color: #C20518;
-    text-shadow: 1px 1px 1px #ccc;
+    letter-spacing: 4px;
+    font-size: 45px;
+    background-color: rgba(255, 255, 255, 0.884);
+    color: transparent;
+    text-shadow: 0px 2px 3px #C20518;
+    -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 800;
+
 }
 
 .nav-list {
@@ -51,18 +58,24 @@
 }
 
 .nav-item a{
+    letter-spacing: 2px;
     color: white;
     padding: 0 16px;
     text-transform: uppercase;
     text-decoration: none;
-    font-weight: 400;
-    font-size: 16px;
+    font-weight: 450;
+    font-size: 20px;
     text-shadow: 0 0 2px #ccc;
     transition: all ease 0.2s;
 }
 
 .nav-item a:hover {
-    color: #C20518;
+    background-color: rgb(255, 255, 255);
+    color: transparent;
+    text-shadow: 0px 1px 2px #C20518;
+    -webkit-background-clip: text;
+     -moz-background-clip: text;
+          background-clip: text;
 }
 
 .header-login {
@@ -71,8 +84,8 @@
     align-items: center;
     justify-content: center;
     border: 2px solid #C20518;
-    border-radius: 3px;
-    padding: 4px 8px;
+    border-radius: 20px;
+    padding: 5px 10px;
     position: relative;
     z-index: 1;
 }
@@ -85,8 +98,8 @@
     left: 50%;
     transform: translateX(-50%);
     height: 100%;
-    background-color: #C20518;
-    border-radius: 2;
+    background-color:    #C20518;
+    border-radius: 15px;
     width: 0;
     z-index: -1;
     transition: all ease 0.3s;
@@ -100,14 +113,15 @@
     color: white;
     display: block;
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 25px;
     cursor: pointer;
 }
 
 .header-login a {
+    letter-spacing: 0.5px;
     text-decoration: none;
     color: white;
-    font-size: 10px;
+    font-size: 12px;
     padding-top: 3px;
 }
 
