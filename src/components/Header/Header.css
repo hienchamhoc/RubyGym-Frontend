@@ -70,8 +70,8 @@
 }
 
 .nav-item a:hover {
-    color: transparent;
-    text-shadow: 0px 1px 2px #C20518;
+    color: #C20518;
+    text-shadow: 0px 0px 1px #fff;
     -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
