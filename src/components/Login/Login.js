@@ -82,7 +82,7 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
-                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn "}>Đăng nhập</button>
+                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
                 </div>
