@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import muscleicon from './../../store/imgs/muscle-icon.png'
+import Footer from './../Footer/Footer.js'
 import './Login.css'
 
 function Login() {
@@ -81,11 +82,12 @@ function Login() {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                             </div>
-                            <button className="usersubmit-btn">Đăng nhập</button>
+                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
                 </div>
             </main>
+            <Footer/>
         </div>
     )
 }

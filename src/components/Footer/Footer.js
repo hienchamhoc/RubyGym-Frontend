@@ -24,27 +24,22 @@ function Footer() {
                         </div>
                     </div>
                     <div className="col l-3">
-                        <div className="footer-item footer-item3">
+                        <div className="footer-item">
                             <h1 className="footer-heading">Thông tin liên hệ</h1>
-                            <div className="footer-branch">
-                                <b className="branch-address">Facebook:</b>&nbsp;
-                                <a href="https://www.facebook.com/locfugoflollow" >facebook.com/RubyGym</a><br />
-                                <b className="branch-address">Youtube: </b>&nbsp;
-                                <a href="https://www.youtube.com/channel/UCGXfojmxq5qZnoKRj8ZA7bA" >Youtube.com/RubyGym</a><br />
-                                <b className="branch-address">Instagram: </b>&nbsp;
-                                <a href="https://www.instagram.com/cristiano/" >instagram.com/RubyGym</a><br />
-                                <b className="branch-address">Twitter:</b>&nbsp;
-                                <a href="https://twitter.com/POTUS" >twitter.com/RubyGym</a><br />
-                            </div>
+                            <b className="branch-address">Facebook:</b>&nbsp;
+                            <a href="https://www.facebook.com/locfugoflollow" >facebook.com/RubyGym</a><br />
+                            <b className="branch-address">Youtube: </b>&nbsp;
+                            <a href="https://www.youtube.com/channel/UCGXfojmxq5qZnoKRj8ZA7bA" >Youtube.com/RubyGym</a><br />
+                            <b className="branch-address">Instagram: </b>&nbsp;
+                            <a href="https://www.instagram.com/cristiano/" >instagram.com/RubyGym</a><br />
+                            <b className="branch-address">Twitter:</b>&nbsp;
+                            <a href="https://twitter.com/POTUS" >twitter.com/RubyGym</a><br />
                         </div>
                     </div>
                     <div className="col l-3">
-                        <div className="footer-item footer-item4">
-
+                        <div className="footer-item">
                             <h1 className="footer-heading">Thời gian</h1>
-                            <div className="footer-time">
-                                <h3 >Thứ Hai - Chủ Nhật: 6:00 - 22:00</h3>
-                            </div>
+                            <h3 className="branch-address">Thứ Hai - Chủ Nhật: 6:00 - 22:00</h3>
                         </div>
                     </div>
                 </div>

@@ -4,22 +4,8 @@ import * as Actions from '../store/actions'
 
 function Loginpage() {
 
-    // const dispatch = useDispatch();
-
-    // // Ẩn header
-    // useEffect(() => {
-    //     dispatch(Actions.actHideHeader());
-
-    //     return () => {
-    //         dispatch(Actions.actShowHeader());
-    //     }
-    // }, [])
-
     return (
-        <>
-            <Login />
-            <Footer/>
-        </>
+        <Login />
     )
 }
 

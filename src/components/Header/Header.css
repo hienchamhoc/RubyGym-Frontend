@@ -93,7 +93,7 @@
 }
 
 .header-login:hover:before {
-    width: 100%;
+    width: calc(100% + 2px);
 }
 
 .login-icon {
