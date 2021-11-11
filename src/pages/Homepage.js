@@ -1,7 +1,5 @@
 import React from 'react'
-import Banner from '../components/Banner/Banner'
-import { Header } from '../components'
-import { Footer, Login } from '../components'
+import { Banner, Footer, Header } from '../components'
 
 function Homepage() {
     return (

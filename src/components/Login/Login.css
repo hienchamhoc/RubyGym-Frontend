@@ -29,7 +29,7 @@
 
 .login-body {
     width: 100%;
-    background: url('./../../store/imgs/pic1.png') no-repeat center / contain;
+    background: url('./../../store/imgs/pic1.png');
     display: flex;
     align-items: center;
     margin: auto;
@@ -40,8 +40,7 @@
     border-radius: 4px;
     width: 400px;
     background-color: white;
-    margin-left: 50%;
-
+    margin-left: 60%;
 }
 
 .login-inner {
