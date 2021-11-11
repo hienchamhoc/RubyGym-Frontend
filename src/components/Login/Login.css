@@ -19,14 +19,6 @@
     align-items: center;
 }
 
-.login-header-logo .login-heading {
-    color: white;
-    font-size: 30px;
-    font-weight: 400;
-    padding-left: 40px;
-    opacity: 0.9;
-}
-
 .login-body {
     width: 100%;
     background: url('./../../store/imgs/pic1.png');
