@@ -1,44 +1,100 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react'
 import './Banner.css'
-import pic1 from './../../imgs/pic1.png';
-import pic2 from './../../imgs/pic2.png';
-import pic3 from './../../imgs/pic3.jpg';
-import pic4 from './../../imgs/pic4.png';
+import pic1 from './../../store/imgs/pic1.png';
+import pic2 from './../../store/imgs/pic2.png';
+import pic3 from './../../store/imgs/pic3.jpg';
+import pic4 from './../../store/imgs/pic4.png';
+
 function Banner() {
+
+    let [counter, setCounter] = useState(1);
+
+    let handlePrev = () => {
+        counter = counter + 1;
+        if (counter <= 4) setCounter(counter);
+        else {
+            counter = 1;
+            setCounter(counter)
+        }
+    }
+
+    let handleNext = () => {
+        counter = counter - 1;
+        if (counter >= 1) setCounter(counter);
+        else {
+            counter = 4;
+            setCounter(counter)
+        }
+    }
+
+
+    useEffect(() => {
+        console.log("thaydoi")
+        let timerID = setInterval(() => {
+            if (counter < 4) {
+                counter = counter + 1;
+                setCounter(counter);
+            } else {
+                counter = 1;
+                setCounter(counter)
+            }
+        }, 5000)
+
+        return () => {
+            console.log('clear')
+            clearInterval(timerID);
+        }
+    }, [counter])
+
     return (
-        <div className="CSSgal">
-            <s id="s1" />
-            <s id="s2" />
-            <s id="s3" />
-            <s id="s4" />
-            <div className="slider">
-                <div>
-                    <img src={pic1} />
-                </div>
-                <div>
-                    <img src={pic2} />
-                </div>
-                <div>
-                    <img src={pic3} />
-                </div>
-                <div>
-                    <img src={pic4} />
+        <div className="slider">
+            <div className="grid">
+                <div className="slider-wrapper">
+                    <div className="navigation-left" onClick={handleNext}>
+                        <i class="fas fa-chevron-left navigation-left-icon"></i>
+                    </div>
+                    <div className="navigation-right" onClick={handlePrev}>
+                        <i class="fas fa-chevron-right navigation-right-icon"></i>
+                    </div>
+                    <div className="slides">
+                        <input type="radio" checked={counter === 1 ? true : false} name="radio-btn" id="radio1" />
+                        <input type="radio" checked={counter === 2 ? true : false} name="radio-btn" id="radio2" />
+                        <input type="radio" checked={counter === 3 ? true : false} name="radio-btn" id="radio3" />
+                        <input type="radio" checked={counter === 4 ? true : false} name="radio-btn" id="radio4" />
+
+                        <div className="slide first">
+                            <img src={pic1} alt="" />
+                        </div>
+                        <div className="slide">
+                            <img src={pic2} alt="" />
+                        </div>
+                        <div className="slide">
+                            <img src={pic3} alt="" />
+                        </div>
+                        <div className="slide">
+                            <img src={pic4} alt="" />
+                        </div>
+
+                        <div className="navigation-auto">
+                            <div className="navigation-auto1"></div>
+                            <div className="navigation-auto2"></div>
+                            <div className="navigation-auto3"></div>
+                            <div className="navigation-auto4"></div>
+                        </div>
+
+                        <div className="navigation-manual">
+                            <label htmlFor="radio1" className="manual-btn" onClick={() => { counter = 1; setCounter(counter) }}></label>
+                            <label htmlFor="radio2" className="manual-btn" onClick={() => { counter = 2; setCounter(counter) }}></label>
+                            <label htmlFor="radio3" className="manual-btn" onClick={() => { counter = 3; setCounter(counter) }}></label>
+                            <label htmlFor="radio4" className="manual-btn" onClick={() => { counter = 4; setCounter(counter) }}></label>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="prevNext">
-                <div><a href="#s4" /><a href="#s2" /></div>
-                <div><a href="#s1" /><a href="#s3" /></div>
-                <div><a href="#s2" /><a href="#s4" /></div>
-                <div><a href="#s3" /><a href="#s1" /></div>
-            </div>
-            <div className="bullets">
-                <a href="#s1" />
-                <a href="#s2" />
-                <a href="#s3" />
-                <a href="#s4" />
-            </div>
+
+
         </div>
     )
 }
 
-export default Banner;
+export default Banner
