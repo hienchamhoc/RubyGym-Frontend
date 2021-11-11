@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import { Footer } from '..'
 import logo from './../../store/imgs/logo.png'
 import muscleicon from './../../store/imgs/muscle-icon.png'
 import './Login.css'
@@ -26,7 +27,7 @@ function Login() {
             </div>
 
             {/* Header body */}
-            <main className="login-body">
+            < main className="login-body" >
                 <div className="login-body-wrapper">
                     <h2 className="login-body-heading">Chọn vai trò đăng nhập</h2>
                     <div className="login-inner">
@@ -57,8 +58,11 @@ function Login() {
                         </form>
                     </div>
                 </div>
-            </main>
-        </div>
+            </main >
+            <div>
+                <Footer />
+            </div>
+        </div >
     )
 }
 

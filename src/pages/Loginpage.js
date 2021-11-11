@@ -17,8 +17,9 @@ function Loginpage() {
 
     return (
         <>
-            <Login />
-            {/* <Footer/> */}
+            <div>
+                <Login />
+            </div>
         </>
     )
 }
