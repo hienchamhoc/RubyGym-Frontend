@@ -31,6 +31,7 @@ function Header() {
                             </ul>
                         </nav>
                     </div>
+<<<<<<< HEAD
                     {!user &&
                         <div className="header-login">
                             <Link to='/login'><i className="fas fa-user login-icon"></i></Link>
@@ -51,6 +52,27 @@ function Header() {
                             }
                         </div>}
                     {user && showOption && <div className="virtual-modal" onClick={handleShowOption} ></div>}
+=======
+                    <div className="header-login">
+                        <Link to='/login'><i className="fas fa-user login-icon"></i></Link>
+                        <Link to='/login'>Đăng nhập</Link>
+                    </div>
+                    <div className="header-user" onClick={handleShowOption}>
+                        <h2 className="header-user-name">Nguyễn Quang Dũng</h2>
+                        <i className="fas fa-user-circle header-user-icon"></i>
+                        {showOption &&
+                            <div className="header-user-option">
+                                <ul className="user-option-list">
+                                    <li onClick={handleShowOption} className='user-option-item'><Link to="/login">Thông tin cá nhân</Link></li>
+                                    <li onClick={handleShowOption} className='user-option-item'><Link to="">Đăng xuất</Link></li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+                    
+                    {showOption && <div className="virtual-modal" onClick={handleShowOption} ></div>}
+
+>>>>>>> f4a80008e102b6a2b5f7180dd5413af8c2a314fb
                 </div>
             </div>
         </header >
