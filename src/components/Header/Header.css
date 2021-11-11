@@ -1,24 +1,27 @@
+:root {
+    --header-height: 60px;
+}
+
 .header {
-    position: fixed;
+    /* position: fixed; */
     top: 0;
     left: 0;
     right: 0;
-    height: 68px;
-    width: 100%;
-    background-color: #2C0803;
+    height: var(--header-height);
+    background-color: #350409;
+    z-index: 1;
 }
 
 .header-wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 68px;
+    height: var(--header-height);
 }
 
 .logo-navbar {
     display: flex;
     align-items: center;
-    height: 68px;
 }
 
 .header-logo {
@@ -27,15 +30,18 @@
     justify-content: center;
 }
 
-.img-logo {
+.logo-img {
     display: block;
     height: 50px;
     margin-left: 4px;
 }
 
-.img-heading {
-    display: block;
-    height: 30px;
+.logo-name {
+    font-size: 35px;
+    color: #C20518;
+    text-shadow: 1px 1px 1px #ccc;
+    text-decoration: none;
+    font-weight: 500;
 }
 
 .nav-list {
@@ -45,29 +51,125 @@
     align-items: center;
 }
 
-.nav-item {
+.nav-item a{
     color: white;
     padding: 0 16px;
     text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    text-shadow: 0 0 2px #ccc;
+    transition: all ease 0.2s;
+}
+
+.nav-item a:hover {
+    color: #C20518;
 }
 
 .header-login {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     border: 2px solid #C20518;
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 4px 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.header-login::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    background-color: #C20518;
+    border-radius: 2;
+    width: 0;
+    z-index: -1;
+    transition: all ease 0.3s;
+}
+
+.header-login:hover:before {
+    width: 100%;
 }
 
 .login-icon {
-    width: 20px;
+    color: white;
+    display: block;
+    padding: 0 20px;
+    font-size: 12px;
+    cursor: pointer;
 }
 
-.login-heading {
+.header-login a {
+    text-decoration: none;
     color: white;
-    text-transform: uppercase;
     font-size: 10px;
-    margin-top: 4px;
+    padding-top: 3px;
+}
+
+.header-user {
+    display: flex;   
+    align-items: center; 
+    cursor: pointer;
+    position: relative;
+}
+
+.header-user-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+}
+
+.header-user-icon {
+    font-size: 22px;
+    color: white;
+    margin: 0 0 1px 8px;
+}
+
+.header-user-option {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: block;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px #ccc;
+    z-index: 2;
+}
+
+.user-option-list {
+    margin: 0;
+    list-style: none;
+    padding-left: 0;
+}
+
+.user-option-item {
+    display: block;
+    padding: 5px 10px;
+}
+
+.user-option-item:hover {
+    background-color: #ddd;
+}
+
+.user-option-item a {
+    text-decoration: none;
+    color: #333;
+}
+
+.virtual-modal {
+    display: block;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ccc;
+    opacity: 0;
+    z-index: 1;
 }
