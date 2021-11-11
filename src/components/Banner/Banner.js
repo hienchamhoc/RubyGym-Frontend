@@ -5,7 +5,7 @@ import pic2 from './../../store/imgs/pic2.png';
 import pic3 from './../../store/imgs/pic3.jpg';
 import pic4 from './../../store/imgs/pic4.png';
 
-function Banner2() {
+function Banner() {
 
     let [counter, setCounter] = useState(1);
 
@@ -97,4 +97,4 @@ function Banner2() {
     )
 }
 
-export default Banner2
+export default Banner

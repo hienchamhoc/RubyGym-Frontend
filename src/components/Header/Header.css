@@ -49,7 +49,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-<<<<<<< HEAD
 }
 
 .nav-item a{
@@ -65,16 +64,6 @@
 
 .nav-item a:hover {
     color: #C20518;
-=======
-    color: white;
-    padding: 0 16px;
-    text-transform: uppercase;
-
-}
-
-.nav-item {
-    
->>>>>>> 05ddadc622ee7547456bb38cf5927f9c79a0a14b
 }
 
 .header-login {
