@@ -25,7 +25,6 @@ function Login() {
                         <div className="login-header-logo">
                             <Link to='/'><img src={logo} alt="" className="logo-img" /></Link>
                             <Link to='/' className="logo-name">RUBYGYM</Link>
-                            <h2 className="login-heading">Đăng nhập</h2>
                         </div>
                     </div>
                 </div>
