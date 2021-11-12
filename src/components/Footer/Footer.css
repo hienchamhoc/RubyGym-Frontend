@@ -12,6 +12,7 @@
 }
 
 .footer-item a {
+    
     color: #23A7F2;
     text-decoration: none;
 }
@@ -26,19 +27,24 @@
 
 
 .branch-address {
+    letter-spacing: 0.5px;
     margin: 0;
     padding: 4px 0;
-    font-size: 13px;
-    font-weight: 300;
+    font-size: 15px;
+    font-weight: 400;
     color: white;
 }
 
 .footer-copyright {
-    height: 60px;
+    letter-spacing: 1px;
+    height: 50px;
     margin-top: 50px;
     display: flex  ;
     justify-content: center;
     color: rgba(255, 255, 255, 0.699);
     align-items: center;
     background-color: #350409;
+}
+.facebook {
+    display: inline;
 }

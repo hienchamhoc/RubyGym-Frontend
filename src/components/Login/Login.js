@@ -49,7 +49,7 @@ function Login() {
                                     className={role === 'trainer' ? "role-detail role-active" : "role-detail"}
                                     onClick={() => setRole('trainer')}
                                 >
-                                    <img src={muscleicon} alt="" />
+                                    <i class="fas fa-user-chart"></i>
                                     Huấn luyện viên
                                 </div>
                                 <div
