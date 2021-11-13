@@ -1,19 +1,20 @@
 import React, { useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import muscleicon from './../../store/imgs/muscle-icon.png'
 import Footer from './../Footer/Footer.js'
 import './Login.css'
+import authAPI from '../../api/authAPI'
+import {useNavigate} from 'react-router-dom'
 
 function Login() {
+    const navigate = useNavigate();
+    let [userState, setUserState] = useState({role: 'admin'});
 
-    let [role, setRole] = useState('admin');
-    let [username, setUsername] = useState('');
-    let [password, setPassword] = useState('');
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        console.log({role: role, username: username, password: password});
+        await authAPI.login();
+        navigate('/');
     }
 
     return (
@@ -36,57 +37,63 @@ function Login() {
                     <h2 className="login-body-heading">Chọn vai trò đăng nhập</h2>
                     <div className="login-inner">
                         <div className="login-role">
-                            <div 
-                                className={role === 'admin' ? "role-detail role-active" : "role-detail"}
-                                onClick={() => setRole('admin')}
+                            <div
+                                className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
+                                onClick={() => setUserState({...userState, role: 'admin'})}
                             >
-                                <i class="fas fa-user-lock"></i>
+                                <i className="fas fa-user-lock"></i>
                                 Quản trị viên
                             </div>
                             <div className="role-detail-wrapper">
-                                <div 
-                                    className={role === 'trainer' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setRole('trainer')}
+                                <div
+                                    className={userState.role === 'trainer' ? "role-detail role-active" : "role-detail"}
+                                    onClick={() => setUserState({...userState, role: 'trainer'})}
                                 >
                                     <img src={muscleicon} alt="" />
                                     Huấn luyện viên
                                 </div>
-                                <div 
-                                    className={role === 'customer' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setRole('customer')}
+                                <div
+                                    className={userState.role === 'customer' ? "role-detail role-active" : "role-detail"}
+                                    onClick={() => setUserState({...userState, role: 'customer'})}
                                 >
-                                    <i class="fas fa-user"></i>
+                                    <i className="fas fa-user"></i>
                                     Học viên
                                 </div>
                             </div>
                         </div>
                         <form onSubmit={handleLogin}>
                             <div className="form-group">
-                                <input 
-                                    className="userinput" 
-                                    type="text" 
-                                    name="username" 
-                                    id="username" 
-                                    placeholder="Nhập tên đăng nhập" 
-                                    onChange={(e) => setUsername(e.target.value)}
+                                <input
+                                    className="userinput"
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    placeholder="Nhập tên đăng nhập"
+                                    onChange={(e) => {
+                                        const username = e.target.value;
+                                        setUserState({...userState, username});
+                                    }}
                                 />
                             </div>
                             <div className="form-group">
-                                <input 
-                                    className="userinput" 
-                                    type="password" 
-                                    name="password" 
-                                    id="password" 
-                                    placeholder="Nhập mật khẩu" 
-                                    onChange={(e) => setPassword(e.target.value)}
+                                <input
+                                    className="userinput"
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    placeholder="Nhập mật khẩu"
+                                    onChange={(e) => {
+                                        const password = e.target.value;
+                                        setUserState({...userState, password});
+                                    }}
                                 />
                             </div>
-                            <button className={username && password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
+                            <button className={userState.username && userState.password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
                 </div>
             </main>
-            <Footer/>
+            <Footer />
         </div>
     )
 }

@@ -52,10 +52,10 @@ function Banner() {
             <div className="grid">
                 <div className="slider-wrapper">
                     <div className="navigation-left" onClick={handleNext}>
-                        <i class="fas fa-chevron-left navigation-left-icon"></i>
+                        <i className="fas fa-chevron-left navigation-left-icon"></i>
                     </div>
                     <div className="navigation-right" onClick={handlePrev}>
-                        <i class="fas fa-chevron-right navigation-right-icon"></i>
+                        <i className="fas fa-chevron-right navigation-right-icon"></i>
                     </div>
                     <div className="slides">
                         <input type="radio" checked={counter === 1 ? true : false} name="radio-btn" id="radio1" />

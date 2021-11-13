@@ -3,7 +3,7 @@
 }
 
 .header {
-    /* position: fixed; */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
@@ -132,7 +132,7 @@
 }
 
 .header-user-name {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
     color: white;
 }
@@ -146,7 +146,8 @@
 .header-user-option {
     position: absolute;
     top: 100%;
-    left: 0;
+    width: 100%;
+    min-width: 130px;
     right: 0;
     display: block;
     background-color: #fff;
@@ -163,6 +164,7 @@
 .user-option-item {
     display: block;
     padding: 5px 10px;
+    font-size: 15px;
 }
 
 .user-option-item:hover {

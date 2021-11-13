@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import * as Actions from './../store/actions'
+import React from 'react'
 
 function Notfoundpage() {
    

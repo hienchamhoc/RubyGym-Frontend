@@ -1,13 +1,15 @@
-import * as Types from '../constants/ActionTypes'
+import * as Types from './../constants/ActionTypes';
 
-export const actHideHeader = () => {
+export const saveUserToRedux = (userInfor) => {
     return {
-        type: Types.HIDE_HEADER
+        type: Types.SAVE_USER_TO_REDUX,
+        payload: userInfor
     }
 }
 
-export const actShowHeader = () => {
+export const removeUserOutOfRedux = (userInfor) => {
     return {
-        type: Types.SHOW_HEADER
+        type: Types.REMOVE_USER_OUT_OF_REDUX,
+        payload: userInfor
     }
 }

@@ -1,2 +1,2 @@
-export const HIDE_HEADER = 'hide_header';
-export const SHOW_HEADER = 'show_header';
+export const SAVE_USER_TO_REDUX = 'save_user_to_redux';
+export const REMOVE_USER_OUT_OF_REDUX = 'remove_user_from_redux';

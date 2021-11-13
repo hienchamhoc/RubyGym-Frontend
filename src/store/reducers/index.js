@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import hideheader from './hideheader.js';
+import auth from './authReducer';
 
 const appReducers = combineReducers({
-    hideheader
+    auth
 })
 
 export default appReducers;

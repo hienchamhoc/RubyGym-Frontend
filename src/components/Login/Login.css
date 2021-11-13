@@ -1,16 +1,19 @@
+:root {
+    --header-height: 75px;
+}
 
 .login-wrapper {
-    height: 60px;
+    height: var(--header-height);
 }
 
 .login-header-wrapper {
-    height: 60px;
+    height: var(--header-height);
     width: 100%;
     background-color: #350409;
 }
 
 .login-header {
-    height: 60px;
+    height: var(--header-height);
 }
 
 .login-header-logo {

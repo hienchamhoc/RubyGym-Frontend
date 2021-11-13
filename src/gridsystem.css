@@ -1,3 +1,5 @@
+/* Đương đây, k được sửa gì trong file này nha */
+
 .grid {
     width: 100%;
     display: block;
@@ -9,12 +11,16 @@
     margin: 0 auto;
 }
 
+/* Đương đây, k được sửa gì trong file này nha */
+
 .row {
     display: flex;
     flex-wrap: wrap;
     margin-left: -4px;
     margin-right: -4px;
 }
+
+/* Đương đây, k được sửa gì trong file này nha */
 
 .row.no-gutters {
     margin-left: 0;

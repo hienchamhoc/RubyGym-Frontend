@@ -12,6 +12,7 @@ const axiosClient = axios.create({
     },
     paramsSerializer: params => queryString.stringify(params),
 });
+
 axiosClient.interceptors.request.use(async (config) => {
     let token = localStorage.getItem('token');
     if(token) {
@@ -19,6 +20,7 @@ axiosClient.interceptors.request.use(async (config) => {
     }
     return config;
 })
+
 axiosClient.interceptors.response.use((response) => {
     if (response && response.data) {
         return response;
@@ -28,4 +30,5 @@ axiosClient.interceptors.response.use((response) => {
     // Handle errors
     throw error;
 });
+
 export default axiosClient;
