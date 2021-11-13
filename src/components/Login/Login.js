@@ -2,19 +2,22 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import muscleicon from './../../store/imgs/muscle-icon.png'
-import Footer from './../Footer/Footer.js'
 import './Login.css'
 import authAPI from '../../api/authAPI'
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import Footer from './../Footer/Footer'
 
 function Login() {
     const navigate = useNavigate();
-    let [userState, setUserState] = useState({role: 'admin'});
+    let [userState, setUserState] = useState({ role: 'admin' });
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        await authAPI.login();
-        navigate('/');
+        if (!userState.username && !userState.password) return;
+        else {
+            await authAPI.login();
+            navigate('/');
+        }
     }
 
     return (
@@ -32,14 +35,14 @@ function Login() {
             </div>
 
             {/* Header body */}
-            <main className="login-body">
+            < main className="login-body" >
                 <div className="login-body-wrapper">
                     <h2 className="login-body-heading">Chọn vai trò đăng nhập</h2>
                     <div className="login-inner">
                         <div className="login-role">
                             <div
                                 className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
-                                onClick={() => setUserState({...userState, role: 'admin'})}
+                                onClick={() => setUserState({ ...userState, role: 'admin' })}
                             >
                                 <i className="fas fa-user-lock"></i>
                                 Quản trị viên
@@ -47,14 +50,14 @@ function Login() {
                             <div className="role-detail-wrapper">
                                 <div
                                     className={userState.role === 'trainer' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setUserState({...userState, role: 'trainer'})}
+                                    onClick={() => setUserState({ ...userState, role: 'trainer' })}
                                 >
-                                    <img src={muscleicon} alt="" />
+                                    <i class="fas fa-user-chart"></i>
                                     Huấn luyện viên
                                 </div>
                                 <div
                                     className={userState.role === 'customer' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setUserState({...userState, role: 'customer'})}
+                                    onClick={() => setUserState({ ...userState, role: 'customer' })}
                                 >
                                     <i className="fas fa-user"></i>
                                     Học viên
@@ -71,7 +74,7 @@ function Login() {
                                     placeholder="Nhập tên đăng nhập"
                                     onChange={(e) => {
                                         const username = e.target.value;
-                                        setUserState({...userState, username});
+                                        setUserState({ ...userState, username });
                                     }}
                                 />
                             </div>
@@ -84,7 +87,7 @@ function Login() {
                                     placeholder="Nhập mật khẩu"
                                     onChange={(e) => {
                                         const password = e.target.value;
-                                        setUserState({...userState, password});
+                                        setUserState({ ...userState, password });
                                     }}
                                 />
                             </div>

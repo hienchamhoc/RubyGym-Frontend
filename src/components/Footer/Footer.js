@@ -1,6 +1,6 @@
 import React from 'react'
 import './Footer.css'
-
+import fb from './../../store/imgs/fb.png'
 function Footer() {
     return (
         <footer className="footer">
@@ -25,7 +25,8 @@ function Footer() {
                     </div>
                     <div className="col l-3">
                         <div className="footer-item">
-                            <h1 className="footer-heading">Thông tin liên hệ</h1>
+                             
+                            <h1 className="footer-heading">Thông tin liên hệ</h1>                           
                             <b className="branch-address">Facebook:</b>&nbsp;
                             <a href="https://www.facebook.com/locfugoflollow" >facebook.com/RubyGym</a><br />
                             <b className="branch-address">Youtube: </b>&nbsp;

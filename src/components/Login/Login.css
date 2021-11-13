@@ -24,11 +24,11 @@
 
 .login-body {
     width: 100%;
-    background: url('./../../store/imgs/pic1.png');
+    background: url('./../../store/imgs/pic6.png');
     display: flex;
     align-items: center;
     margin: auto;
-    height: 500px;
+    height: 510px;
 }
 
 .login-body-wrapper {
@@ -36,6 +36,7 @@
     width: 400px;
     background-color: white;
     margin-left: 60%;
+    box-shadow: 0px 0px 20px rgba(194, 5, 24, 0.5);
 }
 
 .login-inner {
@@ -43,8 +44,8 @@
 }
 
 .login-body-heading {
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
     color: white;
     margin: 0;
     padding: 20px 0;
@@ -68,14 +69,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40px;
+    height: 45px;
     width: 100%;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 550;
+    letter-spacing: 7%;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 0px;
     transition: all ease 0.1s;
     position: relative;
     opacity: 0.7;
+    box-shadow: inset 0px 4px 4px rgba(255, 255, 255, 0.3);
 }
 
 .role-detail:hover {
@@ -83,7 +87,7 @@
 }
 
 .role-active {
-    background-color: #C20518;
+    background-color: #C51022;
     color: white;
     opacity: 1;
 }
@@ -109,11 +113,6 @@
     padding: 0 15px 0 10px;
 }
 
-.role-detail img {
-    display: block;
-    width: 25px;
-    padding: 0 5px;
-}
 
 .form-group {
     width: 100%;
@@ -121,13 +120,14 @@
 }
 
 .userinput {
-    box-shadow: 0 0 3px #ccc;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
     margin-top: 10px;
     padding: 10px;
     width: 100%;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     outline: none;
+    background-color: #F7F7F7;
 }
 
 .usersubmit-btn {
@@ -135,10 +135,13 @@
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #C20518;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    background-color: #C51022;
     border: none;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
     color: white;
-    border-radius: 4px;
+    border-radius: 0px;
     cursor: pointer;
 }
 
