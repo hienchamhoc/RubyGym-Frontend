@@ -18,7 +18,7 @@ const authAPI = {
 
     logout: () => {
         localStorage.removeItem('user');
-        store.dispatch(Actions.saveUserToRedux(null))
+        store.dispatch(Actions.removeUserOutOfRedux(null))
     }
 }
 

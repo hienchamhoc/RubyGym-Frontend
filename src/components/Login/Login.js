@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
-import muscleicon from './../../store/imgs/muscle-icon.png'
 import './Login.css'
 import authAPI from '../../api/authAPI'
 import { useNavigate } from 'react-router-dom'
@@ -13,7 +12,7 @@ function Login() {
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        if (!userState.username && !userState.password) return;
+        if (!(userState.username && userState.password)) return;
         else {
             await authAPI.login();
             navigate('/');
