@@ -11,9 +11,9 @@ function App() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        const user = JSON.parse(localStorage.getItem('user'));
-        console.log("user: ", user);
-        dispatch(Actions.saveUserToRedux(user));
+        const token = JSON.parse(localStorage.getItem('token'));
+        console.log("token: ", token);
+        dispatch(Actions.saveUserToRedux(token));
     }, [])
 
 

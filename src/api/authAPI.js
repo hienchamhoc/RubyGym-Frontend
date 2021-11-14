@@ -4,12 +4,13 @@ import { store } from './../index'
 
 
 const authAPI = {
-    login: async ( navigate, params) => {
+    login: async (params) => {
         try {
-            const url = '/users';
-            const response = await axiosClient.get(url, { params });
-            localStorage.setItem('user', JSON.stringify(response.data[0]));
-            store.dispatch(Actions.saveUserToRedux(JSON.parse(localStorage.getItem('user'))));
+            const url = '/auth/login';
+            const response = await axiosClient.post(url, { params });
+            localStorage.setItem('token', JSON.stringify(response.data.access_token));
+            store.dispatch(Actions.saveUserToRedux(JSON.parse(localStorage.getItem('token'))));
+            console.log(response)
             return response;
         } catch (err) {
             alert(err.message)
@@ -17,7 +18,7 @@ const authAPI = {
     },
 
     logout: () => {
-        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         store.dispatch(Actions.removeUserOutOfRedux(null))
     }
 }

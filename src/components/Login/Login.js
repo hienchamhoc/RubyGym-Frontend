@@ -14,8 +14,12 @@ function Login() {
         e.preventDefault();
         if (!(userState.username && userState.password)) return;
         else {
-            await authAPI.login();
-            navigate('/');
+            let user = {
+                phone: userState.username,
+                password: userState.password
+            }
+            const response = await authAPI.login(user);
+            if(response) navigate('/');
         }
     }
 
@@ -51,7 +55,7 @@ function Login() {
                                     className={userState.role === 'trainer' ? "role-detail role-active" : "role-detail"}
                                     onClick={() => setUserState({ ...userState, role: 'trainer' })}
                                 >
-                                    <i class="fas fa-user-chart"></i>
+                                    <i className="fas fa-user-chart"></i>
                                     Huấn luyện viên
                                 </div>
                                 <div
