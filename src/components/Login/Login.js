@@ -4,7 +4,6 @@ import logo from './../../store/imgs/logo.png'
 import './Login.css'
 import authAPI from '../../api/authAPI'
 import { useNavigate } from 'react-router-dom'
-import Footer from './../Footer/Footer'
 
 function Login() {
     const navigate = useNavigate();
@@ -99,7 +98,6 @@ function Login() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     )
 }

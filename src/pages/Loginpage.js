@@ -1,10 +1,13 @@
 import React from 'react'
-import { Login } from '../components'
+import { Login, Footer } from '../components'
 
 function Loginpage() {
 
     return (
-        <Login />
+        <>
+            <Login />
+            <Footer />
+        </>
     )
 }
 
