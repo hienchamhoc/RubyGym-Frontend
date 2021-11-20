@@ -2,10 +2,6 @@
     --header-height: 75px;
 }
 
-.login-wrapper {
-    height: var(--header-height);
-}
-
 .login-header-wrapper {
     height: var(--header-height);
     width: 100%;

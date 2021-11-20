@@ -4,7 +4,6 @@ import logo from './../../store/imgs/logo.png'
 import './Login.css'
 import authAPI from '../../api/authAPI'
 import { useNavigate } from 'react-router-dom'
-import Footer from './../Footer/Footer'
 
 function Login() {
     const navigate = useNavigate();
@@ -14,8 +13,12 @@ function Login() {
         e.preventDefault();
         if (!(userState.username && userState.password)) return;
         else {
-            await authAPI.login();
-            navigate('/');
+            let user = {
+                phone: userState.username,
+                password: userState.password
+            }
+            const response = await authAPI.login(user);
+            if (response.data.status) navigate('/admin');
         }
     }
 
@@ -51,7 +54,7 @@ function Login() {
                                     className={userState.role === 'trainer' ? "role-detail role-active" : "role-detail"}
                                     onClick={() => setUserState({ ...userState, role: 'trainer' })}
                                 >
-                                    <i class="fas fa-user-chart"></i>
+                                    <i className="fas fa-user-chart"></i>
                                     Huấn luyện viên
                                 </div>
                                 <div
@@ -94,9 +97,8 @@ function Login() {
                         </form>
                     </div>
                 </div>
-            </main >
-            <Footer />
-        </div >
+            </main>
+        </div>
     )
 }
 

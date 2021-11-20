@@ -4,21 +4,39 @@ import { store } from './../index'
 
 
 const authAPI = {
-    login: async ( navigate, params) => {
+    login: async (params) => {
         try {
-            const url = '/users';
-            const response = await axiosClient.get(url, { params });
-            localStorage.setItem('user', JSON.stringify(response.data[0]));
-            store.dispatch(Actions.saveUserToRedux(JSON.parse(localStorage.getItem('user'))));
+            const url = '/auth/login';
+            const response = await axiosClient.post(url, { params });
+            if (response.data.status) {
+                localStorage.setItem('token', response.data.data.access_token);
+                store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
+                console.log(response)
+                console.log("dang nhap oke");
+            } else {
+                alert(response.data.message)
+            }
             return response;
         } catch (err) {
+            console.log("khong oke");
             alert(err.message)
         }
     },
 
-    logout: () => {
-        localStorage.removeItem('user');
-        store.dispatch(Actions.removeUserOutOfRedux(null))
+    logout: async () => {
+        try {
+            const url = '/auth/logout'
+            const response = await axiosClient.post(url);
+            if (response.data.status) {
+                localStorage.removeItem('token');
+                store.dispatch(Actions.removeUserOutOfRedux(null))
+            } else {
+                alert(response.data.message);
+            }
+        } catch (err) {
+            alert(err.message);
+        }
+
     }
 }
 

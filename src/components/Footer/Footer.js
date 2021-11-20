@@ -1,6 +1,5 @@
 import React from 'react'
 import './Footer.css'
-import fb from './../../store/imgs/fb.png'
 function Footer() {
     return (
         <footer className="footer">
