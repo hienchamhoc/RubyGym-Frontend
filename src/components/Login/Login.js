@@ -18,7 +18,7 @@ function Login() {
                 password: userState.password
             }
             const response = await authAPI.login(user);
-            if(response) navigate('/');
+            if(response.data.status) navigate('/admin');
         }
     }
 

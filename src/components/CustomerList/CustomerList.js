@@ -8,7 +8,6 @@ function CustomerList() {
         <div className="customer-list-wrapper">
             <h1 className="customer-heading">Học viên</h1>
             <div className="trainer-students">
-                <h2 className="trainer-students-heading">Danh sách học viên</h2>
                 <table className="students-table">
                     <thead className="students-table-header">
                         <tr >

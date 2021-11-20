@@ -8,10 +8,14 @@ const authAPI = {
         try {
             const url = '/auth/login';
             const response = await axiosClient.post(url, { params });
-            localStorage.setItem('token', response.data.access_token);
-            store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
-            console.log(response)
-            console.log("dang nhap oke");
+            if (response.data.status) {
+                localStorage.setItem('token', response.data.data.access_token);
+                store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
+                console.log(response)
+                console.log("dang nhap oke");
+            } else {
+                alert(response.data.message)
+            }
             return response;
         } catch (err) {
             console.log("khong oke");
@@ -23,8 +27,12 @@ const authAPI = {
         try {
             const url = '/auth/logout'
             const response = await axiosClient.post(url);
-            localStorage.removeItem('token');
-            store.dispatch(Actions.removeUserOutOfRedux(null))
+            if (response.data.status) {
+                localStorage.removeItem('token');
+                store.dispatch(Actions.removeUserOutOfRedux(null))
+            } else {
+                alert(response.data.message);
+            }
         } catch (err) {
             alert(err.message);
         }
