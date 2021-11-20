@@ -7,7 +7,7 @@ const authAPI = {
     login: async (params) => {
         try {
             const url = '/auth/login';
-            const response = await axiosClient.post(url, { params });
+            const response = await axiosClient.post(url, params);
             if (response.data.status) {
                 localStorage.setItem('token', response.data.data.access_token);
                 store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));

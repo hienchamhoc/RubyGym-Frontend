@@ -14,11 +14,21 @@ function Login() {
         if (!(userState.username && userState.password)) return;
         else {
             let user = {
+                role: userState.role,
                 phone: userState.username,
                 password: userState.password
             }
+            console.log(user);
             const response = await authAPI.login(user);
+<<<<<<< HEAD
             if (response.data.status) navigate('/admin');
+=======
+            if(response && response.data && response.data.status) {
+                if(userState.role === 'admin') navigate('/admin');
+                else if(userState.role === 'trainer') navigate('/');
+                else navigate('/')
+            } 
+>>>>>>> f237b06e49347df0e0448941b27dabb0773be396
         }
     }
 
@@ -58,8 +68,8 @@ function Login() {
                                     Huấn luyện viên
                                 </div>
                                 <div
-                                    className={userState.role === 'customer' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setUserState({ ...userState, role: 'customer' })}
+                                    className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
+                                    onClick={() => setUserState({ ...userState, role: 'member' })}
                                 >
                                     <i className="fas fa-user"></i>
                                     Học viên
