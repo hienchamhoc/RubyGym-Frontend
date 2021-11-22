@@ -36,6 +36,16 @@
 .admin-header-logout {
     font-size: 20px;
     color: white;
+    padding: 10px 20px;
+    border: 1px solid white;
+
+}
+
+.admin-header-logout:hover {
+    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: white;
 }
 
 

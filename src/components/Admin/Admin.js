@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom'
 import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail } from './../'
 import Notfoundpage from '../../pages/Notfoundpage'
 import './Admin.css'
+import authAPI from '../../api/authAPI'
 
 function Admin() {
     return (
@@ -19,7 +20,10 @@ function Admin() {
                         <div className="admin-header-heading">
                             Quản lý
                         </div>
-                        <div className="admin-header-logout">
+                        <div 
+                            className="admin-header-logout"
+                            onClick={() => {authAPI.logout();}}    
+                        >
                             Đăng xuất
                         </div>
                     </div>
