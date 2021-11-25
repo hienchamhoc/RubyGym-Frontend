@@ -1,7 +1,7 @@
 import React from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
-import avatar from './../../store/imgs/trainer1.jpg'
+import avatar from './../../../../store/imgs/trainer1.jpg'
 
 function TrainerDetail() {
     const id = useParams();
@@ -156,7 +156,7 @@ function TrainerDetail() {
                                 <tr>
                                     <td>Nguyễn Văn Đương</td>
                                 </tr>
-                                
+
 
 
                             </tbody>
@@ -209,7 +209,7 @@ function TrainerDetail() {
                                     <td><button>Xóa</button></td>
                                 </tr>
 
-                                
+
 
 
                             </tbody>

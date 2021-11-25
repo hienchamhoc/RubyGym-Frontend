@@ -1,11 +1,8 @@
-import React from 'react'
-
 function Customer() {
     return (
-        <div>
-            
-        </div>
+        <>
+            <h1>Day la trang Customer nhe</h1>
+        </>
     )
 }
-
 export default Customer

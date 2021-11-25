@@ -4,15 +4,18 @@ import Login from './Login/Login';
 import Banner from './Banner/Banner';
 import ScrollToTop from './ScrollToTop/ScrollToTop';
 import Admin from './Admin/Admin';
-import TrainerList from './TrainerList/TrainerList';
-import CustomerList from './CustomerList/CustomerList';
-import Category from './Category/Category';
-import Trainer from './Trainer/Trainer';
+import Trainer from './Trainer/Trainer'
 import Customer from './Customer/Customer';
-import AdminWelcome from './AdminWelcome/AdminWelcome';
-import CustomerDetail from './CustomerDetail/CustomerDetail';
-import TrainerDetail from './TrainerDetail/TrainerDetail';
+import TrainerList from './Admin/AdminComponents/TrainerList/TrainerList';
+import CustomerList from './Admin/AdminComponents/CustomerList/CustomerList';
+import Category from './Admin/AdminComponents/Category/Category';
+import TrainerElement from './Admin/AdminComponents/TrainerElement/TrainerElement';
+import CustomerElement from './Admin/AdminComponents/CustomerElement/CustomerElement';
+import AdminWelcome from './Admin/AdminComponents/AdminWelcome/AdminWelcome';
+import CustomerDetail from './Admin/AdminComponents/CustomerDetail/CustomerDetail';
+import TrainerDetail from './Admin/AdminComponents/TrainerDetail/TrainerDetail';
 
 export { Header, Footer, Login, Banner, ScrollToTop }
-export { Admin, TrainerList, CustomerList, Category, Trainer, Customer, AdminWelcome };
+export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
+export { Trainer, Customer }
