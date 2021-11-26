@@ -1,8 +1,7 @@
 import React from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
-import avatar from './../../store/imgs/trainer1.jpg'
-import { TimeTableCustome } from './..';
+import avatar from './../../../../store/imgs/trainer1.jpg'
 
 function TrainerDetail() {
     const id = useParams();
@@ -55,10 +54,10 @@ function TrainerDetail() {
                                 <span className="trainer-account-title">Tài khoản:</span>
                                 dungnq123
                             </h2>
-                            {/* <h2 className="trainer-password">
+                            <h2 className="trainer-password">
                                 <span className="trainer-password-title">Mật khẩu:</span>
                                 dungtayto
-                            </h2> */}
+                            </h2>
                             <h2 className="trainer-address">
                                 <span className="trainer-address-title">Địa chỉ:</span>
                                 Hà Nội, Việt Nam
@@ -70,7 +69,7 @@ function TrainerDetail() {
                 <div className="row">
                     <div className="trainer-schedule">
                         <h2 className="trainer-schedule-heading">Lịch huấn luyện</h2>
-                        {/* <table className="schedule-table">
+                        <table className="schedule-table">
                             <thead className="schedule-table-header">
                                 <tr >
                                     <th>Thứ</th>
@@ -157,12 +156,12 @@ function TrainerDetail() {
                                 <tr>
                                     <td>Nguyễn Văn Đương</td>
                                 </tr>
-                                
+
 
 
                             </tbody>
-                        </table> */}
-                        <TimeTableCustome/>
+                        </table>
+                        {/* <TimeTableCustome/> */}
                     </div>
 
                     
@@ -213,7 +212,7 @@ function TrainerDetail() {
                                     <td><button>Xóa</button></td>
                                 </tr>
 
-                                
+
 
 
                             </tbody>

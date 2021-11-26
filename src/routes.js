@@ -3,24 +3,34 @@ import Homepage from './pages/Homepage'
 import Loginpage from './pages/Loginpage';
 import Notfoundpage from './pages/Notfoundpage';
 import AdminPage from './pages/AdminPage';
+import TrainerPage from './pages/TrainerPage';
+import CustomerPage from './pages/CustomerPage';
 
 
 const routes = [
     {
         path: '/',
-        element: <Homepage/>
+        element: <Homepage />
     },
     {
         path: '/login',
-        element: <Loginpage/>
+        element: <Loginpage />
     },
     {
         path: '/admin/*',
-        element: <AdminPage/>
+        element: <AdminPage />
+    },
+    {
+        path: '/trainer/*',
+        element: <TrainerPage />
+    },
+    {
+        path: '/customer/*',
+        element: <CustomerPage />
     },
     {
         path: '*',
-        element: <Notfoundpage/>
+        element: <Notfoundpage />
     }
 ]
 
