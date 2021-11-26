@@ -2,6 +2,7 @@ import React from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
 import avatar from './../../store/imgs/trainer1.jpg'
+import { TimeTableCustome } from './..';
 
 function TrainerDetail() {
     const id = useParams();
@@ -69,7 +70,7 @@ function TrainerDetail() {
                 <div className="row">
                     <div className="trainer-schedule">
                         <h2 className="trainer-schedule-heading">Lịch huấn luyện</h2>
-                        <table className="schedule-table">
+                        {/* <table className="schedule-table">
                             <thead className="schedule-table-header">
                                 <tr >
                                     <th>Thứ</th>
@@ -160,8 +161,11 @@ function TrainerDetail() {
 
 
                             </tbody>
-                        </table>
+                        </table> */}
+                        <TimeTableCustome/>
                     </div>
+
+                    
 
                     <div className="trainer-students">
                         <h2 className="trainer-students-heading">Danh sách học viên</h2>

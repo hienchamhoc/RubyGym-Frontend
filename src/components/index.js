@@ -12,7 +12,8 @@ import Customer from './Customer/Customer';
 import AdminWelcome from './AdminWelcome/AdminWelcome';
 import CustomerDetail from './CustomerDetail/CustomerDetail';
 import TrainerDetail from './TrainerDetail/TrainerDetail';
+import TimeTableCustome from './TimeTableCustome/TimeTableCustome';
 
 export { Header, Footer, Login, Banner, ScrollToTop }
 export { Admin, TrainerList, CustomerList, Category, Trainer, Customer, AdminWelcome };
-export { CustomerDetail, TrainerDetail };
+export { CustomerDetail, TrainerDetail, TimeTableCustome };

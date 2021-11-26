@@ -20,15 +20,11 @@ function Login() {
             }
             console.log(user);
             const response = await authAPI.login(user);
-<<<<<<< HEAD
-            if (response.data.status) navigate('/admin');
-=======
             if(response && response.data && response.data.status) {
                 if(userState.role === 'admin') navigate('/admin');
                 else if(userState.role === 'trainer') navigate('/');
                 else navigate('/')
             } 
->>>>>>> f237b06e49347df0e0448941b27dabb0773be396
         }
     }
 
