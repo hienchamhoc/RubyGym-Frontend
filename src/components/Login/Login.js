@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom'
 function Login() {
     const navigate = useNavigate();
     let [userState, setUserState] = useState({ role: 'admin' });
+    let [loginFalse, setLoginFalse] = useState(false);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -24,6 +25,9 @@ function Login() {
                 if (userState.role === 'admin') navigate('/admin');
                 else if (userState.role === 'trainer') navigate('/');
                 else navigate('/')
+            } else {
+                loginFalse = true;
+                setLoginFalse(loginFalse);
             }
         }
     }
@@ -99,6 +103,7 @@ function Login() {
                                     }}
                                 />
                             </div>
+                            {loginFalse && <h2 className="login-false">Tên đăng nhập hoặc mật khẩu không đúng</h2>}
                             <button className={userState.username && userState.password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
