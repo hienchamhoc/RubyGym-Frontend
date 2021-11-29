@@ -2,6 +2,7 @@ import React from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
 import avatar from './../../../../store/imgs/trainer1.jpg'
+import Timetablee from './../../../Timetablee.js'
 
 function TrainerDetail() {
     const id = useParams();
@@ -161,7 +162,7 @@ function TrainerDetail() {
 
                             </tbody>
                         </table>
-                        {/* <TimeTableCustome/> */}
+                        <Timetablee />
                     </div>
 
                     

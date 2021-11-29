@@ -61,7 +61,7 @@ function CustomerInfor() {
             const response = await userProfileAPI.getProfile();
             if (response && response.status && response.status.data) {
                 userProfile = { ...response.status.data };
-                setUserProfile(userProfile);
+                setUserProfile(userProfile); 
             }
         })()
     }, [])

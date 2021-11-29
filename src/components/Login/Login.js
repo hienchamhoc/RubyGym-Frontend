@@ -25,7 +25,8 @@ function Login() {
                 if (userState.role === 'admin') navigate('/admin');
                 else if (userState.role === 'trainer') navigate('/');
                 else navigate('/')
-            } else {
+            }
+            if(response && !response.status) {
                 loginFalse = true;
                 setLoginFalse(loginFalse);
             }
