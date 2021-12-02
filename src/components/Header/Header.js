@@ -8,7 +8,11 @@ import authAPI from "./../../api/authAPI";
 
 function Header() {
     let user = useSelector(store => store.auth.user)
+<<<<<<< HEAD
     user = 1;
+=======
+    // user = 1;
+>>>>>>> a5d02be167acd60a90d71833e4c98754d4570b16
     let [showOption, setShowOpTion] = useState(false);
 
     const handleShowOption = () => {
