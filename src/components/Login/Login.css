@@ -134,6 +134,14 @@
     color: var(--primary-color);
 }
 
+.login-false-t {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: -10px;
+    color: transparent;   
+}
+
 .usersubmit-btn {
     margin-top: 10px;
     width: 100%;

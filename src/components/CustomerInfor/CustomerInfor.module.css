@@ -1,6 +1,28 @@
 .avatar {
     height: 100%;
     min-height: 250px;
+    position: relative;
+}
+
+.chooseAvatar {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #4E4F50;
+    cursor: pointer;
+}
+
+.chooseAvatarIcon {
+    color: #E7E9EC;
+    font-size: 20px;
 }
 
 .inforHeading {
