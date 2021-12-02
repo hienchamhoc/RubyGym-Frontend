@@ -1,5 +1,6 @@
 import React from 'react'
 import { Banner, Footer, Header } from '../components'
+import Timetablee from '../components/Timetablee'
 
 function Homepage() {
     return (
@@ -7,6 +8,7 @@ function Homepage() {
             <Header />
             <Banner />
             <Footer />
+            {/* <Timetablee /> */}
         </>
     )
 }

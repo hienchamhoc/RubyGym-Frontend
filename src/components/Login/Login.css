@@ -126,6 +126,14 @@
     background-color: #F7F7F7;
 }
 
+.login-false {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: -10px;
+    color: var(--primary-color);
+}
+
 .usersubmit-btn {
     margin-top: 10px;
     width: 100%;

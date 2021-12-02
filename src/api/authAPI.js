@@ -13,8 +13,6 @@ const authAPI = {
                 store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
                 console.log(response)
                 console.log("dang nhap oke");
-            } else {
-                alert(response.data.message)
             }
             return response;
         } catch (err) {

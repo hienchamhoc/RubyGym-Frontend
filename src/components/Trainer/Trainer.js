@@ -9,9 +9,33 @@ function Trainer() {
     let [trainerState, setTrainerState] = useState({
         name: 'Tran Hien',
         sex: 'nam',
+        date: '12/2/2021',
         phone: '0964387413',
         address: 'so 1 hai ba trung'
     });
+    let [stateOnChange, setStateOnChange] = useState({
+        name: trainerState.name,
+        sex: trainerState.sex,
+        date: trainerState.date,
+        phone: trainerState.phone,
+        address: trainerState.address
+    });
+    const handleUpdate = () => {
+        setPTag(false);
+    }
+    const handleSave = () => {
+        setPTag(true);
+        setTrainerState({
+            name: stateOnChange.name,
+            sex: stateOnChange.sex,
+            date: stateOnChange.date,
+            phone: stateOnChange.phone,
+            address: stateOnChange.address
+        })
+    }
+    const handleCancel = () => {
+        setPTag(true);
+    }
     return (
         <>
             <Header />
@@ -35,55 +59,91 @@ function Trainer() {
                                         className="trainer-input trainer-input-name"
                                         type="text"
                                         name="name"
+                                        value={stateOnChange.name}
                                         onChange={(e) => {
                                             const name = e.target.value;
-                                            setTrainerState({ ...setTrainerState, name });
+                                            setStateOnChange({ ...stateOnChange, name });
+
                                         }}
                                     />
                                 )}
                                 <br />
                                 <b>Giới tính</b><br />
-                                <select name="sex" className="trainer-input trainer-input-sex">
-                                    <option value="nam">nam</option>
-                                    <option value="nu">nữ</option>
-                                </select><br />
+                                {isPTag ? (
+                                    <b>{trainerState.sex}</b>
+                                ) : (
+                                    <select
+                                        name="sex"
+                                        className="trainer-input trainer-input-sex"
+                                        value={stateOnChange.sex}
+                                        onChange={(e) => {
+                                            const sex = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, sex });
+                                        }}>
+                                        <option value="nam">nam</option>
+                                        <option value="nữ">nữ</option>
+                                    </select>
+                                )}
+                                <br />
                                 <b>Ngày sinh</b><br />
-                                <input
-                                    className="trainer-input trainer-input-date"
-                                    type="date"
-                                    name="date"
-                                /><br />
+                                {isPTag ? (
+                                    <b>{trainerState.date}</b>
+                                ) : (
+                                    <input
+                                        className="trainer-input trainer-input-date"
+                                        type="date"
+                                        name="date"
+                                        value={stateOnChange.date}
+                                        onChange={(e) => {
+                                            const date = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, date });
+                                        }}
+                                    />
+                                )}
+                                <br />
                                 <b>Số điện thoại</b><br />
 
                                 {isPTag ? (
-                                    <b>09234278348</b>
+                                    <b>{trainerState.phone}</b>
                                 ) : (
                                     <input
                                         className="trainer-input trainer-input-phone"
                                         type="text"
                                         name="phone"
+                                        value={stateOnChange.phone}
+                                        onChange={(e) => {
+                                            const phone = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, phone });
+                                        }}
                                     />
                                 )}
 
                                 <br />
                                 <b>Địa chỉ</b><br />
                                 {isPTag ? (
-                                    <b>so 1, dai co viet, hai ba trung, ha noi</b>
+                                    <b>{trainerState.address}</b>
                                 ) : (
                                     <input
                                         className="trainer-input trainer-input-address"
                                         type="text"
                                         name="address"
+                                        value={stateOnChange.address}
+                                        onChange={(e) => {
+                                            const address = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, address });
+                                        }}
                                     />
                                 )}
                                 <br />
                                 {isPTag ? (
-                                    <button onClick={() => setPTag(false)}>chỉnh sửa</  button>
+                                    <button onClick={handleUpdate}>chỉnh sửa</  button>
                                 ) : (
-                                    <button onClick={() => setPTag(true)}>lưu</  button>
+                                    <div>
+                                        <button onClick={handleSave}>lưu</  button>
+                                        <button onClick={handleCancel}>Huỷ</ button>
+                                    </div>
                                 )}
-
-                                <button onClick={() => setPTag(true)}>huỷ</  button>
+                                console.log({trainerState});
                             </div>
                         </div>
                     </div>

@@ -17,6 +17,10 @@ const routes = [
         element: <Loginpage />
     },
     {
+        path: '/profile',
+        element: <CustomerPage/>
+    },
+    {
         path: '/admin/*',
         element: <AdminPage />
     },

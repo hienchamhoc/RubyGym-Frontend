@@ -14,8 +14,11 @@ import CustomerElement from './Admin/AdminComponents/CustomerElement/CustomerEle
 import AdminWelcome from './Admin/AdminComponents/AdminWelcome/AdminWelcome';
 import CustomerDetail from './Admin/AdminComponents/CustomerDetail/CustomerDetail';
 import TrainerDetail from './Admin/AdminComponents/TrainerDetail/TrainerDetail';
+import CustomerInfor from './CustomerInfor/CustomerInfor';
+import Popup from './Popup/Popup';
+
 
 export { Header, Footer, Login, Banner, ScrollToTop }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer }
+export { Trainer, Customer, CustomerInfor, Popup }
