@@ -42,7 +42,7 @@ function CustomerInfor() {
     useEffect(() => {
         if (showPopup) {
             var id = setTimeout(() => {
-                setShowPopup(prev => !prev)
+                setShowPopup(prev => !prev);
             }, 1000)
         }
         return () => {
