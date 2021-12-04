@@ -62,25 +62,51 @@ function CustomerInfor() {
     }, [])
 
     // Upload Avatar
+
     const handleUploadAvatar = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'rubygymimages');
+        // Upload lên Cloudinary
 
-        const response = await fetch('https://api.cloudinary.com/v1_1/dzgdwey0f/image/upload', {
-            method: 'POST',
-            body: data
-        })
+        // const files = e.target.files;
+        // const data = new FormData();
+        // data.append('file', files[0]);
+        // data.append('upload_preset', 'rubygymimages');
 
-        const file = await response.json();
-        userProfile = {
-            ...userProfile,
-            avatar_url: file.secure_url
+        // const response = await fetch('https://api.cloudinary.com/v1_1/dzgdwey0f/image/upload', {
+        //     method: 'POST',
+        //     body: data
+        // })
+
+        // const file = await response.json();
+        // userProfile = {
+        //     ...userProfile,
+        //     avatar_url: file.secure_url
+        // }
+
+        // const response = await userProfileAPI.updateAvatar(data)
+
+        // setUserProfile(userProfile)
+        // console.log(file);
+        // console.log(userProfile)
+
+        //================================================================
+
+        // Upload lên server
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('File', file);
+
+        const response = await userProfileAPI.updateAvatar(formData);
+
+        if(response && response.status && response.data) {
+            userProfile = {
+                ...userProfile,
+                avatar_url: response.data
+            }
+            setUserProfile(userProfile);
         }
-        setUserProfile(userProfile)
-        console.log(file);
-        console.log(userProfile)
+        if(response && !response.status) {
+            alert(response.message)
+        }
     }
 
 
@@ -89,10 +115,11 @@ function CustomerInfor() {
         console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
         if(response && response.status) setShowPopup(prev => !prev);
-        else {
-            alert(response.message);
+        if(response && !response.status && response.message) {
+            alert(response.message)
         }
     }
+
 
     return (
         <div className="grid">
