@@ -1,11 +1,12 @@
 import React from 'react'
-import { Banner, Footer, Header } from '../components'
+import { Footer, Header } from '../components'
+import { ChangePassword } from '../components'
 
 function ChangePasswordPage() {
     return (
         <>
             <Header />
-            <Banner />
+            <ChangePassword />
             <Footer />
         </>
     )

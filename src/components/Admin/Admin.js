@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail } from './../'
 import Notfoundpage from '../../pages/Notfoundpage'
 import './Admin.css'
+import authAPI from '../../api/authAPI'
 
 function Admin() {
+    const navigate = useNavigate();
     return (
         <div className="admin-wrapper">
             <div className="admin-header-wrapper">
@@ -19,7 +21,10 @@ function Admin() {
                         <div className="admin-header-heading">
                             Quản lý
                         </div>
-                        <div className="admin-header-logout">
+                        <div 
+                            className="admin-header-logout"
+                            onClick={() => {console.log('s');authAPI.logout(); navigate('/');}}    
+                        >
                             Đăng xuất
                         </div>
                     </div>

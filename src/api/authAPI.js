@@ -13,8 +13,6 @@ const authAPI = {
                 store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
                 console.log(response)
                 console.log("dang nhap oke");
-            } else {
-                alert(response.data.message)
             }
             return response;
         } catch (err) {
@@ -27,12 +25,8 @@ const authAPI = {
         try {
             const url = '/auth/logout'
             const response = await axiosClient.post(url);
-            if (response.data.status) {
-                localStorage.removeItem('token');
-                store.dispatch(Actions.removeUserOutOfRedux(null))
-            } else {
-                alert(response.data.message);
-            }
+            localStorage.removeItem('token');
+            store.dispatch(Actions.removeUserOutOfRedux(null))
         } catch (err) {
             alert(err.message);
         }
