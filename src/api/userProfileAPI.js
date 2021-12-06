@@ -19,6 +19,16 @@ const userProfileAPI = {
         } catch (err) {
             alert(err.message);
         }
+    },
+
+    updateAvatar: async (params) => {
+        try {
+            const url = 'upload/image';
+            const response = await axiosClient.post(url, params);
+            return response;
+        } catch (err) {
+            alert(err.message);
+        }
     }
 }
 
