@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
-import avatar from './../../store/imgs/avatar.jpg'
 import { Popup } from './../'
-import userProfileAPI from './../../api/userProfileAPI'
+import userProfileAPI from '../../api/userProfileAPI'
+import avatar from './../../store/imgs/avatar.jpg'
 
 import styles from './CustomerInfor.module.css'
 
@@ -54,7 +54,7 @@ function CustomerInfor() {
     useEffect(() => {
         (async () => {
             const response = await userProfileAPI.getProfile();
-            if (response && response.status && response.status.data) {
+            if (response && response.status && response.data.data) {
                 userProfile = { ...response.data.data };
                 setUserProfile(userProfile);
             }
@@ -97,13 +97,14 @@ function CustomerInfor() {
 
         const response = await userProfileAPI.updateAvatar(formData);
 
-        if(response && response.status && response.data) {
+        if(response && response.status && response.data && response.data.data) {
             userProfile = {
                 ...userProfile,
-                avatar_url: response.data
+                avatar_url: response.data.data.imageURL
             }
             setUserProfile(userProfile);
         }
+
         if(response && !response.status) {
             alert(response.message)
         }
@@ -239,7 +240,7 @@ function CustomerInfor() {
                                         }}
                                         id='trainer-phone' />
                                 </div>
-                                {
+                                {/* {
                                     !phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -252,8 +253,8 @@ function CustomerInfor() {
                                         <i class="fas fa-pen"></i>
                                         Chỉnh sửa
                                     </label>
-                                }
-                                {
+                                } */}
+                                {/* {
                                     phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -266,8 +267,8 @@ function CustomerInfor() {
                                         <i class="fas fa-save"></i>
                                         Lưu lại
                                     </label>
-                                }
-                                {
+                                } */}
+                                {/* {
                                     phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -279,7 +280,7 @@ function CustomerInfor() {
                                         <i class="fas fa-window-close"></i>
                                         Hủy
                                     </label>
-                                }
+                                } */}
                             </div>
 
                             {/* Ngày sinh */}
