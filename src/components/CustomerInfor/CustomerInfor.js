@@ -10,8 +10,6 @@ import styles from './CustomerInfor.module.css'
 // Thông tin chi tiết của mỗi học viên
 
 function CustomerInfor() {
-    let [isPTag, setPTag] = useState(true);
-
     let [nameUpdating, setNameUpdating] = useState(false);
     let [phoneUpdating, setPhoneUpdating] = useState(false);
     let [birthdayUpdating, setBirthdayUpdating] = useState(false);
@@ -30,31 +28,15 @@ function CustomerInfor() {
     let outdateRef = useRef(null);
 
     let [userProfile, setUserProfile] = useState({
-        name: 'hien',
-        phone: '090394092',
-        birthday: '15/2/1556',
+        name: '',
+        phone: '',
+        birthday: '',
         gender: 'Nam',
-        address: 'so 1 hoang mai',
-        create_at: '15/2/1995',
-        expire_at: '2/8/2005',
-        avatar_url: 'url',
+        address: '',
+        create_at: '',
+        expire_at: '',
+        avatar_url: '',
     });
-    let [profileOnChange, setProfileOnChange] = useState({
-        name: userProfile.name,
-        phone: userProfile.phone,
-        birthday: userProfile.birthday,
-        gender: userProfile.gender,
-        address: userProfile.address,
-        create_at: userProfile.create_at,
-        expire_at: userProfile.expire_at,
-        avatar_url: userProfile.avatar_url
-    })
-    const handleEdit = () => {
-        setPTag(false);
-    }
-    const handleCancel = () => {
-        setPTag(true);
-    }
 
     // Để show Popup sau khi cập nhật thành công
     useEffect(() => {
@@ -115,23 +97,15 @@ function CustomerInfor() {
 
         const response = await userProfileAPI.updateAvatar(formData);
 
-<<<<<<< HEAD
+
         if(response && response.status && response.data && response.data.data) {
-=======
-        if (response && response.status && response.data) {
->>>>>>> 85264f45c5a070a187a7aa77bca0ba44e8671c1d
             userProfile = {
                 ...userProfile,
                 avatar_url: response.data.data.imageURL
             }
             setUserProfile(userProfile);
         }
-<<<<<<< HEAD
-
         if(response && !response.status) {
-=======
-        if (response && !response.status) {
->>>>>>> 85264f45c5a070a187a7aa77bca0ba44e8671c1d
             alert(response.message)
         }
     }
@@ -139,21 +113,10 @@ function CustomerInfor() {
 
     //Update Profile
     const handleUpdate = async () => {
-        setPTag(true);
-        setUserProfile({
-            name: profileOnChange.name,
-            phone: profileOnChange.phone,
-            birthday: profileOnChange.birthday,
-            gender: profileOnChange.gender,
-            address: profileOnChange.address,
-            create_at: profileOnChange.address,
-            expire_at: profileOnChange.expire_at,
-            avatar_url: profileOnChange.avatar_url
-        })
         console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
-        if (response && response.status) setShowPopup(prev => !prev);
-        if (response && !response.status && response.message) {
+        if(response && response.status) setShowPopup(prev => !prev);
+        if(response && !response.status && response.message) {
             alert(response.message)
         }
     }
@@ -169,7 +132,7 @@ function CustomerInfor() {
 
                     {/* Avatar */}
                     <div className="col l-5 m-0 c-0">
-                        <div
+                        <div 
                             className={clsx(styles.avatar)}
                             style={{
                                 backgroundImage: userProfile.avatar_url ?
@@ -179,17 +142,17 @@ function CustomerInfor() {
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat'
                             }}>
-                            <label
+                            <label 
                                 htmlFor="avatarChoose"
                                 className={clsx(styles.chooseAvatar)}
                             >
                                 <i className={clsx(styles.chooseAvatarIcon, "fas fa-camera")}></i>
                             </label>
-                            <input
-                                type="file"
+                            <input 
+                                type="file" 
                                 id="avatarChoose"
                                 hidden
-                                onChange={handleUploadAvatar}
+                                onChange={ handleUploadAvatar }
                             />
                         </div>
                     </div>
@@ -202,49 +165,81 @@ function CustomerInfor() {
                                 {/* Tên */}
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Họ tên</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.name}</b>
-                                    ) : (
-                                        <input
-                                            //readOnly={!nameUpdating}
-                                            //ref={nameRef}
-                                            type="text"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.name}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    name: e.target.value,
-                                                })
-                                            }}
-                                            id='trainer-name' />
-                                    )}
+                                    <input
+                                        readOnly={!nameUpdating}
+                                        ref={nameRef}
+                                        type="text"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.name}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                name: e.target.value,
+                                            }))
+                                        }}
+                                        id='trainer-name' />
                                 </div>
+                                {
+                                    !nameUpdating &&
+                                    <label
+                                        htmlFor='trainer-name'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            nameRef.current.focus();
+                                            setNameUpdating(prev => !prev)
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    nameUpdating &&
+                                    <label
+                                        htmlFor='trainer-name'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setNameUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    nameUpdating &&
+                                    <label
+                                        htmlFor='trainer-name'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setNameUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
 
                             {/* Số điện thoại */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Số điện thoại</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.phone}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!phoneUpdating}
-                                            // ref={phoneRef}
-                                            type="text"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.phone}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    phone: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-phone' />
-                                    )}
+                                    <input
+                                        readOnly={!phoneUpdating}
+                                        ref={phoneRef}
+                                        type="text"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.phone}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                phone: e.target.value
+                                            }))
+                                        }}
+                                        id='trainer-phone' />
                                 </div>
-<<<<<<< HEAD
                                 {/* {
                                     !phoneUpdating &&
                                     <label
@@ -286,149 +281,373 @@ function CustomerInfor() {
                                         Hủy
                                     </label>
                                 } */}
-=======
-
->>>>>>> 85264f45c5a070a187a7aa77bca0ba44e8671c1d
                             </div>
 
                             {/* Ngày sinh */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày sinh</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.birthday}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!birthdayUpdating}
-                                            // ref={birthdayRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.birthday}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    birthday: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-birthday' />
-                                    )}
+                                    <input
+                                        readOnly={!birthdayUpdating}
+                                        ref={birthdayRef}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.birthday}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                birthday: e.target.value
+                                            }))
+                                        }}
+                                        id='trainer-birthday' />
                                 </div>
-
+                                {
+                                    !birthdayUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            birthdayRef.current.focus();
+                                            setBirthdayUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    birthdayUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setBirthdayUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    birthdayUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setBirthdayUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
 
                             {/* Giới tính */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Giới tính</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.gender}</b>
-                                    ) : (
-                                        <select
-                                            // disabled={!genderUpdating}
-                                            // ref={genderRef}
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.gender}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    gender: e.target.value
-                                                })
-                                            }}
-                                        >
-                                            <option>Nam</option>
-                                            <option>Nữ</option>
-                                        </select>
-                                    )}
+                                    <select
+                                        disabled={!genderUpdating}
+                                        ref={genderRef}
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.gender}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                gender: e.target.value
+                                            }))
+                                        }}
+                                    >
+                                        <option>Nam</option>
+                                        <option>Nữ</option>
+                                    </select>
                                 </div>
-
+                                {
+                                    !genderUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            genderRef.current.focus();
+                                            setGenderUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    genderUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setGenderUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    genderUpdating &&
+                                    <label
+                                        htmlFor='trainer-birthday'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setGenderUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
 
-
+                            {/* Tài khoản */}
+                            {/* <div className={clsx(styles.inforWrapper)}>
+                                <div className={clsx(styles.inforContent)}>
+                                    <h3 className={clsx(styles.inforLabel)}>Tài khoản</h3>
+                                    <input
+                                        readOnly={!useNameUpdating}
+                                        ref={useNameRef}
+                                        type="text"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.useName}
+                                        onChange={(e) => ({
+                                            ...userProfile,
+                                            useName: e.target.value
+                                        })}
+                                        id='trainer-account' />
+                                </div>
+                                {
+                                    !useNameUpdating &&
+                                    <label
+                                        htmlFor='trainer-account'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            useNameRef.current.focus();
+                                            setUseNameUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    useNameUpdating &&
+                                    <label
+                                        htmlFor='trainer-account'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setUseNameUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    useNameUpdating &&
+                                    <label
+                                        htmlFor='trainer-account'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setUseNameUpdating(prev => !prev)
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
+                            </div> */}
 
                             {/* Địa chỉ */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Địa chỉ</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.address}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!addressUpdating}
-                                            // ref={addressRef}
-                                            type="text"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.address}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    address: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-address' />
-                                    )}
+                                    <input
+                                        readOnly={!addressUpdating}
+                                        ref={addressRef}
+                                        type="text"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.address}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                address: e.target.value
+                                            }))
+                                        }}
+                                        id='trainer-address' />
                                 </div>
-
+                                {
+                                    !addressUpdating &&
+                                    <label
+                                        htmlFor='trainer-address'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            addressRef.current.focus();
+                                            setAddressUpdating((prev => !prev))
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    addressUpdating &&
+                                    <label
+                                        htmlFor='trainer-account'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setAddressUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    addressUpdating &&
+                                    <label
+                                        htmlFor='trainer-account'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setAddressUpdating(prev => !prev)
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
 
                             {/* Ngày đăng ký */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày đăng ký</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.create_at}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!registerUpdating}
-                                            // ref={registerRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.create_at}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    create_at: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-register' />
-                                    )}
+                                    <input
+                                        readOnly={!registerUpdating}
+                                        ref={registerRef}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.register}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                register: e.target.value
+                                            }))
+                                        }}
+                                        id='trainer-register' />
                                 </div>
-
+                                {
+                                    !registerUpdating &&
+                                    <label
+                                        htmlFor='trainer-register'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            registerRef.current.focus();
+                                            setRegisterUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    registerUpdating &&
+                                    <label
+                                        htmlFor='trainer-register'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setRegisterUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    registerUpdating &&
+                                    <label
+                                        htmlFor='trainer-register'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setRegisterUpdating(prev => !prev)
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
 
                             {/* Ngày hết hạn */}
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày hết hạn</h3>
-                                    {isPTag ? (
-                                        <b>{userProfile.expire_at}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!outdateUpdating}
-                                            // ref={outdateRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={profileOnChange.expire_at}
-                                            onChange={(e) => {
-                                                setProfileOnChange(prev => ({
-                                                    ...profileOnChange,
-                                                    expire_at: e.target.value
-                                                }))
-                                            }}
-                                            id='trainer-outdate' />
-                                    )}
+                                    <input
+                                        readOnly={!outdateUpdating}
+                                        ref={outdateRef}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.outdate}
+                                        onChange={(e) => {
+                                            setUserProfile(prev => ({
+                                                ...userProfile,
+                                                outdate: e.target.value
+                                            }))
+                                        }}
+                                        id='trainer-outdate' />
                                 </div>
+                                {
+                                    !outdateUpdating &&
+                                    <label
+                                        htmlFor='trainer-outdate'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            outdateRef.current.focus();
+                                            setOutdateUpdating(prev => !prev);
+                                        }}
+                                    >
+                                        <i class="fas fa-pen"></i>
+                                        Chỉnh sửa
+                                    </label>
+                                }
+                                {
+                                    outdateUpdating &&
+                                    <label
+                                        htmlFor='trainer-outdate'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setOutdateUpdating(prev => !prev);
+                                            handleUpdate();
+                                        }}
+                                    >
+                                        <i class="fas fa-save"></i>
+                                        Lưu lại
+                                    </label>
+                                }
+                                {
+                                    outdateUpdating &&
+                                    <label
+                                        htmlFor='trainer-outdate'
+                                        className={clsx(styles.inforBtn)}
+                                        onClick={() => {
+                                            setOutdateUpdating(prev => !prev)
+                                        }}
+                                    >
+                                        <i class="fas fa-window-close"></i>
+                                        Hủy
+                                    </label>
+                                }
                             </div>
-                            {isPTag ? (
-                                <button onClick={handleEdit}>chỉnh sửa</  button>
-                            ) : (
-                                <div>
-                                    <button onClick={() => {
-                                        //setNameUpdating(prev => !prev);
-                                        handleUpdate();
-                                    }}>Lưu</  button>
-                                    <button onClick={handleCancel}>Huỷ</ button>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
@@ -439,7 +658,7 @@ function CustomerInfor() {
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
             </div>
 
-            <Popup trigger={showPopup} message="Cập nhật thành công nhé" />
+            <Popup trigger={showPopup} message="Cập nhật thành công" />
         </div>
     )
 }
