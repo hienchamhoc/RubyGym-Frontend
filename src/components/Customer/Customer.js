@@ -7,7 +7,7 @@ function Customer() {
     return (
         <div className={clsx(styles.wrapper)}>
             <img src="" alt="" className={clsx(styles.avatar)} />
-            
+
         </div>
     )
 }

@@ -20,9 +20,9 @@ function Admin() {
                         <div className="admin-header-heading">
                             Quản lý
                         </div>
-                        <div 
+                        <div
                             className="admin-header-logout"
-                            onClick={() => {authAPI.logout();}}    
+                            onClick={() => { authAPI.logout(); }}
                         >
                             Đăng xuất
                         </div>
@@ -33,7 +33,7 @@ function Admin() {
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-2 m-0">
-                            <Category/>
+                            <Category />
                         </div>
                         <div className="col l-10 m-12">
                             <div className="admin-content">
