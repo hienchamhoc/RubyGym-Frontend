@@ -23,7 +23,11 @@ function Admin() {
                         <div
                             className="admin-header-logout"
                             onClick={() => { authAPI.logout(); }}
+<<<<<<< HEAD
                         ><i class="fas fa-sign-out-alt"></i>
+=======
+                        >
+>>>>>>> 7f7d9bedcc211de3f55acef37c69581154b7214c
                             Đăng xuất
                         </div>
                     </div>
@@ -33,7 +37,7 @@ function Admin() {
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-2 m-0">
-                            <Category/>
+                            <Category />
                         </div>
                         <div className="col l-10 m-12">
                             <div className="admin-content">

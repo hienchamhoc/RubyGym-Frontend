@@ -50,6 +50,7 @@ function Header() {
                                 <div className="header-user-option">
                                     <ul className="user-option-list">
                                         <li onClick={handleShowOption} className='user-option-item'><Link to="/profile">Thông tin cá nhân</Link></li>
+                                        <li onClick={handleShowOption} className='user-option-item'><Link to="/change-password">Đổi mật khẩu</Link></li>
                                         <li onClick={() => {
                                             handleShowOption();
                                             handleLogout();

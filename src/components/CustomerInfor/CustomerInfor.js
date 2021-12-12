@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
-import avatar from './../../store/imgs/avatar.jpg'
 import { Popup } from './../'
-import userProfileAPI from './../../api/userProfileAPI'
+import userProfileAPI from '../../api/userProfileAPI'
+import avatar from './../../store/imgs/avatar.jpg'
 
 import styles from './CustomerInfor.module.css'
 
@@ -42,7 +42,7 @@ function CustomerInfor() {
     useEffect(() => {
         if (showPopup) {
             var id = setTimeout(() => {
-                setShowPopup(prev => !prev)
+                setShowPopup(prev => !prev);
             }, 1000)
         }
         return () => {
@@ -54,7 +54,7 @@ function CustomerInfor() {
     useEffect(() => {
         (async () => {
             const response = await userProfileAPI.getProfile();
-            if (response && response.status && response.status.data) {
+            if (response && response.status && response.data.data) {
                 userProfile = { ...response.data.data };
                 setUserProfile(userProfile);
             }
@@ -62,25 +62,52 @@ function CustomerInfor() {
     }, [])
 
     // Upload Avatar
+
     const handleUploadAvatar = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'rubygymimages');
+        // Upload lên Cloudinary
 
-        const response = await fetch('https://api.cloudinary.com/v1_1/dzgdwey0f/image/upload', {
-            method: 'POST',
-            body: data
-        })
+        // const files = e.target.files;
+        // const data = new FormData();
+        // data.append('file', files[0]);
+        // data.append('upload_preset', 'rubygymimages');
 
-        const file = await response.json();
-        userProfile = {
-            ...userProfile,
-            avatar_url: file.secure_url
+        // const response = await fetch('https://api.cloudinary.com/v1_1/dzgdwey0f/image/upload', {
+        //     method: 'POST',
+        //     body: data
+        // })
+
+        // const file = await response.json();
+        // userProfile = {
+        //     ...userProfile,
+        //     avatar_url: file.secure_url
+        // }
+
+        // const response = await userProfileAPI.updateAvatar(data)
+
+        // setUserProfile(userProfile)
+        // console.log(file);
+        // console.log(userProfile)
+
+        //================================================================
+
+        // Upload lên server
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('File', file);
+
+        const response = await userProfileAPI.updateAvatar(formData);
+
+
+        if(response && response.status && response.data && response.data.data) {
+            userProfile = {
+                ...userProfile,
+                avatar_url: response.data.data.imageURL
+            }
+            setUserProfile(userProfile);
         }
-        setUserProfile(userProfile)
-        console.log(file);
-        console.log(userProfile)
+        if(response && !response.status) {
+            alert(response.message)
+        }
     }
 
 
@@ -89,10 +116,11 @@ function CustomerInfor() {
         console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
         if(response && response.status) setShowPopup(prev => !prev);
-        else {
-            alert(response.message);
+        if(response && !response.status && response.message) {
+            alert(response.message)
         }
     }
+
 
     return (
         <div className="grid">
@@ -212,7 +240,7 @@ function CustomerInfor() {
                                         }}
                                         id='trainer-phone' />
                                 </div>
-                                {
+                                {/* {
                                     !phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -225,8 +253,8 @@ function CustomerInfor() {
                                         <i class="fas fa-pen"></i>
                                         Chỉnh sửa
                                     </label>
-                                }
-                                {
+                                } */}
+                                {/* {
                                     phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -239,8 +267,8 @@ function CustomerInfor() {
                                         <i class="fas fa-save"></i>
                                         Lưu lại
                                     </label>
-                                }
-                                {
+                                } */}
+                                {/* {
                                     phoneUpdating &&
                                     <label
                                         htmlFor='trainer-phone'
@@ -252,7 +280,7 @@ function CustomerInfor() {
                                         <i class="fas fa-window-close"></i>
                                         Hủy
                                     </label>
-                                }
+                                } */}
                             </div>
 
                             {/* Ngày sinh */}

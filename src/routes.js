@@ -5,6 +5,7 @@ import Notfoundpage from './pages/Notfoundpage';
 import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
+import ChangePasswordPage from './pages/ChangePasswordPage';
 
 
 const routes = [
@@ -15,6 +16,10 @@ const routes = [
     {
         path: '/login',
         element: <Loginpage />
+    },
+    {
+        path: '/change-password',
+        element: <ChangePasswordPage />
     },
     {
         path: '/profile',
