@@ -1,7 +1,7 @@
 import React from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
-import avatar from './../../../../store/imgs/trainer1.jpg'
+import avatar from './../../../../store/imgs/trainer-1.png'
 import Timetablee from './../../../Timetablee.js'
 
 function TrainerDetail() {
@@ -9,8 +9,8 @@ function TrainerDetail() {
     return (
         <div className="trainer-detail-wrapper">
             <div className="trainer-detail-header">
-                <h1 className="trainer-heading">Huấn luyện viên</h1>
-                <button className="trainer-add-btn">Thêm</button>
+            <h1 className="trainer-heading">HUẤN LUYỆN VIÊN</h1>
+            <button className="trainer-add-btn">Thêm</button>
             </div>
             <div className="trainer-detail-content">
                 <div className="row">

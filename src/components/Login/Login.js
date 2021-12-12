@@ -57,7 +57,7 @@ function Login() {
                                 className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
                                 onClick={() => setUserState({ ...userState, role: 'admin' })}
                             >
-                                <i className="fas fa-user-lock"></i>
+                                <i className="fas fa-user-lock"></i>    
                                 Quản trị viên
                             </div>
                             <div className="role-detail-wrapper">
@@ -73,7 +73,7 @@ function Login() {
                                     onClick={() => setUserState({ ...userState, role: 'member' })}
                                 >
                                     <i className="fas fa-user"></i>
-                                    Học viên
+                                    Hội viên
                                 </div>
                             </div>
                         </div>
