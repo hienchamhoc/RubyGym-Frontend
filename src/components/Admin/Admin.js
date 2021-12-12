@@ -23,11 +23,7 @@ function Admin() {
                         <div
                             className="admin-header-logout"
                             onClick={() => { authAPI.logout(); }}
-<<<<<<< HEAD
                         ><i class="fas fa-sign-out-alt"></i>
-=======
-                        >
->>>>>>> 7f7d9bedcc211de3f55acef37c69581154b7214c
                             Đăng xuất
                         </div>
                     </div>
