@@ -101,7 +101,7 @@
     border-radius: 15px;
     width: 0;
     z-index: -1;
-    transition: all ease 0.3s;
+    /* transition: all ease 0.3s; */
 }
 
 .header-login:hover:before {

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const navigate = useNavigate();
-    let [userState, setUserState] = useState({ role: 'admin' });
+    let [userState, setUserState] = useState({ role: 'member' });
     let [loginFalse, setLoginFalse] = useState(false);
 
     const handleLogin = async (e) => {
@@ -54,10 +54,10 @@ function Login() {
                     <div className="login-inner">
                         <div className="login-role">
                             <div
-                                className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
-                                onClick={() => setUserState({ ...userState, role: 'admin' })}
+                                className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
+                                onClick={() => setUserState({ ...userState, role: 'member' })}
                             >
-                                <i className="fas fa-user-lock"></i>
+                                <i className="fas fa-user-lock"></i>    
                                 Quản trị viên
                             </div>
                             <div className="role-detail-wrapper">
@@ -69,11 +69,11 @@ function Login() {
                                     Huấn luyện viên
                                 </div>
                                 <div
-                                    className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setUserState({ ...userState, role: 'member' })}
+                                    className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
+                                    onClick={() => setUserState({ ...userState, role: 'admin' })}
                                 >
                                     <i className="fas fa-user"></i>
-                                    Học viên
+                                    Hội viên
                                 </div>
                             </div>
                         </div>

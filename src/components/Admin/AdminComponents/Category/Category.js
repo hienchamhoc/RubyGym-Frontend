@@ -4,6 +4,7 @@ import './Category.css'
 
 function Category() {
     let [trainerCustomer, setTrainerCustomer] = useState(false);
+    let [clickUser, setClickUser] = useState('');
     return (
         <div className="admin-category">
             <ul className="manage-list">
@@ -15,8 +16,20 @@ function Category() {
                 {trainerCustomer &&
                     <li className="manage item">
                         <div className="trainer-customer">
-                            <Link to="trainers"><h2 className="manage-account-trainer">Huấn luyện viên</h2></Link>
-                            <Link to="customers"><h2 className="manage-account-customer">Học viên</h2></Link>
+                            <Link to="trainers">
+                                <div className={clickUser === 'trainer' ? "manage-account-active" : "manage-account"} 
+                                onClick={() => setClickUser('trainer')}>
+                                <i className="fas fa-user-chart"></i>
+                                Huấn luyện viên
+                                </div>
+                            </Link>
+                            <Link to="customers">
+                                <div className={clickUser === 'customer' ? "manage-account-active" : "manage-account"} 
+                                onClick={() => setClickUser('customer')}>
+                                <i className="fas fa-user"></i>
+                                Hội viên
+                                </div>
+                            </Link>
                         </div>
                     </li>
                 }

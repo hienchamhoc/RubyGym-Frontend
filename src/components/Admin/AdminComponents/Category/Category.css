@@ -15,14 +15,21 @@
 }
 
 .manage-item {
-    font-size: 22px;
+    height: 46px;
     font-weight: 500;
+    font-size: 20px;
     padding: 5px 8px;
     background-color: var(--primary-color);
     cursor: pointer;
     display: flex;
     align-items: center;
     color: white;
+    letter-spacing: 0.03em;
+
+}
+.trainer-customer i{
+    padding: 0 15px 0 10px;
+
 }
 
 .manage-item:hover {
@@ -45,21 +52,38 @@
 
 .trainer-customer a {
     text-decoration: none;
-    font-size: 20px;
-    color: #333;
 }
-
-.manage-account-trainer,
-.manage-account-customer {
-    margin: 0;
-    padding: 4px 30px;
-    font-size: 20px;
-    font-weight: 500;
+.manage-account {
+    padding: 6px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
+    color: black;
+    font-weight: 550;
+    letter-spacing: 0.02em;
     cursor: pointer;
+    position: relative;
+    opacity: 0.8;
 }
 
+.manage-account-active {
+    padding: 6px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    font-size: 17px;
+    color: black;
+    font-weight: 550;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    position: relative;
+    background-color: #bfbfbf;
+}
 
-.manage-account-trainer:hover,
-.manage-account-customer:hover {
+.manage-account:hover {
     background-color: rgba(0, 0, 0, 0.1);
+    opacity: 1;
 }
