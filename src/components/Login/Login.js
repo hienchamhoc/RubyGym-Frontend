@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 
 function Login() {
     const navigate = useNavigate();
-    let [userState, setUserState] = useState({ role: 'admin' });
+    let [userState, setUserState] = useState({ role: 'member' });
     let [loginFalse, setLoginFalse] = useState(false);
 
     const handleLogin = async (e) => {
@@ -25,8 +25,8 @@ function Login() {
                 if (userState.role === 'admin') navigate('/admin');
                 else if (userState.role === 'trainer') navigate('/');
                 else navigate('/')
-            }
-            if(response && !response.status) {
+            } 
+            if (response && !response.data.status) {
                 loginFalse = true;
                 setLoginFalse(loginFalse);
             }
@@ -54,11 +54,11 @@ function Login() {
                     <div className="login-inner">
                         <div className="login-role">
                             <div
-                                className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
-                                onClick={() => setUserState({ ...userState, role: 'admin' })}
+                                className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
+                                onClick={() => setUserState({ ...userState, role: 'member' })}
                             >
-                                <i className="fas fa-user-lock"></i>
-                                Quản trị viên
+                                <i className="fas fa-user"></i>
+                                Học viên
                             </div>
                             <div className="role-detail-wrapper">
                                 <div
@@ -69,11 +69,11 @@ function Login() {
                                     Huấn luyện viên
                                 </div>
                                 <div
-                                    className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
-                                    onClick={() => setUserState({ ...userState, role: 'member' })}
+                                    className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
+                                    onClick={() => setUserState({ ...userState, role: 'admin' })}
                                 >
-                                    <i className="fas fa-user"></i>
-                                    Học viên
+                                    <i className="fas fa-user-lock"></i>
+                                    Quản trị viên
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,6 @@ function Login() {
                                 />
                             </div>
                             {loginFalse && <h2 className="login-false">Tên đăng nhập hoặc mật khẩu không đúng</h2>}
-                            {!loginFalse && <h2 className="login-false-t">h</h2>}
                             <button className={userState.username && userState.password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
@@ -116,6 +115,3 @@ function Login() {
 }
 
 export default Login
-
-
-

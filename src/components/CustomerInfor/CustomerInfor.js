@@ -53,10 +53,13 @@ function CustomerInfor() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-            const response = await userProfileAPI.getProfile();
-            if (response && response.status && response.status.data) {
+                const response = await userProfileAPI.getProfile();
+                console.log(response);
+            if (response && response.status && response.data.status) {
                 userProfile = { ...response.data.data };
+                console.log(response);
                 setUserProfile(userProfile);
+                console.log(userProfile);
             }
         })()
     }, [])

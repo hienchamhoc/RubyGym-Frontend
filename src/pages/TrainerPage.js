@@ -1,10 +1,10 @@
-import { Trainer } from "../components"
+import { Trainer, MyCalendar } from "../components"
 
 function TrainerPage() {
 
     return (
         <>
-            <Trainer />
+            <MyCalendar />
         </>
     )
 }

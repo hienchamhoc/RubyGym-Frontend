@@ -128,7 +128,7 @@ function ChangePassword() {
                             {formFalse && <h2 className="form-false">{errMsg}</h2>}
                             <div className="btn-group">
                                 <button className={userState.oldPassword && userState.newPassword && userState.confirmPassword 
-                                                    ? "usersubmit-btn" : "usersubmit-btn inactive"}
+                                                    ? "user-submit-btn" : "user-submit-btn inactive"}
                                         onClick={handleForm}>
                                     Đổi mật khẩu
                                 </button>
