@@ -1,0 +1,214 @@
+.content{
+    padding-top: 40px;
+    background-color: #E5E5E5;
+}
+
+.dich-vu{
+    display:block;
+    background-color: #151515;
+    height: 630px;
+}
+.dich-vu .row{
+    margin-left: 6px;
+}
+
+h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    line-height: 79px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.dich-vu h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    padding-bottom: 40px;
+}
+
+.yoga{
+    border: 2px solid #151515; 
+}
+.personal-trainer{
+    border: 2px solid #151515; 
+}
+.zumba{
+    border: 2px solid #151515; 
+}
+.yoga:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+.personal-trainer:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+.zumba:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+
+.btn-dv{
+    font-style: normal;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    width: 168px;
+    height: 49px;
+    border: 2px solid #C20518;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.link-dv{
+    text-decoration: none;
+}
+
+.btn-dich-vu{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.btn-dv:hover{
+    background-color:  #C20518;
+}
+
+.su-kien{
+    margin-top: 40px;
+    display:block;
+    background: url('./../../store/imgs/bg-sukien.png');
+    height: 741px;
+}
+
+.su-kien h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    margin-bottom: 25px;
+}
+
+.slide-sukien{
+    display: flex;
+    justify-content: center;
+    margin-left: 120px;
+}
+
+.goi-tap{
+    display:block;
+    margin-top: 40px;
+    background-color: #151515;
+    height: 678px;
+}
+.goi-tap .row{
+    margin-left: 6px;
+}
+
+h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    line-height: 79px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.goi-tap h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    padding-bottom: 20px;
+}
+
+.gt1{
+    border: 2px solid #151515; 
+}
+.gt2{
+    border: 2px solid #151515; 
+}
+.gt3{
+    border: 2px solid #151515; 
+}
+.gt1:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+.gt2:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+.gt3:hover {
+    border: 2px solid rgb(163, 0, 0);
+}
+
+.btn-gt{
+    font-style: normal;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    width: 168px;
+    height: 49px;
+    border: 2px solid #C20518;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.link-gt{
+    text-decoration: none;
+}
+
+.btn-goi-tap{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.btn-gt:hover{
+    background-color:  #C20518;
+}
+
+.goi-tap ul li{
+    margin-top: 10px;
+    margin-left: 55px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+
+    color: #FFFFFF;
+}
+

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Banner, Footer, Header } from '../components'
+import { Banner, Footer, Header, Content} from '../components'
 import Timetablee from '../components/Timetablee'
 
 function Homepage() {
@@ -7,6 +7,7 @@ function Homepage() {
         <>
             <Header />
             <Banner />
+            <Content />
             <Footer />
             {/* <Timetablee /> */}
         </>
