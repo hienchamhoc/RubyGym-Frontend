@@ -6,6 +6,7 @@ import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
+import TestPage from './pages/TestPage';
 
 
 const routes = [
@@ -23,7 +24,7 @@ const routes = [
     },
     {
         path: '/profile',
-        element: <CustomerPage/>
+        element: <CustomerPage />
     },
     {
         path: '/admin/*',
@@ -40,6 +41,10 @@ const routes = [
     {
         path: '*',
         element: <Notfoundpage />
+    },
+    {
+        path: '/test',
+        element: <TestPage />
     }
 ]
 
