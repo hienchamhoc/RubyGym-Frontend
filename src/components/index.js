@@ -1,6 +1,12 @@
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Login from './Login/Login';
+import Content from './Content/Content';
+import Content_Dichvu from './Content_Dichvu/Content_Dichvu';
+import Content_Sukien from './Content_Sukien/Content_Sukien';
+import Content_Goitap from './Content_Goitap/Content_Goitap';
+import Content_Blog from './Content_Blog/Content_Blog';
+import Content_Gopy from './Content_Gopy/Content_Gopy';
 import Banner from './Banner/Banner';
 import ScrollToTop from './ScrollToTop/ScrollToTop';
 import Admin from './Admin/Admin';
@@ -19,7 +25,7 @@ import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
 
 
-export { Header, Footer, Login, Banner, ScrollToTop }
+export { Header, Footer, Login, Content, Banner, ScrollToTop,Content_Dichvu, Content_Sukien, Content_Goitap, Content_Blog, Content_Gopy}
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
 export { Trainer, Customer, CustomerInfor, Popup, ChangePassword }
