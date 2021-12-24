@@ -8,14 +8,14 @@ function Trainer() {
     let [isPTag, setPTag] = useState(true);
     let [trainerState, setTrainerState] = useState({
         name: 'Tran Hien',
-        sex: 'nam',
+        gender: 'nam',
         date: '12/2/2021',
         phone: '0964387413',
         address: 'so 1 hai ba trung'
     });
     let [stateOnChange, setStateOnChange] = useState({
         name: trainerState.name,
-        sex: trainerState.sex,
+        gender: trainerState.gender,
         date: trainerState.date,
         phone: trainerState.phone,
         address: trainerState.address
@@ -27,7 +27,7 @@ function Trainer() {
         setPTag(true);
         setTrainerState({
             name: stateOnChange.name,
-            sex: stateOnChange.sex,
+            gender: stateOnChange.gender,
             date: stateOnChange.date,
             phone: stateOnChange.phone,
             address: stateOnChange.address
@@ -70,15 +70,15 @@ function Trainer() {
                                 <br />
                                 <b>Giới tính</b><br />
                                 {isPTag ? (
-                                    <b>{trainerState.sex}</b>
+                                    <b>{trainerState.gender}</b>
                                 ) : (
                                     <select
-                                        name="sex"
-                                        className="trainer-input trainer-input-sex"
-                                        value={stateOnChange.sex}
+                                        name="gender"
+                                        className="trainer-input trainer-input-gender"
+                                        value={stateOnChange.gender}
                                         onChange={(e) => {
-                                            const sex = e.target.value;
-                                            setStateOnChange({ ...stateOnChange, sex });
+                                            const gender = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, gender });
                                         }}>
                                         <option value="nam">nam</option>
                                         <option value="nữ">nữ</option>

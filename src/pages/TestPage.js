@@ -3,9 +3,13 @@ import Calendar from 'react-calendar';
 import trainerApi from '../api/trainerAPI'
 import { Popup } from '../components';
 import 'react-calendar/dist/Calendar.css';
+import CalendarPopup from '../components/CalendarPopup/CalendarPopup';
+
 function TestPage() {
     let [showPopup, setShowPopup] = useState(false);
     let [content, setContent] = useState(false);
+    const [testDate, setTestDate] = useState(null);
+    var date = new Date();
     let [trainerState, setTrainerState] = useState({
         name: 'Tran Hien',
         sex: 'nam',
@@ -14,16 +18,22 @@ function TestPage() {
         address: 'so 1 hai ba trung',
         avatar_url: ''
     });
-    useEffect(() => {
-        if (showPopup) {
-            var id = setTimeout(() => {
-                setShowPopup(prev => !prev);
-            }, 1000)
-        }
-        return () => {
-            clearTimeout(id);
-        }
-    }, [showPopup])
+    const data = [
+        { id: "1", starttime: "9h", finishtime: "10h", date: "20/10/2020", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
+        { id: "5", starttime: "9h", finishtime: "10h", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
+        { id: "9", starttime: "9h", finishtime: "10h", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
+
+    ]
+    // useEffect(() => {
+    //     if (showPopup) {
+    //         var id = setTimeout(() => {
+    //             setShowPopup(prev => !prev);
+    //         }, 10000)
+    //     }
+    //     return () => {
+    //         clearTimeout(id);
+    //     }
+    // }, [showPopup])
 
 
     // useEffect(() => {
@@ -58,13 +68,8 @@ function TestPage() {
     }
     const hanldeClickDay = (e) => {
         console.log(e);
-    }
-    const tileContentTrainer = (date, view) => {
-        const day1 = new Date();
-        if (isSameDay(date, day1)) {
-            return 'today';
-        }
-        return 'nothing';
+        setTestDate(e);
+        console.log(testDate);
     }
     const tileDisabledTrainer = (e) => {
         //e.getDay() === 0
@@ -82,15 +87,20 @@ function TestPage() {
             <Popup trigger={showPopup} message="Cập nhật thành công nhé" /> */}
             <Calendar
                 onClickDay={hanldeClickDay}
-                tileContent={tileContentTrainer}
+            //tileContent={tileContentTrainer}
             //tileDisabled={tileDisabledTrainer}
 
             ></Calendar>
             <button
+                className="btn btn-primary"
                 onClick={() => {
-                    setContent(true)
+                    setShowPopup(true)
                 }}
             >bam vao day</button>
+            <p>Ngày {date.getDay()}/{date.getMonth()}</p>
+            <p>Giờ là {date.getHours()}:{date.getMinutes()}</p>
+            {/* <Popup trigger={showPopup} message="Cập nhật thành công nhé" /> */}
+            <CalendarPopup trigger={showPopup} setTrigger={setShowPopup} data={data} />
         </>
     )
 }

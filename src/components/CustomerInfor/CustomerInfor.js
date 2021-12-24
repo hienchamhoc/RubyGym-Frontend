@@ -377,4 +377,4 @@ function CustomerInfor() {
     )
 }
 
-export default CustomerInfor
+export default CustomerInfor 

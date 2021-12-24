@@ -7,6 +7,7 @@ import { applyMiddleware, compose, createStore } from 'redux';
 import { Provider } from 'react-redux'
 import appReducers from './store/reducers';
 import thunk from 'redux-thunk'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
