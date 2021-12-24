@@ -6,10 +6,10 @@ import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
-import Dich_vu from './pages/Dich_vu';
-import Su_kien from './pages/Su_kien';
-import Goi_tap from './pages/Goi_tap';
-import Blog from './pages/Blog';
+import ServicePage from './pages/ServicePage';
+import EventPage from './pages/EventPage';
+import PackagePage from './pages/PackagePage';
+import BlogPage from './pages/BlogPage';
 
 const routes = [
     {
@@ -17,20 +17,20 @@ const routes = [
         element: <Homepage />
     },
     {
-        path: '/dich-vu',
-        element: <Dich_vu />
+        path: '/service',
+        element: <ServicePage />
     },
     {
-        path: '/su-kien',
-        element: <Su_kien />
+        path: '/event',
+        element: <EventPage />
     },
     {
-        path: '/goi-tap',
-        element: <Goi_tap />
+        path: '/package',
+        element: <PackagePage />
     },
     {
         path: '/blog',
-        element: <Blog />
+        element: <BlogPage />
     },  
     {
         path: '/login',
