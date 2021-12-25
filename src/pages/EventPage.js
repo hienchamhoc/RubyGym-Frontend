@@ -1,11 +1,11 @@
 import React from 'react'
-import { Footer, Header, Content_Sukien} from '../components'
+import { Footer, Header, Content_Event} from '../components'
 
 function Su_kien() {
     return (
         <>
             <Header />
-            <Content_Sukien />
+            <Content_Event />
             <Footer />
         </>
     )

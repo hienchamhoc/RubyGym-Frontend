@@ -1,13 +1,7 @@
 import React, { useState} from "react"
 import { NavLink } from "react-router-dom";
 import './Content.css'
-import yoga from './../../store/imgs/yoga.png';
-import pt from './../../store/imgs/personal-trainer.png';
-import zumba from './../../store/imgs/zumba.png';
 import sk1 from './../../store/imgs/sk1.png';
-import gt1 from './../../store/imgs/gt1.png';
-import gt2 from './../../store/imgs/gt2.png';
-import gt3 from './../../store/imgs/gt3.png';
 
 function Content() {
     let [counterSK, setCounterSK] = useState(1);
@@ -42,19 +36,25 @@ function Content() {
                     <div className="grid wide">
                         <div className="row">
                             <div className="col l-4">
-                                <img src={yoga} className="yoga" />
+                                <div className="service" id="yoga" >
+                                    <div className="service-name">YOGA</div>
+                                </div>
                             </div>
                             <div className="col l-4">
-                                <img src={pt} className="personal-trainer" />
+                                <div className="service" id="personal-trainer">
+                                    <div className="service-name">HUẤN LUYỆN VIÊN CÁ NHÂN</div>
+                                </div>
                             </div>
                             <div className="col l-4">
-                                <img src={zumba} className="zumba" />
+                                <div className="service" id="zumba">
+                                    <div className="service-name">ZUMBA</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="btn-dich-vu">
-                    <NavLink to="/dich-vu" className="link-dv">
+                    <NavLink to="/service" className="link-dv">
                         <button className="btn-dv">
                             XEM THÊM
                         </button>
@@ -83,13 +83,28 @@ function Content() {
                     <div className="grid wide">
                         <div className="row">
                             <div className="col l-4">
-                                <img src={gt1} className="gt1" />
+                                <div className="package">
+                                    <div className="name">GÓI 3 THÁNG</div>
+                                    <div className="tong-chi-phi">TỔNG CHI PHÍ</div>
+                                    <div className="price">2.990.000</div>
+                                    <div className="vnd">VNĐ</div>
+                                </div>
                             </div>
                             <div className="col l-4">
-                                <img src={gt2} className="gt2" />
+                                <div className="package">
+                                    <div className="name">GÓI 6 THÁNG</div>
+                                    <div className="tong-chi-phi">TỔNG CHI PHÍ</div>
+                                    <div className="price">4.990.000</div>
+                                    <div className="vnd">VNĐ</div>
+                                </div>
                             </div>
                             <div className="col l-4">
-                                <img src={gt3} className="gt3" />
+                                <div className="package" id="star">
+                                    <div className="name">GÓI 1 NĂM</div>
+                                    <div className="tong-chi-phi">TỔNG CHI PHÍ</div>
+                                    <div className="price">8.990.000</div>
+                                    <div className="vnd">VNĐ</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,7 +114,7 @@ function Content() {
                     <li>Khách hàng giới thiệu khách hàng cho trung tâm sẽ được tặng 1 tháng luyện tập miễn phí/1 khách được giới thiệu và tham gia trung tâm.</li>
                 </ul>
                 <div className="btn-goi-tap">
-                    <NavLink to="/goi-tap" className="link-gt">
+                    <NavLink to="/package" className="link-gt">
                         <button className="btn-gt">
                             XEM THÊM
                         </button>

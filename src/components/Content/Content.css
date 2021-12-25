@@ -38,25 +38,40 @@ h1{
     letter-spacing: 0.03em;
     padding-bottom: 40px;
 }
+.dich-vu .service{
+    display: flex;
+    height: 300px;
+    width: 350px;
+    align-items: flex-end;
+    border: 2px solid #151515;
+}
+.dich-vu .service-name{
+    display: flex;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 85px;
+    opacity: 0.7;
+    justify-content: center;
+    align-items: center;
+}
+.dich-vu .service:hover{
+    border: 2px solid rgb(163, 0, 0);
 
-.yoga{
-    border: 2px solid #151515; 
 }
-.personal-trainer{
-    border: 2px solid #151515; 
+#yoga{
+    background-image: url('./../../store/imgs/yoga.png');
 }
-.zumba{
-    border: 2px solid #151515; 
+#personal-trainer{
+    background-image: url('./../../store/imgs/personal-trainer.png');
 }
-.yoga:hover {
-    border: 2px solid rgb(163, 0, 0);
+#zumba{
+    background-image: url('./../../store/imgs/zumba.png');
 }
-.personal-trainer:hover {
-    border: 2px solid rgb(163, 0, 0);
-}
-.zumba:hover {
-    border: 2px solid rgb(163, 0, 0);
-}
+
 
 .btn-dv{
     font-style: normal;
@@ -80,7 +95,7 @@ h1{
 .btn-dich-vu{
     display: flex;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 .btn-dv:hover{
@@ -150,23 +165,47 @@ h1{
     padding-bottom: 20px;
 }
 
-.gt1{
-    border: 2px solid #151515; 
+.goi-tap .package{
+    display: flex;
+    height: 250px;
+    width: 350px;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid #151515;
 }
-.gt2{
-    border: 2px solid #151515; 
+.goi-tap .name{
+    margin-top: 35px;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.03em;
 }
-.gt3{
-    border: 2px solid #151515; 
+.goi-tap .tong-chi-phi{
+    margin-top: 15px;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.03em;
 }
-.gt1:hover {
+.goi-tap .price{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.03em;
+}
+.goi-tap .vnd{
+    margin-top: 5px;
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.03em;
+}
+#star{
+background-image: url('./../../store/imgs/star.png');
+
+}
+
+.goi-tap .package:hover{
     border: 2px solid rgb(163, 0, 0);
-}
-.gt2:hover {
-    border: 2px solid rgb(163, 0, 0);
-}
-.gt3:hover {
-    border: 2px solid rgb(163, 0, 0);
+
 }
 
 .btn-gt{
@@ -198,6 +237,9 @@ h1{
     background-color:  #C20518;
 }
 
+.goi-tap ul{
+    margin-top: 20px;
+}
 .goi-tap ul li{
     margin-top: 10px;
     margin-left: 55px;
@@ -208,7 +250,6 @@ h1{
     display: flex;
     align-items: center;
     letter-spacing: 0.03em;
-
     color: #FFFFFF;
 }
 

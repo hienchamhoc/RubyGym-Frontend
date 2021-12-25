@@ -2,11 +2,11 @@ import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Login from './Login/Login';
 import Content from './Content/Content';
-import Content_Dichvu from './Content_Dichvu/Content_Dichvu';
-import Content_Sukien from './Content_Sukien/Content_Sukien';
-import Content_Goitap from './Content_Goitap/Content_Goitap';
+import Content_Service from './Content_Service/Content_Service';
+import Content_Event from './Content_Event/Content_Event';
+import Content_Package from './Content_Package/Content_Package';
 import Content_Blog from './Content_Blog/Content_Blog';
-import Content_Gopy from './Content_Gopy/Content_Gopy';
+import Content_Feedback from './Content_Feedback/Content_Feedback';
 import Banner from './Banner/Banner';
 import ScrollToTop from './ScrollToTop/ScrollToTop';
 import Admin from './Admin/Admin';
@@ -27,7 +27,11 @@ import CalendarPopup from './CalendarPopup/CalendarPopup';
 import MyCalendar from './MyCalendar/MyCalendar';
 
 
+<<<<<<< HEAD
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Dichvu, Content_Sukien, Content_Goitap, Content_Blog, Content_Gopy }
+=======
+export { Header, Footer, Login, Content, Banner, ScrollToTop,Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback}
+>>>>>>> 62eb3f51a7cec900b38e1b1281feb082d0987461
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
 export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar }

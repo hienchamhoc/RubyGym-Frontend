@@ -1,10 +1,10 @@
 import React from 'react'
-import './Content_Goitap.css'
+import './Content_Package.css'
 import goitap from './../../store/imgs/goitap.png';
 import goitap1 from './../../store/imgs/goitap1.png';
 
 
-function Content_Goitap() {
+function Content_Package() {
     return (
         <div>
             <img src={goitap} alt=""/>
@@ -14,4 +14,4 @@ function Content_Goitap() {
     )
 }
 
-export default Content_Goitap
+export default Content_Package

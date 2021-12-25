@@ -1,11 +1,11 @@
 import React from 'react'
-import { Footer, Header, Content_Goitap} from '../components'
+import { Footer, Header, Content_Package} from '../components'
 
 function Goi_tap() {
     return (
         <>
             <Header />
-            <Content_Goitap />
+            <Content_Package />
             <Footer />
         </>
     )

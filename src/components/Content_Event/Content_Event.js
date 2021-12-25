@@ -1,12 +1,12 @@
 import React from 'react'
-import './Content_Sukien.css'
+import './Content_Event.css'
 import sukien from './../../store/imgs/sukien.png';
 
-function Content_Sukien() {
+function Content_Event() {
     return (
         <img src={sukien} alt=""/>
 
     )
 }
 
-export default Content_Sukien
+export default Content_Event
