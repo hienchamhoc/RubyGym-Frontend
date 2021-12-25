@@ -3,14 +3,23 @@
     background-color: #E5E5E5;
     
 }
-.trainer-avatarname{
+.trainer-heading{
+    padding-top:30px;
+    font-size: 24px;
+
+    padding-bottom: 5px;
+    color: black;
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.15);
+}
+/* .trainer-avatarname{
     background-color: white;
     margin: 30px;
     text-align: center;
-}
+
+} */
 .trainer-avatar{
     border-radius: 50%;
-    padding: 20px;
+    padding: 0px;
 }
 .trainername{
     size: 20px;
@@ -23,7 +32,7 @@
 .trainer-info{
     padding-left: 20px;
 }
-.trainer-input{
+/* .trainer-input{
     padding: 5px;
     border: none;
     border-bottom: 1.2px solid black;
@@ -43,4 +52,4 @@
 }
 .trainer-input-address{
     width: 50%;
-}
+} */

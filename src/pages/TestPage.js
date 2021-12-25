@@ -4,6 +4,8 @@ import trainerApi from '../api/trainerAPI'
 import { Popup } from '../components';
 import 'react-calendar/dist/Calendar.css';
 import CalendarPopup from '../components/CalendarPopup/CalendarPopup';
+import MyCalendar from '../components/MyCalendar/MyCalendar';
+
 
 function TestPage() {
     let [showPopup, setShowPopup] = useState(false);
@@ -18,7 +20,7 @@ function TestPage() {
         address: 'so 1 hai ba trung',
         avatar_url: ''
     });
-    const data = [
+    const datas = [
         { id: "1", starttime: "9h", finishtime: "10h", date: "20/10/2020", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
         { id: "5", starttime: "9h", finishtime: "10h", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
         { id: "9", starttime: "9h", finishtime: "10h", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
@@ -85,12 +87,10 @@ function TestPage() {
                 onMouseLeave={handleLeave}
             >day ne</button>
             <Popup trigger={showPopup} message="Cập nhật thành công nhé" /> */}
-            <Calendar
+            {/* <Calendar
                 onClickDay={hanldeClickDay}
-            //tileContent={tileContentTrainer}
-            //tileDisabled={tileDisabledTrainer}
-
-            ></Calendar>
+                tileClassName={}
+            ></Calendar> */}
             <button
                 className="btn btn-primary"
                 onClick={() => {
@@ -99,8 +99,8 @@ function TestPage() {
             >bam vao day</button>
             <p>Ngày {date.getDay()}/{date.getMonth()}</p>
             <p>Giờ là {date.getHours()}:{date.getMinutes()}</p>
-            {/* <Popup trigger={showPopup} message="Cập nhật thành công nhé" /> */}
-            <CalendarPopup trigger={showPopup} setTrigger={setShowPopup} data={data} />
+            {/* <MyCalendar /> */}
+            <CalendarPopup trigger={showPopup} setTrigger={setShowPopup} data={datas} />
         </>
     )
 }

@@ -6,7 +6,6 @@ import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
-
 import ServicePage from './pages/ServicePage';
 import EventPage from './pages/EventPage';
 import PackagePage from './pages/PackagePage';
@@ -35,7 +34,7 @@ const routes = [
     {
         path: '/blog',
         element: <BlogPage />
-    },  
+    },
     {
         path: '/login',
         element: <Loginpage />

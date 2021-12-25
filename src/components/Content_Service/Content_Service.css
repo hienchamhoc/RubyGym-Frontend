@@ -36,7 +36,7 @@
 
 .service_1 {
     width: 1000px;
-    height: 445px;
+    height: 460px;
     border-bottom: 2px solid #151515;
 }
 .title-service_1{
@@ -71,7 +71,7 @@
     display: flex;
     margin-left: auto;
     width: 1150px;
-    height: 490px;
+    height: 505px;
     flex-direction: column;
     border-bottom: 2px solid #151515;
 }
@@ -110,7 +110,7 @@
 
 .service_3 {
     width: 1000px;
-    height: 445px;
+    height: 460px;
     border-bottom: 2px solid #151515;
 }
 .title-service_3{
