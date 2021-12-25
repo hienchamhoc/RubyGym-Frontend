@@ -1,51 +1,124 @@
 import { Header } from ".."
 import './Trainer.css'
-import traineravatar from '../../store/imgs/trainer1.jpg'
+import traineravatar from '../../store/imgs/avatar.jpg'
 import { Footer } from ".."
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { Popup } from ".."
+import trainerAPI from "../../api/trainerAPI"
 
 function Trainer() {
     let [isPTag, setPTag] = useState(true);
-    let [trainerState, setTrainerState] = useState({
+    let [showPopup, setShowPopup] = useState(false);
+    let [trainerProfile, setTrainerProfile] = useState({
         name: 'Tran Hien',
         gender: 'nam',
-        date: '12/2/2021',
+        role: 'HLV tập bụng',
+        birthday: '12/2/2021',
         phone: '0964387413',
-        address: 'so 1 hai ba trung'
+        address: 'so 1 hai ba trung',
+        created_at: '20/11/2019',
+        avatar_url: ''
     });
     let [stateOnChange, setStateOnChange] = useState({
-        name: trainerState.name,
-        gender: trainerState.gender,
-        date: trainerState.date,
-        phone: trainerState.phone,
-        address: trainerState.address
+        name: trainerProfile.name,
+        gender: trainerProfile.gender,
+        role: trainerProfile.role,
+        birthday: trainerProfile.birthday,
+        phone: trainerProfile.phone,
+        address: trainerProfile.address,
+        created_at: trainerProfile.created_at,
+        avatar_url: trainerProfile.avatar_url
     });
-    const handleUpdate = () => {
+    const handleEdit = () => {
         setPTag(false);
     }
-    const handleSave = () => {
+    const handleUpdate = () => {
         setPTag(true);
-        setTrainerState({
+        setTrainerProfile({
             name: stateOnChange.name,
             gender: stateOnChange.gender,
-            date: stateOnChange.date,
+            role: stateOnChange.role,
+            birthday: stateOnChange.birthday,
             phone: stateOnChange.phone,
-            address: stateOnChange.address
+            address: stateOnChange.address,
+            created_at: stateOnChange.created_at,
+            avatar_url: stateOnChange.avatar_url
         })
     }
     const handleCancel = () => {
         setPTag(true);
     }
+    // Để show Popup sau khi cập nhật thành công
+    useEffect(() => {
+        if (showPopup) {
+            var id = setTimeout(() => {
+                setShowPopup(prev => !prev)
+            }, 1000)
+        }
+        return () => {
+            clearTimeout(id);
+        }
+    }, [showPopup])
+
+    // Lấy profile về
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await trainerAPII.getProfile();
+    //         if (response && response.status && response.status.data) {
+    //             trainerProfile = { ...response.data.data };
+    //             setTrainerProfile(trainerProfile);
+    //         }
+    //     })()
+    // }, [])
+
+    // Upload Avatar
+    // const handleUploadAvatar = async (e) => {
+
+    //     const file = e.target.files[0];
+    //     const formData = new FormData();
+    //     formData.append('File', file);
+
+    //     const response = await trainerAPI.updateTrainerAvatar(formData);
+    //     if (response && response.status && response.data && response.data.data) {
+    //         trainerProfile = {
+    //             ...trainerProfile,
+    //             avatar_url: response.data.data.imageURL
+    //         }
+    //         setTrainerProfile(trainerProfile);
+
+    //     }
+    //     if (response && !response.status) {
+    //         alert(response.message)
+    //     }
+    // }
+
     return (
         <>
             <Header />
             <div className="trainer-main">
-                <h1>Thông tin cá nhân</h1>
+                <h2 className="trainer-heading">Thông tin cá nhân</h2>
                 <div className="row">
                     <div className="col l-3 m-0 ">
-                        <div className="trainer-avatarname">
-                            <img src={traineravatar} className="trainer-avatar" />
-                            <span className="trainer-name">Tran Van A</span>
+                        <div className="trainer-avatar"
+                            style={{
+                                backgroundImage: trainerProfile.avatar_url ?
+                                    `url(${trainerProfile.avatar_url})` :
+                                    `url(${traineravatar})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat'
+                            }}><label
+                                htmlFor="avatarChoose"
+                                className="chooseAvatar"
+                            >
+                                <i className="fas fa-camera"></i>
+                            </label>
+                            <input
+                                type="file"
+                                id="avatarChoose"
+                                hidden
+                            // onChange={handleUploadAvatar}
+                            />
                         </div>
                     </div>
                     <div className="col l-9 m-12">
@@ -53,7 +126,7 @@ function Trainer() {
                             <div className="trainer-info">
                                 <b>Họ tên</b><br />
                                 {isPTag ? (
-                                    <b>{trainerState.name}</b>
+                                    <b>{trainerProfile.name}</b>
                                 ) : (
                                     <input
                                         className="trainer-input trainer-input-name"
@@ -68,9 +141,10 @@ function Trainer() {
                                     />
                                 )}
                                 <br />
+
                                 <b>Giới tính</b><br />
                                 {isPTag ? (
-                                    <b>{trainerState.gender}</b>
+                                    <b>{trainerProfile.gender}</b>
                                 ) : (
                                     <select
                                         name="gender"
@@ -87,16 +161,16 @@ function Trainer() {
                                 <br />
                                 <b>Ngày sinh</b><br />
                                 {isPTag ? (
-                                    <b>{trainerState.date}</b>
+                                    <b>{trainerProfile.birthday}</b>
                                 ) : (
                                     <input
-                                        className="trainer-input trainer-input-date"
+                                        className="trainer-input trainer-input-birthday"
                                         type="date"
-                                        name="date"
-                                        value={stateOnChange.date}
+                                        name="birthday"
+                                        value={stateOnChange.birthday}
                                         onChange={(e) => {
-                                            const date = e.target.value;
-                                            setStateOnChange({ ...stateOnChange, date });
+                                            const birthday = e.target.value;
+                                            setStateOnChange({ ...stateOnChange, birthday });
                                         }}
                                     />
                                 )}
@@ -104,7 +178,7 @@ function Trainer() {
                                 <b>Số điện thoại</b><br />
 
                                 {isPTag ? (
-                                    <b>{trainerState.phone}</b>
+                                    <b>{trainerProfile.phone}</b>
                                 ) : (
                                     <input
                                         className="trainer-input trainer-input-phone"
@@ -121,7 +195,7 @@ function Trainer() {
                                 <br />
                                 <b>Địa chỉ</b><br />
                                 {isPTag ? (
-                                    <b>{trainerState.address}</b>
+                                    <b>{trainerProfile.address}</b>
                                 ) : (
                                     <input
                                         className="trainer-input trainer-input-address"
@@ -136,18 +210,19 @@ function Trainer() {
                                 )}
                                 <br />
                                 {isPTag ? (
-                                    <button onClick={handleUpdate}>chỉnh sửa</  button>
+                                    <button onClick={handleEdit}>chỉnh sửa</  button>
                                 ) : (
                                     <div>
-                                        <button onClick={handleSave}>lưu</  button>
+                                        <button onClick={handleUpdate}>lưu</  button>
                                         <button onClick={handleCancel}>Huỷ</ button>
                                     </div>
                                 )}
-                                console.log({trainerState});
+
                             </div>
                         </div>
                     </div>
                 </div>
+                <Popup trigger={showPopup} message="Cập nhật thành công" />
             </div>
             <Footer />
         </>

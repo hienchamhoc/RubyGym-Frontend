@@ -12,22 +12,10 @@ import styles from './CustomerInfor.module.css'
 function CustomerInfor() {
     let [isPTag, setPTag] = useState(true);
 
-    let [nameUpdating, setNameUpdating] = useState(false);
-    let [phoneUpdating, setPhoneUpdating] = useState(false);
-    let [birthdayUpdating, setBirthdayUpdating] = useState(false);
-    let [addressUpdating, setAddressUpdating] = useState(false);
-    let [genderUpdating, setGenderUpdating] = useState(false);
-    let [registerUpdating, setRegisterUpdating] = useState(false);
-    let [outdateUpdating, setOutdateUpdating] = useState(false);
+
     let [showPopup, setShowPopup] = useState(false);
 
-    let nameRef = useRef(null);
-    let phoneRef = useRef(null);
-    let birthdayRef = useRef(null);
-    let genderRef = useRef(null);
-    let addressRef = useRef(null);
-    let registerRef = useRef(null);
-    let outdateRef = useRef(null);
+
 
     let [userProfile, setUserProfile] = useState({
         name: 'hien',
@@ -51,19 +39,6 @@ function CustomerInfor() {
     })
     const handleEdit = () => {
         setPTag(false);
-    }
-    const handleSave = () => {
-        setPTag(true);
-        setUserProfile({
-            name: profileOnChange.name,
-            phone: profileOnChange.phone,
-            birthday: profileOnChange.birthday,
-            gender: profileOnChange.gender,
-            address: profileOnChange.address,
-            create_at: profileOnChange.address,
-            expire_at: profileOnChange.expire_at,
-            avatar_url: profileOnChange.avatar_url
-        })
     }
     const handleCancel = () => {
         setPTag(true);
@@ -94,26 +69,24 @@ function CustomerInfor() {
 
     // Upload Avatar
     const handleUploadAvatar = async (e) => {
-        const files = e.target.files;
-        const data = new FormData();
-        data.append('file', files[0]);
-        data.append('upload_preset', 'rubygymimages');
 
-        const response = await fetch('https://api.cloudinary.com/v1_1/dzgdwey0f/image/upload', {
-            method: 'POST',
-            body: data
-        })
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append('File', file);
 
-        const file = await response.json();
-        userProfile = {
-            ...userProfile,
-            avatar_url: file.secure_url
+        const response = await userProfileAPI.updateAvatar(formData);
+        if (response && response.status && response.data && response.data.data) {
+            userProfile = {
+                ...userProfile,
+                avatar_url: response.data.data.imageURL
+            }
+            setUserProfile(userProfile);
+
         }
-        setUserProfile(userProfile)
-        console.log(file);
-        console.log(userProfile)
+        if (response && !response.status) {
+            alert(response.message)
+        }
     }
-
 
     //Update Profile
     const handleUpdate = async () => {
@@ -372,7 +345,7 @@ function CustomerInfor() {
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
             </div>
 
-            <Popup trigger={showPopup} message="Cập nhật thành công nhé" />
+            <Popup trigger={showPopup} message="Cập nhật thành công" />
         </div>
     )
 }
