@@ -18,9 +18,10 @@ import CustomerInfor from './CustomerInfor/CustomerInfor';
 import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
 import MyCalendar from './MyCalendar/MyCalendar';
+import CalendarPopup from './CalendarPopup/CalendarPopup';
 
 
 export { Header, Footer, Login, Banner, ScrollToTop }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, MyCalendar }
+export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, MyCalendar, CalendarPopup }

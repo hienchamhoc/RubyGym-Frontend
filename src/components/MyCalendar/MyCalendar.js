@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
+// import 'react-calendar/dist/Calendar.css';
 import calendarAPI from '../../api/calendarAPI';
 import './MyCalendar.css';
+import {CalendarPopup} from '../index';
 
 function MyCalendar() {
   const [value, onChange] = useState(new Date());
   const [calendarList, setCalendarList] = useState([]);
+  const [calendarListDaily, setCalendarListDaily] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => { 
     (async () => {
-      const response = await calendarAPI.getCalendar();
+      const currentDate = new Date();
+      const response = await calendarAPI.getCalendarMonthly(currentDate.getFullYear(), currentDate.getMonth() + 1);
       console.log(response.data.data);
       setCalendarList(prev=>response.data.data);
-      // console.log(calendarList);
     })();
   }, []);
 
@@ -46,25 +49,13 @@ function MyCalendar() {
     return content;
   }
 
-  const callAPI = async (e) => {
-    e.preventDefault();
-
-    // const response = await calendarAPI.getCalendar();
-    // console.log(response.data.data);
-
-    // setCalendarList(response.data.data);
-    // console.log(calendarList);
-
-    // const num = calendarList.length;
-    // for (var i = 0; i < num; i++) {
-    //   const calendar = calendarList[i];
-      
-    // }
-    // if (view === 'month') {
-    //   return <p>8h - 9h</p>;
-    // }
-    // if (date == calendarList.date)
-    
+  const getCalendarDaily = async (value, event) => {
+    const currentDate = new Date(value);
+    console.log("click: " + currentDate);
+    const response = await calendarAPI.getCalendarDaily(currentDate);
+    setCalendarListDaily(prev=>response.data.data);
+    setShowPopup(true);
+    onChange(value);
   }
 
   return (
@@ -73,6 +64,13 @@ function MyCalendar() {
         onChange={onChange}
         value={value}
         tileContent={tileContent}          
+        onClickDay={getCalendarDaily}
+      />
+      <CalendarPopup 
+        trigger={showPopup}
+        setTrigger={setShowPopup} 
+        data={calendarListDaily}
+        date={value}
       />
       {/* <button onClick={callAPI}>Click me</button> */}
     </div>

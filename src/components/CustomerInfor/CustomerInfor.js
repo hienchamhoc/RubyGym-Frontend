@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import avatar from './../../store/imgs/avatar.jpg'
-import { Popup } from './../'
+import { Popup, MyCalendar } from './../'
 import userProfileAPI from './../../api/userProfileAPI'
 
 import styles from './CustomerInfor.module.css'
@@ -53,8 +53,8 @@ function CustomerInfor() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-                const response = await userProfileAPI.getProfile();
-                console.log(response);
+            const response = await userProfileAPI.getProfile();
+            console.log(response);
             if (response && response.status && response.data.status) {
                 userProfile = { ...response.data.data };
                 console.log(response);
@@ -294,7 +294,7 @@ function CustomerInfor() {
                                         ref={birthdayRef}
                                         type="date"
                                         className={clsx(styles.inforText)}
-                                        value={userProfile.birthday}
+                                        value={new Date(userProfile.birthday)}
                                         onChange={(e) => {
                                             setUserProfile(prev => ({
                                                 ...userProfile,
@@ -658,8 +658,9 @@ function CustomerInfor() {
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
+                
             </div>
-
+            <MyCalendar/>
             <Popup trigger={showPopup} message="Cập nhật thành công" />
         </div>
     )
