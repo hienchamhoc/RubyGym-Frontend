@@ -10,7 +10,9 @@ import ServicePage from './pages/ServicePage';
 import EventPage from './pages/EventPage';
 import PackagePage from './pages/PackagePage';
 import BlogPage from './pages/BlogPage';
+
 import TestPage from './pages/TestPage';
+
 
 const routes = [
     {

@@ -51,6 +51,7 @@
 }
 
 .nav-list {
+    margin-bottom:0;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -58,7 +59,7 @@
 }
 
 .nav-item a{
-    letter-spacing: 2px;
+    letter-spacing: 1px;
     color: white;
     padding: 0 16px;
     text-transform: uppercase;
