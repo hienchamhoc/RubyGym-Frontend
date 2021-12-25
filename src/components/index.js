@@ -25,9 +25,10 @@ import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
 import CalendarPopup from './CalendarPopup/CalendarPopup';
 import MyCalendar from './MyCalendar/MyCalendar';
+import TrainerInfor from './TrainerInfor/TrainerInfor'
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar }
+export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor }

@@ -96,7 +96,7 @@ function Trainer() {
         <>
             <Header />
             <div className="trainer-main">
-                <h2 className="trainer-heading">Thông tin cá nhân</h2>
+                <h1 className="trainer-heading">Thông tin cá nhân</h1>
                 <div className="row">
                     <div className="col l-3 m-0 ">
                         <div className="trainer-avatar"

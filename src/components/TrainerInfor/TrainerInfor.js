@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import avatar from './../../store/imgs/avatar.jpg'
 import { Popup } from './../'
-import userProfileAPI from './../../api/userProfileAPI'
+import trainerAPI from './../../api/trainerAPI'
 
-import styles from './CustomerInfor.module.css'
+import styles from './TrainerInfor.module.css'
 
 // Trang này có thể hiển thị với cả học viên, huấn luyện viên và admin
 // Thông tin chi tiết của mỗi học viên
@@ -17,25 +17,23 @@ function CustomerInfor() {
 
 
 
-    let [userProfile, setUserProfile] = useState({
+    let [trainerProfile, setTrainerProfile] = useState({
         name: 'hien',
         phone: '090394092',
         birthday: '15/2/1556',
         gender: 'Nam',
         address: 'so 1 hoang mai',
         create_at: '15/2/1995',
-        expire_at: '2/8/2005',
         avatar_url: '',
     });
     let [profileOnChange, setProfileOnChange] = useState({
-        name: userProfile.name,
-        phone: userProfile.phone,
-        birthday: userProfile.birthday,
-        gender: userProfile.gender,
-        address: userProfile.address,
-        create_at: userProfile.create_at,
-        expire_at: userProfile.expire_at,
-        avatar_url: userProfile.avatar_url
+        name: trainerProfile.name,
+        phone: trainerProfile.phone,
+        birthday: trainerProfile.birthday,
+        gender: trainerProfile.gender,
+        address: trainerProfile.address,
+        create_at: trainerProfile.create_at,
+        avatar_url: trainerProfile.avatar_url
     })
     const handleEdit = () => {
         setPTag(false);
@@ -59,10 +57,10 @@ function CustomerInfor() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-            const response = await userProfileAPI.getProfile();
+            const response = await trainerAPI.getTrainerInfo();
             if (response && response.status && response.status.data) {
-                userProfile = { ...response.data.data };
-                setUserProfile(userProfile);
+                trainerProfile = { ...response.data.data };
+                setTrainerProfile(trainerProfile);
             }
         })()
     }, [])
@@ -74,13 +72,13 @@ function CustomerInfor() {
         const formData = new FormData();
         formData.append('File', file);
 
-        const response = await userProfileAPI.updateAvatar(formData);
+        const response = await trainerAPI.updateTrainerAvatar(formData);
         if (response && response.status && response.data && response.data.data) {
-            userProfile = {
-                ...userProfile,
+            trainerProfile = {
+                ...trainerProfile,
                 avatar_url: response.data.data.imageURL
             }
-            setUserProfile(userProfile);
+            setTrainerProfile(trainerProfile);
 
         }
         if (response && !response.status) {
@@ -91,18 +89,17 @@ function CustomerInfor() {
     //Update Profile
     const handleUpdate = async () => {
         setPTag(true);
-        setUserProfile({
+        setTrainerProfile({
             name: profileOnChange.name,
             phone: profileOnChange.phone,
             birthday: profileOnChange.birthday,
             gender: profileOnChange.gender,
             address: profileOnChange.address,
             create_at: profileOnChange.address,
-            expire_at: profileOnChange.expire_at,
             avatar_url: profileOnChange.avatar_url
         })
-        console.log(userProfile);
-        const response = await userProfileAPI.updateProfile(userProfile);
+        console.log(trainerProfile);
+        const response = await trainerAPI.updateTrainerInfo(trainerProfile);
         if (response && response.status) setShowPopup(prev => !prev);
         if (response && !response.status && response.message) {
             alert(response.message);
@@ -122,8 +119,8 @@ function CustomerInfor() {
                         <div
                             className={clsx(styles.avatar)}
                             style={{
-                                backgroundImage: userProfile.avatar_url ?
-                                    `url(${userProfile.avatar_url})` :
+                                backgroundImage: trainerProfile.avatar_url ?
+                                    `url(${trainerProfile.avatar_url})` :
                                     `url(${avatar})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
@@ -153,7 +150,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Họ tên</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.name}</b>
+                                        <b>{trainerProfile.name}</b>
                                     ) : (
                                         <input
                                             //readOnly={!nameUpdating}
@@ -177,7 +174,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Số điện thoại</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.phone}</b>
+                                        <b>{trainerProfile.phone}</b>
                                     ) : (
                                         <input
                                             // readOnly={!phoneUpdating}
@@ -202,7 +199,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày sinh</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.birthday}</b>
+                                        <b>{trainerProfile.birthday}</b>
                                     ) : (
                                         <input
                                             // readOnly={!birthdayUpdating}
@@ -227,7 +224,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Giới tính</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.gender}</b>
+                                        <b>{trainerProfile.gender}</b>
                                     ) : (
                                         <select
                                             // disabled={!genderUpdating}
@@ -256,7 +253,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Địa chỉ</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.address}</b>
+                                        <b>{trainerProfile.address}</b>
                                     ) : (
                                         <input
                                             // readOnly={!addressUpdating}
@@ -281,7 +278,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày đăng ký</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.create_at}</b>
+                                        <b>{trainerProfile.create_at}</b>
                                     ) : (
                                         <input
                                             // readOnly={!registerUpdating}
@@ -302,11 +299,11 @@ function CustomerInfor() {
                             </div>
 
                             {/* Ngày hết hạn */}
-                            <div className={clsx(styles.inforWrapper)}>
+                            {/* <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày hết hạn</h3>
                                     {isPTag ? (
-                                        <b>{userProfile.expire_at}</b>
+                                        <b>{trainerProfile.expire_at}</b>
                                     ) : (
                                         <input
                                             // readOnly={!outdateUpdating}
@@ -320,13 +317,14 @@ function CustomerInfor() {
                                                     expire_at: e.target.value
                                                 }))
                                             }}
-                                            id='trainer-outdate' />
+                                            id='trainer-outdte' />
                                     )}
                                 </div>
-                            </div>
+                            </div> */}
                             {isPTag ? (
                                 <button onClick={handleEdit}
-                                    className="btn btn-primary"
+                                    className="btn btn-primary btn-edit"
+
                                 >chỉnh sửa</  button>
                             ) : (
                                 <div>
@@ -334,10 +332,10 @@ function CustomerInfor() {
                                         //setNameUpdating(prev => !prev);
                                         handleUpdate();
                                     }}
-                                        className="btn btn-success"
+                                        className="btn btn-success btn-update"
                                     >Lưu</  button>
                                     <button onClick={handleCancel}
-                                        className="btn btn-danger"
+                                        className="btn btn-danger btn-cancel"
                                     >Huỷ</ button>
                                 </div>
                             )}
