@@ -4,7 +4,7 @@ import traineravatar from '../../store/imgs/avatar.jpg'
 import { Footer } from ".."
 import { useState, useEffect } from "react"
 import { Popup } from ".."
-import trainerAPI from "../../api/trainerAPI"
+import trainerProfileAPI from "../../api/trainerProfileAPI"
 
 function Trainer() {
     let [isPTag, setPTag] = useState(true);

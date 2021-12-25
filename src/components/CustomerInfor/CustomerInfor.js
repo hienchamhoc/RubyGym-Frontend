@@ -60,13 +60,13 @@ function CustomerInfor() {
     useEffect(() => {
         (async () => {
                 const response = await userProfileAPI.getProfile();
-                console.log(response);
+                //console.log(response);
             if (response && response.status && response.data.status) {
                 userProfile = { ...response.data.data };
                 setProfileOnChange(userProfile);
-                console.log(response);
+                //console.log(response);
                 setUserProfile(userProfile);
-                console.log(userProfile);
+                //console.log(userProfile);
             }
         })()
     }, [])
@@ -97,7 +97,7 @@ function CustomerInfor() {
         setPTag(true);
         userProfile = {...profileOnChange};
         // setUserProfile(userProfile);
-        console.log(userProfile);
+        //console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
         if (response && response.status) setShowPopup(prev => !prev);
         if (response && !response.status && response.message) {

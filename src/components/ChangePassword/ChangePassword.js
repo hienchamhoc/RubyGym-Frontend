@@ -36,8 +36,8 @@ function ChangePassword() {
             // console.log(response);
             if (response && response.data && response.data.status) {
                 console.log("OK"); 
-                setShowPopup(true);
-                setTimeout(()=> navigate('/profile'), 2000);
+                setShowPopup(true);//xxxxx/change-password => xxxxx/profile
+                setTimeout(() => navigate('/'), 2000);
                 return;
             }
 

@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import clsx from 'clsx'
 import avatar from './../../store/imgs/avatar.jpg'
-import { Popup } from './../'
-import trainerAPI from './../../api/trainerAPI'
+import { Popup, MyCalendar } from './../'
+import trainerProfileAPI from './../../api/trainerProfileAPI'
 
 import styles from './TrainerInfor.module.css'
 
 // Trang này có thể hiển thị với cả học viên, huấn luyện viên và admin
 // Thông tin chi tiết của mỗi học viên
 
-function CustomerInfor() {
+function TrainerInfor() {
     let [isPTag, setPTag] = useState(true);
 
 
@@ -17,23 +17,25 @@ function CustomerInfor() {
 
 
 
-    let [trainerProfile, setTrainerProfile] = useState({
-        name: 'hien',
-        phone: '090394092',
-        birthday: '15/2/1556',
-        gender: 'Nam',
-        address: 'so 1 hoang mai',
-        create_at: '15/2/1995',
+    let [userProfile, setUserProfile] = useState({
+        name: '',
+        phone: '',
+        birthday: '',
+        gender: '',
+        address: '',
+        created_at: '',
+        expired_at: '',
         avatar_url: '',
     });
     let [profileOnChange, setProfileOnChange] = useState({
-        name: trainerProfile.name,
-        phone: trainerProfile.phone,
-        birthday: trainerProfile.birthday,
-        gender: trainerProfile.gender,
-        address: trainerProfile.address,
-        create_at: trainerProfile.create_at,
-        avatar_url: trainerProfile.avatar_url
+        name: userProfile.name,
+        phone: userProfile.phone,
+        birthday: userProfile.birthday,
+        gender: userProfile.gender,
+        address: userProfile.address,
+        created_at: userProfile.created_at,
+        expired_at: userProfile.expired_at,
+        avatar_url: userProfile.avatar_url
     })
     const handleEdit = () => {
         setPTag(false);
@@ -57,10 +59,14 @@ function CustomerInfor() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-            const response = await trainerAPI.getTrainerInfo();
-            if (response && response.status && response.status.data) {
-                trainerProfile = { ...response.data.data };
-                setTrainerProfile(trainerProfile);
+                const response = await trainerProfileAPI.getProfile();
+                // console.log(response);
+            if (response && response.status && response.data.status) {
+                userProfile = { ...response.data.data };
+                setProfileOnChange(userProfile);
+                // console.log(response);
+                setUserProfile(userProfile);
+                // console.log(userProfile);
             }
         })()
     }, [])
@@ -72,13 +78,13 @@ function CustomerInfor() {
         const formData = new FormData();
         formData.append('File', file);
 
-        const response = await trainerAPI.updateTrainerAvatar(formData);
+        const response = await trainerProfileAPI.updateAvatar(formData);
         if (response && response.status && response.data && response.data.data) {
-            trainerProfile = {
-                ...trainerProfile,
+            userProfile = {
+                ...userProfile,
                 avatar_url: response.data.data.imageURL
             }
-            setTrainerProfile(trainerProfile);
+            setUserProfile(userProfile);
 
         }
         if (response && !response.status) {
@@ -89,17 +95,10 @@ function CustomerInfor() {
     //Update Profile
     const handleUpdate = async () => {
         setPTag(true);
-        setTrainerProfile({
-            name: profileOnChange.name,
-            phone: profileOnChange.phone,
-            birthday: profileOnChange.birthday,
-            gender: profileOnChange.gender,
-            address: profileOnChange.address,
-            create_at: profileOnChange.address,
-            avatar_url: profileOnChange.avatar_url
-        })
-        console.log(trainerProfile);
-        const response = await trainerAPI.updateTrainerInfo(trainerProfile);
+        userProfile = {...profileOnChange};
+        // setUserProfile(userProfile);
+        // console.log(userProfile);
+        const response = await trainerProfileAPI.updateProfile(userProfile);
         if (response && response.status) setShowPopup(prev => !prev);
         if (response && !response.status && response.message) {
             alert(response.message);
@@ -119,8 +118,8 @@ function CustomerInfor() {
                         <div
                             className={clsx(styles.avatar)}
                             style={{
-                                backgroundImage: trainerProfile.avatar_url ?
-                                    `url(${trainerProfile.avatar_url})` :
+                                backgroundImage: userProfile.avatar_url ?
+                                    `url(${userProfile.avatar_url})` :
                                     `url(${avatar})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
@@ -150,7 +149,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Họ tên</h3>
                                     {isPTag ? (
-                                        <b>{trainerProfile.name}</b>
+                                        <b>{userProfile.name}</b>
                                     ) : (
                                         <input
                                             //readOnly={!nameUpdating}
@@ -174,7 +173,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Số điện thoại</h3>
                                     {isPTag ? (
-                                        <b>{trainerProfile.phone}</b>
+                                        <b>{userProfile.phone}</b>
                                     ) : (
                                         <input
                                             // readOnly={!phoneUpdating}
@@ -199,14 +198,27 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày sinh</h3>
                                     {isPTag ? (
-                                        <b>{trainerProfile.birthday}</b>
+                                        // <input>{userProfile.birthday.substring(0, 10)}</input>
+                                        <input
+                                            readOnly={true}
+                                            // ref={birthdayRef}
+                                            type="date"
+                                            className={clsx(styles.inforText)}
+                                            value={userProfile.birthday.substring(0, 10)}
+                                            onChange={(e) => {
+                                                setProfileOnChange({
+                                                    ...profileOnChange,
+                                                    birthday: e.target.value
+                                                })
+                                            }}
+                                            id='trainer-birthday' />
                                     ) : (
                                         <input
                                             // readOnly={!birthdayUpdating}
                                             // ref={birthdayRef}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={profileOnChange.birthday}
+                                            value={profileOnChange.birthday.substring(0, 10)}
                                             onChange={(e) => {
                                                 setProfileOnChange({
                                                     ...profileOnChange,
@@ -224,7 +236,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Giới tính</h3>
                                     {isPTag ? (
-                                        <b>{trainerProfile.gender}</b>
+                                        <b>{userProfile.gender}</b>
                                     ) : (
                                         <select
                                             // disabled={!genderUpdating}
@@ -253,7 +265,7 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Địa chỉ</h3>
                                     {isPTag ? (
-                                        <b>{trainerProfile.address}</b>
+                                        <b>{userProfile.address}</b>
                                     ) : (
                                         <input
                                             // readOnly={!addressUpdating}
@@ -277,65 +289,40 @@ function CustomerInfor() {
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày đăng ký</h3>
-                                    {isPTag ? (
-                                        <b>{trainerProfile.create_at}</b>
-                                    ) : (
                                         <input
-                                            // readOnly={!registerUpdating}
-                                            // ref={registerRef}
+                                            readOnly={true}
+                                            // ref={birthdayRef}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={profileOnChange.create_at}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    create_at: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-register' />
-                                    )}
+                                            value={userProfile.created_at.substring(0, 10)}
+                                        />
                                 </div>
 
                             </div>
 
                             {/* Ngày hết hạn */}
-                            {/* <div className={clsx(styles.inforWrapper)}>
+                            <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày hết hạn</h3>
-                                    {isPTag ? (
-                                        <b>{trainerProfile.expire_at}</b>
-                                    ) : (
-                                        <input
-                                            // readOnly={!outdateUpdating}
-                                            // ref={outdateRef}
+                                    <input
+                                            readOnly={true}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={profileOnChange.expire_at}
-                                            onChange={(e) => {
-                                                setProfileOnChange(prev => ({
-                                                    ...profileOnChange,
-                                                    expire_at: e.target.value
-                                                }))
-                                            }}
-                                            id='trainer-outdte' />
-                                    )}
+                                            value={userProfile.expired_at.substring(0, 10)}
+                                        />
                                 </div>
-                            </div> */}
+                            </div>
                             {isPTag ? (
                                 <button onClick={handleEdit}
-                                    className="btn btn-primary btn-edit"
-
+                                    className="btn btn-primary"
                                 >chỉnh sửa</  button>
                             ) : (
                                 <div>
-                                    <button onClick={() => {
-                                        //setNameUpdating(prev => !prev);
-                                        handleUpdate();
-                                    }}
-                                        className="btn btn-success btn-update"
+                                    <button onClick={handleUpdate}
+                                        className="btn btn-success"
                                     >Lưu</  button>
                                     <button onClick={handleCancel}
-                                        className="btn btn-danger btn-cancel"
+                                        className="btn btn-danger"
                                     >Huỷ</ button>
                                 </div>
                             )}
@@ -347,6 +334,7 @@ function CustomerInfor() {
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
+                <MyCalendar/>
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />
@@ -354,4 +342,4 @@ function CustomerInfor() {
     )
 }
 
-export default CustomerInfor 
+export default TrainerInfor 

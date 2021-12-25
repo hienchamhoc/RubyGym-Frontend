@@ -44,7 +44,7 @@ const routes = [
         element: <ChangePasswordPage />
     },
     {
-        path: '/profile',
+        path: 'member/profile',
         element: <CustomerPage />
     },
     {
@@ -52,7 +52,7 @@ const routes = [
         element: <AdminPage />
     },
     {
-        path: '/trainer/*',
+        path: '/trainer/profile',
         element: <TrainerPage />
     },
     {
