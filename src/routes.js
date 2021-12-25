@@ -6,26 +6,11 @@ import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 import ServicePage from './pages/ServicePage';
 import EventPage from './pages/EventPage';
 import PackagePage from './pages/PackagePage';
 import BlogPage from './pages/BlogPage';
-=======
-<<<<<<< HEAD
->>>>>>> 62eb3f51a7cec900b38e1b1281feb082d0987461
 import TestPage from './pages/TestPage';
-import Dich_vu from './pages/Dich_vu';
-import Su_kien from './pages/Su_kien';
-import Goi_tap from './pages/Goi_tap';
-import Blog from './pages/Blog';
-<<<<<<< HEAD
-=======
->>>>>>> ff89108b49f36071e1f4476d6bd6314041dfead8
->>>>>>> 303bd74cca3df14f54fc400038e398601546703e
->>>>>>> 62eb3f51a7cec900b38e1b1281feb082d0987461
 
 const routes = [
     {
@@ -46,13 +31,8 @@ const routes = [
     },
     {
         path: '/blog',
-<<<<<<< HEAD
-        element: <Blog />
-    },
-=======
         element: <BlogPage />
-    },  
->>>>>>> 62eb3f51a7cec900b38e1b1281feb082d0987461
+    },
     {
         path: '/login',
         element: <Loginpage />

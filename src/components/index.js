@@ -27,11 +27,7 @@ import CalendarPopup from './CalendarPopup/CalendarPopup';
 import MyCalendar from './MyCalendar/MyCalendar';
 
 
-<<<<<<< HEAD
-export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Dichvu, Content_Sukien, Content_Goitap, Content_Blog, Content_Gopy }
-=======
-export { Header, Footer, Login, Content, Banner, ScrollToTop,Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback}
->>>>>>> 62eb3f51a7cec900b38e1b1281feb082d0987461
+export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
 export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar }
