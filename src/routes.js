@@ -6,12 +6,34 @@ import AdminPage from './pages/AdminPage';
 import TrainerPage from './pages/TrainerPage';
 import CustomerPage from './pages/CustomerPage';
 import ChangePasswordPage from './pages/ChangePasswordPage';
+import ServicePage from './pages/ServicePage';
+import EventPage from './pages/EventPage';
+import PackagePage from './pages/PackagePage';
+import BlogPage from './pages/BlogPage';
+
+import TestPage from './pages/TestPage';
 
 
 const routes = [
     {
         path: '/',
         element: <Homepage />
+    },
+    {
+        path: '/service',
+        element: <ServicePage />
+    },
+    {
+        path: '/event',
+        element: <EventPage />
+    },
+    {
+        path: '/package',
+        element: <PackagePage />
+    },
+    {
+        path: '/blog',
+        element: <BlogPage />
     },
     {
         path: '/login',
@@ -23,7 +45,7 @@ const routes = [
     },
     {
         path: '/profile',
-        element: <CustomerPage/>
+        element: <CustomerPage />
     },
     {
         path: '/admin/*',
@@ -38,8 +60,16 @@ const routes = [
         element: <CustomerPage />
     },
     {
+        path: '/customer/*',
+        element: <CustomerPage />
+    },
+    {
         path: '*',
         element: <Notfoundpage />
+    },
+    {
+        path: '/test',
+        element: <TestPage />
     }
 ]
 

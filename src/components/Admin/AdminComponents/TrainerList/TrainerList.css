@@ -8,22 +8,74 @@
 
 .trainer-heading {
     color: white;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
     flex: 1;
-    margin: 0;
-    text-align: center;
+    text-align: start;
+    padding: 7px 0 0 20px;
 }
 
 .trainer-add-btn {
     width: 80px;
-    padding: 8px 0;
-    font-size: 20px;
-    margin-right: 10px;
+    padding: 6px 0;
+    font-weight: 550;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    margin-right: 15px;
     cursor: pointer;
-    border: 1px solid #ccc;
+    border: 2px solid #DDDDDD;
     border-radius: 5px;
     background-color: var(--primary-color);
-    color: white;
+    color: #ebebeb;
 }
+.trainer-add-btn:hover {
+  background-color: #ebebeb;
+  color: var(--primary-color);
+  border:#ebebeb;
+}
+
+
+  .search-trainer-box{
+    margin: 100px auto;
+    width: 300px;
+    height: 50px;
+  }
+  
+  .search-trainer-box-input{
+    width: 400px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+    padding: 8px 0 5px 0;
+  }
+  .search-trainer-box-input input#search-trainer{
+    width: 250px;
+    height: 35px;
+    background: #DDDDDD;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border: none;
+    font-size: 12pt;
+    float: left;
+    color: #463838;
+    padding-left: 45px;
+
+  }
+  
+  .search-trainer-box-input .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 20px;
+    margin-top: 11px;
+    z-index: 1;
+    color: #4f5b66;
+  }
+  
+    .search-trainer-box-input input#search-trainer:focus, 
+    .search-trainer-box-input input#search-trainer:active{
+      outline:none;
+      background: #ffffff;
+    }
+  
 

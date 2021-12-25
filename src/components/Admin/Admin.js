@@ -14,16 +14,16 @@ function Admin() {
                 <div className="grid wide">
                     <div className="admin-header">
                         <div className="admin-header-logo">
-                            <Link to='/'><img src={logo} alt="" className="logo-img" /></Link>
-                            <Link to='/' className="logo-name">RUBYGYM</Link>
+                            <Link to='/admin'><img src={logo} alt="" className="logo-img" /></Link>
+                            <Link to='/admin' className="logo-name">RUBYGYM</Link>
                         </div>
                         <div className="admin-header-heading">
                             Quản lý
                         </div>
-                        <div 
+                        <div
                             className="admin-header-logout"
-                            onClick={() => {authAPI.logout();}}    
-                        >
+                            onClick={() => { authAPI.logout(); }}
+                        ><i class="fas fa-sign-out-alt"></i>
                             Đăng xuất
                         </div>
                     </div>
@@ -33,7 +33,7 @@ function Admin() {
                 <div className="grid wide">
                     <div className="row">
                         <div className="col l-2 m-0">
-                            <Category/>
+                            <Category />
                         </div>
                         <div className="col l-10 m-12">
                             <div className="admin-content">
@@ -46,11 +46,11 @@ function Admin() {
                                 </Routes>
                             </div>
                         </div>
-                    </div>
+                    </div>                   
                 </div>
             </main >
-        </div >
-    )
+    </div>
+                )
 }
 
-export default Admin
+                export default Admin

@@ -1,0 +1,254 @@
+/* .content{
+    padding-top: 40px;
+    background-color: #E5E5E5;
+}
+
+.dich-vu{
+    display:block;
+    background-color: #151515;
+    height: 630px;
+}
+.dich-vu .row{
+    margin-left: 6px;
+}
+
+h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(216, 214, 214);
+    line-height: 79px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.dich-vu h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    padding-bottom: 40px;
+}
+.dich-vu .service{
+    display: flex;
+    height: 300px;
+    width: 350px;
+    align-items: flex-end;
+    border: 2px solid #151515;
+}
+.dich-vu .service-name{
+    display: flex;
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+    width: 100%;
+    height: 85px;
+    opacity: 0.7;
+    justify-content: center;
+    align-items: center;
+}
+.dich-vu .service:hover{
+    border: 2px solid rgb(163, 0, 0);
+
+}
+#yoga{
+    background-image: url('./../../store/imgs/yoga.png');
+}
+#personal-trainer{
+    background-image: url('./../../store/imgs/personal-trainer.png');
+}
+#zumba{
+    background-image: url('./../../store/imgs/zumba.png');
+}
+
+
+.btn-dv{
+    font-style: normal;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    width: 168px;
+    height: 49px;
+    border: 2px solid #C20518;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.link-dv{
+    text-decoration: none;
+}
+
+.btn-dich-vu{
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.btn-dv:hover{
+    background-color:  #C20518;
+}
+
+.su-kien{
+    margin-top: 40px;
+    display:block;
+    background: url('./../../store/imgs/bg-sukien.png');
+    height: 741px;
+}
+
+.su-kien h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    margin-bottom: 25px;
+}
+
+.slide-sukien{
+    display: flex;
+    justify-content: center;
+    margin-left: 120px;
+}
+
+.goi-tap{
+    display:block;
+    margin-top: 40px;
+    background-color: #151515;
+    height: 678px;
+}
+.goi-tap .row{
+    margin-left: 6px;
+}
+
+h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: white;
+    line-height: 79px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.goi-tap h2{
+    font-weight: 400;
+    font-size: 20px;
+    color: white;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+    padding-bottom: 20px;
+}
+
+.goi-tap .package{
+    display: flex;
+    height: 250px;
+    width: 350px;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    border: 2px solid #151515;
+}
+.goi-tap .name{
+    margin-top: 35px;
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: 0.03em;
+}
+.goi-tap .tong-chi-phi{
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: 0.03em;
+}
+.goi-tap .price{
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 40px;
+    height: 50px;
+    letter-spacing: 0.03em;
+}
+.goi-tap .vnd{
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.03em;
+}
+#star{
+background-image: url('./../../store/imgs/star.png');
+
+}
+
+.goi-tap .package:hover{
+    border: 2px solid rgb(163, 0, 0);
+
+}
+
+.btn-gt{
+    font-style: normal;
+    font-weight: 500;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    width: 168px;
+    height: 49px;
+    border: 2px solid #C20518;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.link-gt{
+    text-decoration: none;
+}
+
+.btn-goi-tap{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.btn-gt:hover{
+    background-color:  #C20518;
+}
+
+.goi-tap ul{
+    margin-top: 20px;
+}
+.goi-tap ul li{
+    margin-top: 10px;
+    margin-left: 55px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.03em;
+    color: #FFFFFF;
+}
+ */

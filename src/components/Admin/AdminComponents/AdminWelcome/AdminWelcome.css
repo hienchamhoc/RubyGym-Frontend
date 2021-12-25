@@ -1,7 +1,29 @@
 .admin-welcome {
-    height: 400px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.admin-welcome-name{
+    font-weight: bold;
+    font-size: 35px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+.admin-welcome-logo{
+    font-weight: bold;
     font-size: 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+.admin-logo-img{
+height: 85px;
+}
+.ruby-img{
+    margin-top: 10px;
 }

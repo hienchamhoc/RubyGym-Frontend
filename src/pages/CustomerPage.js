@@ -10,7 +10,7 @@ function CustomerPage() {
                             style={{
                                 marginTop: '90px'
                             }}
-                            className="wrapper">
+                        >
                             <CustomerInfor />
                         </div>
                     </div>

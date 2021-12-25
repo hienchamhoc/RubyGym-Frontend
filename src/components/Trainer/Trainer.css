@@ -1,0 +1,55 @@
+.trainer-main{
+    margin-top: 75px;
+    background-color: #E5E5E5;
+    
+}
+.trainer-heading{
+    padding-top:30px;
+    font-size: 24px;
+    padding-bottom: 5px;
+    color: rgb(255, 0, 0);
+    border-bottom: 1.5px solid rgba(0, 0, 0, 0.15);
+    text-align: left;
+}
+/* .trainer-avatarname{
+    background-color: white;
+    margin: 30px;
+    text-align: center;
+
+} */
+.trainer-avatar{
+    border-radius: 50%;
+    padding: 0px;
+}
+.trainername{
+    size: 20px;
+}
+.trainer-info-frames{
+    background-color: white;
+    margin: 30px;
+    height: 280px;
+}
+.trainer-info{
+    padding-left: 20px;
+}
+/* .trainer-input{
+    padding: 5px;
+    border: none;
+    border-bottom: 1.2px solid black;
+    background-color: white;
+}
+.trainer-input-name{
+    width: 30%;
+}
+.trainer-input-gender{
+    width: 8%;
+}
+.trainer-input-date{
+    width: 20%;
+}
+.trainer-input-phone{
+    width: 20%;
+}
+.trainer-input-address{
+    width: 50%;
+} */
