@@ -44,7 +44,7 @@ function MyCalendar() {
     
     // if (content.length !== 0) 
     if (content.length === 0) 
-    return <p> - </p>;
+    return null;
     
     return content;
   }

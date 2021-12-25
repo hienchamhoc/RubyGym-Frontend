@@ -33,8 +33,8 @@ function CustomerInfor() {
         birthday: '',
         gender: 'Nam',
         address: '',
-        create_at: '',
-        expire_at: '',
+        created_at: '',
+        expired_at: '',
         avatar_url: '',
     });
 
@@ -294,7 +294,7 @@ function CustomerInfor() {
                                         ref={birthdayRef}
                                         type="date"
                                         className={clsx(styles.inforText)}
-                                        value={new Date(userProfile.birthday)}
+                                        value={userProfile.birthday.substring(0, 10)}
                                         onChange={(e) => {
                                             setUserProfile(prev => ({
                                                 ...userProfile,
@@ -538,11 +538,11 @@ function CustomerInfor() {
                                         ref={registerRef}
                                         type="date"
                                         className={clsx(styles.inforText)}
-                                        value={userProfile.register}
+                                        value={userProfile.created_at.substring(0, 10)}
                                         onChange={(e) => {
                                             setUserProfile(prev => ({
                                                 ...userProfile,
-                                                register: e.target.value
+                                                created_at: e.target.value
                                             }))
                                         }}
                                         id='trainer-register' />
