@@ -79,7 +79,6 @@ padding: 2em 0.5em;
 }
 .react-calendar__tile {
 max-width: 100%;
-text-align: right;
 padding: 0.75em 0.5em;
 background: none;
 border: 1px solid black;
@@ -115,11 +114,4 @@ background: #1087ff;
 }
 .react-calendar--selectRange .react-calendar__tile--hover {
 background-color: #e6e6e6;
-}
-abbr {
-    
-}
-
-button p {
-    margin-right:25px;
 }

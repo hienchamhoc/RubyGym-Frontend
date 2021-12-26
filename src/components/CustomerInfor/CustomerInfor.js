@@ -400,13 +400,22 @@ function CustomerInfor() {
                                             Ngày hết hạn
                                         </h3>
                                         <input
-                                            readOnly={true}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={userProfile.expired_at.substring(
-                                                0,
-                                                10
-                                            )}
+                                        //     readOnly={true}
+                                        //     type="date"
+                                        //     className={clsx(styles.inforText)}
+                                        //     value={userProfile.expired_at.substring(
+                                        //         0,
+                                        //         10
+                                        //     )}
+                                        // />
+                                        readOnly={true}
+                                        // ref={birthdayRef}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.expired_at.substring(
+                                            0,
+                                            10
+                                        )}
                                         />
                                     </div>
                                 </div>

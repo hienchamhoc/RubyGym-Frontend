@@ -18,6 +18,7 @@ function TrainerInfor() {
 
 
     let [userProfile, setUserProfile] = useState({
+        id: '',
         name: '',
         phone: '',
         birthday: '',
@@ -28,6 +29,7 @@ function TrainerInfor() {
         avatar_url: '',
     });
     let [profileOnChange, setProfileOnChange] = useState({
+        id: '',
         name: userProfile.name,
         phone: userProfile.phone,
         birthday: userProfile.birthday,
@@ -54,7 +56,7 @@ function TrainerInfor() {
         return () => {
             clearTimeout(id);
         }
-    }, [showPopup])
+    }, [showPopup]);
 
     // Lấy profile về
     useEffect(() => {
@@ -99,7 +101,10 @@ function TrainerInfor() {
         // setUserProfile(userProfile);
         // console.log(userProfile);
         const response = await trainerProfileAPI.updateProfile(userProfile);
-        if (response && response.status) setShowPopup(prev => !prev);
+        if (response && response.status) {
+            setShowPopup(prev => !prev);
+            setUserProfile({...profileOnChange});
+        }
         if (response && !response.status && response.message) {
             alert(response.message);
         }
@@ -204,13 +209,13 @@ function TrainerInfor() {
                                             // ref={birthdayRef}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={userProfile.birthday.substring(0, 10)}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    birthday: e.target.value
-                                                })
-                                            }}
+                                            value={function(){
+                                                // const date = userProfile.birthday.substring(0, 10).split('-');
+                                                // const date = new Date(userProfile.birthday);
+                                                // console.log('date');
+                                                // console.log(date);
+                                                return userProfile.birthday.slice(0, 10);
+                                            }()}
                                             id='trainer-birthday' />
                                     ) : (
                                         <input
@@ -218,7 +223,7 @@ function TrainerInfor() {
                                             // ref={birthdayRef}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={profileOnChange.birthday.substring(0, 10)}
+                                            value={new Date(profileOnChange.birthday).toString().substring(0, 10)}
                                             onChange={(e) => {
                                                 setProfileOnChange({
                                                     ...profileOnChange,
@@ -300,18 +305,6 @@ function TrainerInfor() {
 
                             </div>
 
-                            {/* Ngày hết hạn */}
-                            <div className={clsx(styles.inforWrapper)}>
-                                <div className={clsx(styles.inforContent)}>
-                                    <h3 className={clsx(styles.inforLabel)}>Ngày hết hạn</h3>
-                                    <input
-                                            readOnly={true}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={userProfile.expired_at.substring(0, 10)}
-                                        />
-                                </div>
-                            </div>
                             {isPTag ? (
                                 <button onClick={handleEdit}
                                     className="btn btn-primary"
@@ -334,7 +327,7 @@ function TrainerInfor() {
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
-                <MyCalendar/>
+                <MyCalendar />
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />

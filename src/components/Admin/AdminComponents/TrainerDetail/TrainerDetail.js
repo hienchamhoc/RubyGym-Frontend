@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import './TrainerDetail.css'
 import { useParams } from 'react-router-dom'
 import avatar from './../../../../store/imgs/trainer-1.png'
+import { Popup, MyCalendar } from "../../../";
 import Timetablee from './../../../Timetablee.js'
+import managementAPI from '../../../../api/managementAPI'
 
 function TrainerDetail() {
-    const id = useParams();
+    let [trainerInfor, setTrainerInfor] = useState({});
+
+    const {id} = useParams();
+    
+    useEffect(() =>{
+        (async () =>{
+            console.log('hi');
+            const res = await managementAPI.trainerDetail({id});
+            // console.log(res);
+            trainerInfor = res.data.data;
+            setTrainerInfor(trainerInfor);
+            console.log(trainerInfor);
+            
+            // console.log(trainers)
+        })();
+        
+    },[]);
+
     return (
         <div className="trainer-detail-wrapper">
             <div className="trainer-detail-header">
@@ -29,39 +48,39 @@ function TrainerDetail() {
                         <div className="trainer-detail-infor">
                             <h2 className="trainer-name">
                                 <span className="trainer-name-title">Họ và tên:</span>
-                                Nguyễn Quang Dũng
+                                {trainerInfor.name}
                             </h2>
                             <h2 className="trainer-sex">
                                 <span className="trainer-sex-title">Giới tính:</span>
-                                Nam
+                                {trainerInfor.gender}
                             </h2>
                             <h2 className="trainer-birthday">
                                 <span className="trainer-birthday-title">Ngày sinh:</span>
-                                21/10/2001
+                                {trainerInfor.birthday}
                             </h2>
                             <h2 className="trainer-phone">
                                 <span className="trainer-phone-title">Số điện thoại:</span>
-                                0973472123
+                                {trainerInfor.phone}
                             </h2>
                             <h2 className="trainer-height">
                                 <span className="trainer-height-title">Chiều cao:</span>
-                                1m73
+                                1m80
                             </h2>
                             <h2 className="trainer-weight">
                                 <span className="trainer-weight-title">Cân nặng:</span>
                                 70kg
                             </h2>
-                            <h2 className="trainer-account">
+                            {/* <h2 className="trainer-account">
                                 <span className="trainer-account-title">Tài khoản:</span>
                                 dungnq123
                             </h2>
                             <h2 className="trainer-password">
                                 <span className="trainer-password-title">Mật khẩu:</span>
                                 dungtayto
-                            </h2>
+                            </h2> */}
                             <h2 className="trainer-address">
                                 <span className="trainer-address-title">Địa chỉ:</span>
-                                Hà Nội, Việt Nam
+                                {trainerInfor.address}
                             </h2>
                         </div>
                     </div>
@@ -70,7 +89,7 @@ function TrainerDetail() {
                 <div className="row">
                     <div className="trainer-schedule">
                         <h2 className="trainer-schedule-heading">Lịch huấn luyện</h2>
-                        <table className="schedule-table">
+                        {/* <table className="schedule-table">
                             <thead className="schedule-table-header">
                                 <tr >
                                     <th>Thứ</th>
@@ -161,8 +180,11 @@ function TrainerDetail() {
 
 
                             </tbody>
-                        </table>
-                        <Timetablee />
+                        </table> */}
+                        {/* <Timetablee /> */}
+                        <MyCalendar 
+                        id={id}
+                        role='trainer'/>
                     </div>
 
                     

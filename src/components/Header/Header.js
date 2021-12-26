@@ -57,7 +57,7 @@ function Header() {
                                         <li onClick={() => {
                                             handleShowOption();
                                             handleLogout();
-                                        }} className='user-option-item'><Link to="">Đăng xuất</Link></li>
+                                        }} className='user-option-item'><Link to="/">Đăng xuất</Link></li>
                                     </ul>
                                 </div>
                             }

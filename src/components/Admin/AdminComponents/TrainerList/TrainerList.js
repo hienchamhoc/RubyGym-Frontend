@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { TrainerElement } from './../../../'
 import './TrainerList.css'
+import managementAPI from '../../../../api/managementAPI'
 
 
 function TrainerList() {
+    let [trainers, setTrainers] = useState([]);
+
+    useEffect(() =>{
+        (async () =>{
+            const res = await managementAPI.trainerList();
+            // console.log(res);
+            trainers = res.data.data.trainer_list
+            setTrainers(trainers)
+            
+            // console.log(trainers)
+        })();
+        
+    },[]);
+
     return (
         <div className="trainer-list-wrapper">
             <div className="trainer-list-header">
@@ -17,16 +32,14 @@ function TrainerList() {
                 <button className="trainer-add-btn">Thêm</button>
             </div>
             <div className="row">
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
-                <TrainerElement />
+                {
+                    trainers.map((trainer)=>{
+                        return <TrainerElement 
+                            trainer={trainer}
+                        />
+                    })
+                }
+                
 
             </div>
         </div>

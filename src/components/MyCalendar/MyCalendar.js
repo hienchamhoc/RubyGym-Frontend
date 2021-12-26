@@ -5,7 +5,7 @@ import calendarAPI from '../../api/calendarAPI';
 import './MyCalendar.css';
 import { CalendarPopup } from './../';
 
-function MyCalendar() {
+function MyCalendar({ id, role }) {
   const [value, onChange] = useState(new Date());
   const [calendarList, setCalendarList] = useState([]);
   const [calendarListDaily, setCalendarListDaily] = useState([]);
@@ -13,8 +13,15 @@ function MyCalendar() {
 
   useEffect(() => {
     (async () => {
-      const currentDate = new Date();
-      const response = await calendarAPI.getCalendarMonthly(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        const currentDate = new Date();
+        let response;
+      if (localStorage.getItem('role') === 'admin') {
+        response = await calendarAPI.getCalendarMonthlyUser(currentDate.getFullYear(), currentDate.getMonth() + 1, id, role);
+
+      }
+      else {
+        response = await calendarAPI.getCalendarMonthly(currentDate.getFullYear(), currentDate.getMonth() + 1);
+      }
       console.log(response.data.data);
       setCalendarList(prev => response.data.data);
     })();
@@ -52,7 +59,16 @@ function MyCalendar() {
   const getCalendarDaily = async (value, event) => {
     const currentDate = new Date(value);
     console.log("click: " + currentDate);
-    const response = await calendarAPI.getCalendarDaily(currentDate);
+
+    let response;
+    if (localStorage.getItem('role') === 'admin') {
+      response = await calendarAPI.getCalendarDailyUser(currentDate, id, role);
+    }
+    else {
+      response = await calendarAPI.getCalendarDaily(currentDate);
+    }
+
+    
     setCalendarListDaily(prev => response.data.data);
     setShowPopup(true);
     onChange(value);
