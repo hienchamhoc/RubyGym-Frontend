@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
-// import 'react-calendar/dist/Calendar.css';
+import 'react-calendar/dist/Calendar.css';
 import calendarAPI from '../../api/calendarAPI';
 import './MyCalendar.css';
+<<<<<<< HEAD
 import { CalendarPopup } from '../index';
+=======
+import {CalendarPopup} from './../';
+>>>>>>> dcc35ad6d7b934b339b26cbfa4946a3061a24f5b
 
 function MyCalendar() {
   const [value, onChange] = useState(new Date());

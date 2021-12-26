@@ -3,7 +3,7 @@ import axiosClient from "./axiosClient";
 const calendarAPI = {
     getCalendarMonthly: async (_year, _month) => {
         try {
-            const url = '/trainer/calendars';
+            const url = '/trainer/schedules';
             const response = await axiosClient.get(url, {
                 params: {
                     year: _year,
@@ -17,7 +17,7 @@ const calendarAPI = {
     },
     getCalendarDaily: async (_date) => {
         try {
-            const url = '/trainer/calendars';
+            const url = '/trainer/schedules/details';
             const response = await axiosClient.get(url, {
                 params: {
                     date: _date

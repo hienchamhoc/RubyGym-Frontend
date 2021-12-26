@@ -25,8 +25,8 @@ function Login() {
                 if (userState.role === 'admin') navigate('/admin');
                 else if (userState.role === 'trainer') navigate('/');
                 else navigate('/')
-            }
-            if(response && !response.status) {
+            } 
+            if (response && !response.data.status) {
                 loginFalse = true;
                 setLoginFalse(loginFalse);
             }
@@ -57,8 +57,8 @@ function Login() {
                                 className={userState.role === 'member' ? "role-detail role-active" : "role-detail"}
                                 onClick={() => setUserState({ ...userState, role: 'member' })}
                             >
-                                <i className="fas fa-user-lock"></i>    
-                                Quản trị viên
+                                <i className="fas fa-user"></i>
+                                Học viên
                             </div>
                             <div className="role-detail-wrapper">
                                 <div
@@ -72,8 +72,8 @@ function Login() {
                                     className={userState.role === 'admin' ? "role-detail role-active" : "role-detail"}
                                     onClick={() => setUserState({ ...userState, role: 'admin' })}
                                 >
-                                    <i className="fas fa-user"></i>
-                                    Hội viên
+                                    <i className="fas fa-user-lock"></i>
+                                    Quản trị viên
                                 </div>
                             </div>
                         </div>
@@ -105,7 +105,6 @@ function Login() {
                                 />
                             </div>
                             {loginFalse && <h2 className="login-false">Tên đăng nhập hoặc mật khẩu không đúng</h2>}
-                            {!loginFalse && <h2 className="login-false-t">h</h2>}
                             <button className={userState.username && userState.password ? "usersubmit-btn" : "usersubmit-btn inactive"}>Đăng nhập</button>
                         </form>
                     </div>
@@ -116,6 +115,3 @@ function Login() {
 }
 
 export default Login
-
-
-

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar';
-import trainerApi from '../api/trainerAPI'
+import trainerProfileAPI from '../api/trainerProfileAPI'
 import { Popup } from '../components';
 import 'react-calendar/dist/Calendar.css';
 import CalendarPopup from '../components/CalendarPopup/CalendarPopup';
