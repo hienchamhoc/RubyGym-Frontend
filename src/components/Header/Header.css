@@ -51,7 +51,7 @@
 }
 
 .nav-list {
-    margin-bottom:0;
+    margin-bottom:1;
     list-style: none;
     display: flex;
     justify-content: center;

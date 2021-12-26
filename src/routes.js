@@ -70,7 +70,7 @@ const routes = [
     {
         path: '/test',
         element: <TestPage />
-    }
+    },
 ]
 
 export default routes;

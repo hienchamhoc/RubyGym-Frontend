@@ -1,4 +1,4 @@
-/* .content{
+.content{
     padding-top: 40px;
     background-color: #E5E5E5;
 }
@@ -12,7 +12,7 @@
     margin-left: 6px;
 }
 
-h1{
+.dich-vu h1{
     padding-top: 40px;
     margin: 0%;
     font-weight: bold;
@@ -109,6 +109,19 @@ h1{
     height: 741px;
 }
 
+.su-kien h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(216, 214, 214);
+    line-height: 79px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
 .su-kien h2{
     font-weight: 400;
     font-size: 20px;
@@ -138,7 +151,7 @@ h1{
     margin-left: 6px;
 }
 
-h1{
+.goi-tap h1{
     padding-top: 40px;
     margin: 0%;
     font-weight: bold;
@@ -251,4 +264,4 @@ background-image: url('./../../store/imgs/star.png');
     letter-spacing: 0.03em;
     color: #FFFFFF;
 }
- */
+
