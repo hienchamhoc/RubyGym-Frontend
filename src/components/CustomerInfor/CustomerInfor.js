@@ -59,18 +59,14 @@ function CustomerInfor() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-                const response = await userProfileAPI.getProfile();
-                //console.log(response);
+            const response = await userProfileAPI.getProfile();
+            //console.log(response);
             if (response && response.status && response.data.status) {
                 userProfile = { ...response.data.data };
                 setProfileOnChange(userProfile);
                 //console.log(response);
                 setUserProfile(userProfile);
-<<<<<<< HEAD
-                setProfileOnChange(userProfile);
-=======
                 //console.log(userProfile);
->>>>>>> dcc35ad6d7b934b339b26cbfa4946a3061a24f5b
             }
         })()
 
@@ -100,7 +96,7 @@ function CustomerInfor() {
     //Update Profile
     const handleUpdate = async () => {
         setPTag(true);
-        userProfile = {...profileOnChange};
+        userProfile = { ...profileOnChange };
         // setUserProfile(userProfile);
         //console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
@@ -294,13 +290,13 @@ function CustomerInfor() {
                             <div className={clsx(styles.inforWrapper)}>
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày đăng ký</h3>
-                                        <input
-                                            readOnly={true}
-                                            // ref={birthdayRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={userProfile.created_at.substring(0, 10)}
-                                        />
+                                    <input
+                                        readOnly={true}
+                                        // ref={birthdayRef}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.created_at.substring(0, 10)}
+                                    />
                                 </div>
 
                             </div>
@@ -310,11 +306,11 @@ function CustomerInfor() {
                                 <div className={clsx(styles.inforContent)}>
                                     <h3 className={clsx(styles.inforLabel)}>Ngày hết hạn</h3>
                                     <input
-                                            readOnly={true}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={userProfile.expired_at.substring(0, 10)}
-                                        />
+                                        readOnly={true}
+                                        type="date"
+                                        className={clsx(styles.inforText)}
+                                        value={userProfile.expired_at.substring(0, 10)}
+                                    />
                                 </div>
                             </div>
                             {isPTag ? (
@@ -339,7 +335,7 @@ function CustomerInfor() {
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
-                <MyCalendar/>
+                <MyCalendar />
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />
