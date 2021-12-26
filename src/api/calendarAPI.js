@@ -27,6 +27,15 @@ const calendarAPI = {
         } catch (err) {
             alert(err.message);
         }
+    },
+    deleteCalendarDaily: async (schedule_id) => {
+        try {
+            const url = '/trainer/' + schedule_id;
+            const response = await axiosClient.delete(url);
+            return response;
+        } catch (err) {
+            alert(err.message);
+        }
     }
 }
 

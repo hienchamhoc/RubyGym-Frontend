@@ -1,20 +1,41 @@
 import { React, useState, useRef, useEffect } from 'react'
 import { useTable } from 'react-table';
 import './CalendarPopup.css';
+import calendarAPI from '../../api/calendarAPI';
 
+var calendarList;
 
+// const column = [
+//     { Header: 'ID', accessor: 'schedule_id' },
+//     { Header: 'Bắt đầu', accessor: 'start_time' },
+//     { Header: 'Kết thúc', accessor: 'finish_time' },
+//     { Header: 'Địa điểm', accessor: 'location' },
+//     { Header: 'Bài học', accessor: 'lecture' },
+//     { Header: 'Nghỉ', accessor: 'is_cancelled' },
+//     {
+//         Header: 'Sua Xoa',
+//         accessor: 'EditAndDelete',
+//         Cell: row => (
+//             <div>
+//                 <button onClick={() => handleEdit(row)} className="btn btn-success">Sửa</button>
+//                 <button onClick={() => handleDelete(row)} className="btn btn-danger">Xoá</button>
+//             </div>
+//         )
+//     }
+// ];
+// const handleEdit = () => {
 
-const column = [
-    { Header: 'ID', accessor: 'schedule_id' },
-    { Header: 'Bắt đầu', accessor: 'start_time' },
-    { Header: 'Kết thúc', accessor: 'finish_time' },
-    { Header: 'Địa điểm', accessor: 'location' },
-    { Header: 'Bài học', accessor: 'lecture' },
-    { Header: 'Nghỉ', accessor: 'is_cancelled' }
-];
+// }
+// const handleDelete = async (row) => {
+//     console.log(row.cell.row.id);
+//     const currentSchedulesId = calendarList[row.cell.row.id]
+//     const response = await calendarAPI.deleteCalendarDaily(currentSchedulesId);
+//     console.log(response);
+// }
 
 function Table({ columns, data, date }) {
     // Use the state and functions returned from useTable to build your UI
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -32,9 +53,9 @@ function Table({ columns, data, date }) {
         <table {...getTableProps()} className="table table-hover table-bordered table-borderless caption-top tablepopup">
             <caption className="table-caption">
                 {/* {data[0].date} */}
-                {function(){
-                    return date.getDate() +"/"+ (date.getMonth()+1) +"/"+ date.getFullYear();
-                }()}
+                {/* {function () {
+                    return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+                }()} */}
             </caption>
             <thead className=" table-thread">
                 {headerGroups.map(headerGroup => (
@@ -62,6 +83,33 @@ function Table({ columns, data, date }) {
     )
 }
 function CalendarPopup(props) {
+    const column = [
+        { Header: 'ID', accessor: 'schedule_id' },
+        { Header: 'Bắt đầu', accessor: 'start_time' },
+        { Header: 'Kết thúc', accessor: 'finish_time' },
+        { Header: 'Địa điểm', accessor: 'location' },
+        { Header: 'Bài học', accessor: 'lecture' },
+        { Header: 'Nghỉ', accessor: 'is_cancelled' },
+        {
+            Header: 'Sua Xoa',
+            accessor: 'EditAndDelete',
+            Cell: row => (
+                <div>
+                    {/* <button onClick={() => handleEdit(row)} className="btn btn-success">Sửa</button> */}
+                    <button onClick={() => handleDelete(row)} className="btn btn-danger">Xoá</button>
+                </div>
+            )
+        }
+    ];
+    // const handleEdit = () => {
+
+    // }
+    const handleDelete = async (row) => {
+        console.log(row.cell.row.id);
+        const currentSchedulesId = calendarList[row.cell.row.id].schedule_id;
+        const response = await calendarAPI.deleteCalendarDaily(currentSchedulesId);
+        console.log(response);
+    }
     const ref = useRef();
     useEffect(() => {
         const checkIfClickedOutside = (e) => {
@@ -91,15 +139,15 @@ function CalendarPopup(props) {
                     ></button>
                     <Table
                         columns={column}
-                        data={function(){
-                            var calendarList = props.data;
+                        data={function () {
+                            calendarList = props.data;
 
                             for (var i = 0; i < props.data.length; i++) {
                                 calendarList[i].date = new Date(calendarList[i].start_time);
                                 calendarList[i].start_time = '' + new Date(calendarList[i].start_time).getHours()
-                                    + ":" + new Date(calendarList[i].start_time).getMinutes();                                    ;
+                                    + ":" + new Date(calendarList[i].start_time).getMinutes();;
                                 calendarList[i].finish_time = '' + new Date(calendarList[i].finish_time).getHours()
-                                + ":" + new Date(calendarList[i].finish_time).getMinutes();
+                                    + ":" + new Date(calendarList[i].finish_time).getMinutes();
                             }
                             return calendarList;
                         }()}

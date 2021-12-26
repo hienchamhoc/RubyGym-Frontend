@@ -63,8 +63,10 @@ function CustomerInfor() {
             if (response && response.status && response.status.data) {
                 userProfile = { ...response.data.data };
                 setUserProfile(userProfile);
+                setProfileOnChange(userProfile);
             }
         })()
+
     }, [])
 
     // Upload Avatar
