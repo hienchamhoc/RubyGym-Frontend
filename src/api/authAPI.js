@@ -11,7 +11,8 @@ const authAPI = {
             if (response.data.status) {
                 localStorage.setItem('token', response.data.data.access_token);
                 store.dispatch(Actions.saveUserToRedux(localStorage.getItem('token')));
-                console.log(response)
+                localStorage.setItem('name', response.data.data.name);
+                localStorage.setItem('role', response.data.data.role);
                 console.log("dang nhap oke");
             }
             return response;

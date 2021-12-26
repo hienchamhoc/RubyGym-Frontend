@@ -53,9 +53,9 @@ function Table({ columns, data, date }) {
         <table {...getTableProps()} className="table table-hover table-bordered table-borderless caption-top tablepopup">
             <caption className="table-caption">
                 {/* {data[0].date} */}
-                {/* {function () {
+                {function () {
                     return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-                }()} */}
+                }()}
             </caption>
             <thead className=" table-thread">
                 {headerGroups.map(headerGroup => (
@@ -83,14 +83,15 @@ function Table({ columns, data, date }) {
     )
 }
 function CalendarPopup(props) {
-    const column = [
-        { Header: 'ID', accessor: 'schedule_id' },
-        { Header: 'Bắt đầu', accessor: 'start_time' },
-        { Header: 'Kết thúc', accessor: 'finish_time' },
+    let [showTable, setShowTable] = useState(false);
+    const column = localStorage.getItem('role') == 'trainer' ?
+    [
+        { Header: 'Khung giờ', accessor: 'time_showed' },
         { Header: 'Địa điểm', accessor: 'location' },
         { Header: 'Bài học', accessor: 'lecture' },
-        { Header: 'Nghỉ', accessor: 'is_cancelled' },
-        {
+        { Header: 'Nghỉ', accessor: 'is_cancelled', 
+            Cell: <input type='checkbox'/>},
+         {
             Header: 'Sua Xoa',
             accessor: 'EditAndDelete',
             Cell: row => (
@@ -100,6 +101,13 @@ function CalendarPopup(props) {
                 </div>
             )
         }
+    ] : 
+    [
+        { Header: 'Khung giờ', accessor: 'time_showed' },
+        { Header: 'Địa điểm', accessor: 'location' },
+        { Header: 'Bài học', accessor: 'lecture' },
+        { Header: 'Nghỉ', accessor: 'is_cancelled', 
+            Cell: <input type='checkbox' disabled={true} /> },
     ];
     // const handleEdit = () => {
 
@@ -137,22 +145,40 @@ function CalendarPopup(props) {
                             props.setTrigger(false)
                         }}
                     ></button>
-                    <Table
+                    {props.data.length > 0 ? <Table
                         columns={column}
                         data={function () {
                             calendarList = props.data;
+                            // if (calendarList.length == 0) {
+                            //     return [{
+                            //         time_showed: 'Không có dữ liệu',
+                            //         location: 'Không có dữ liệu',
+                            //         lecture: 'Không có dữ liệu',
+                            //         is_cancelled: 'Không có dữ liệu',
+
+                            //     }]
+                            // }
 
                             for (var i = 0; i < props.data.length; i++) {
-                                calendarList[i].date = new Date(calendarList[i].start_time);
-                                calendarList[i].start_time = '' + new Date(calendarList[i].start_time).getHours()
-                                    + ":" + new Date(calendarList[i].start_time).getMinutes();;
-                                calendarList[i].finish_time = '' + new Date(calendarList[i].finish_time).getHours()
-                                    + ":" + new Date(calendarList[i].finish_time).getMinutes();
+                                var startHour = new Date(calendarList[i].start_time).getHours().toString(),
+                                startMinute = new Date(calendarList[i].start_time).getMinutes().toString();
+                                if (startHour.length == 1) startHour += '0';
+                                if (startMinute.length == 1) startMinute += '0';
+                                var start_time_showed = startHour + ":" + startMinute;
+
+                                var finishHour = new Date(calendarList[i].finish_time).getHours().toString(),
+                                finishMinute = new Date(calendarList[i].finish_time).getMinutes().toString();
+
+                                if (finishHour.length == 1) finishHour += '0';
+                                if (finishMinute.length == 1) finishMinute += '0';
+                                var finish_time_showed = finishHour + ":" + finishMinute;
+
+                                calendarList[i].time_showed = start_time_showed + ' - ' + finish_time_showed;
                             }
                             return calendarList;
                         }()}
                         date={props.date}
-                    ></Table>
+                    ></Table> : <h2 className='message'>Không có dữ liệu</h2>}
                 </div>
             </div>
         </>
