@@ -15,11 +15,11 @@ function TrainerInfor() {
     let [showPopup, setShowPopup] = useState(false);
 
     let [userProfile, setUserProfile] = useState({
-        name: "Nguyễn",
-        phone: "012345",
+        name: "",
+        phone: "",
         birthday: "",
-        gender: "Nam",
-        address: "Hoàng Lương",
+        gender: "",
+        address: "",
         created_at: "",
         expired_at: "",
         avatar_url: "",
