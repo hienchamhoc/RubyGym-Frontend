@@ -15,13 +15,13 @@ function CustomerInfor() {
     let [showPopup, setShowPopup] = useState(false);
 
     let [userProfile, setUserProfile] = useState({
-        name: "Nguyễn Quang Dũng",
-        phone: "0334405683",
-        birthday: "21-10-2001",
-        gender: "Nam",
-        address: "Hoàng Lương",
-        created_at: "01-01-2021",
-        expired_at: "01-01-2021",
+        name: "",
+        phone: "",
+        birthday: "",
+        gender: "",
+        address: "",
+        created_at: "",
+        expired_at: "",
         avatar_url: "",
     });
     let [profileOnChange, setProfileOnChange] = useState({
@@ -88,7 +88,7 @@ function CustomerInfor() {
             setUserProfile(userProfile);
         }
         if (response && !response.status) {
-            // alert(response.message);
+            alert(response.message);
         }
     };
 
@@ -101,7 +101,7 @@ function CustomerInfor() {
         const response = await userProfileAPI.updateProfile(userProfile);
         if (response && response.status) setShowPopup((prev) => !prev);
         if (response && !response.status && response.message) {
-            // alert(response.message);
+            alert(response.message);
         }
     };
 
