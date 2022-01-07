@@ -34,7 +34,6 @@ function Header() {
                                 <li className="nav-item"><NavLink to="/service">Dịch vụ</NavLink></li>
                                 <li className="nav-item"><NavLink to="/event">Sự kiện</NavLink></li>
                                 <li className="nav-item"><NavLink to="/package">Gói tập</NavLink></li>
-                                <li className="nav-item"><NavLink to="/blog">Blog</NavLink></li>
                                 <li className="nav-item"><NavLink to="/feedback">Góp ý - Phản hồi</NavLink></li>
                             </ul>
                         </nav>

@@ -4,8 +4,10 @@ import Login from './Login/Login';
 import Content from './Content/Content';
 import Content_Service from './Content_Service/Content_Service';
 import Content_Event from './Content_Event/Content_Event';
+import Ct_Event_List from './Content_Event/Ct_Event_List/Ct_Event_List';
+import Ct_Event_Element from './Content_Event/Ct_Event_Element/Ct_Event_Element';
+import Ct_Event_Detail from './Content_Event/Ct_Event_Detail/Ct_Event_Detail';
 import Content_Package from './Content_Package/Content_Package';
-import Content_Blog from './Content_Blog/Content_Blog';
 import Content_Feedback from './Content_Feedback/Content_Feedback';
 import Banner from './Banner/Banner';
 import ScrollToTop from './ScrollToTop/ScrollToTop';
@@ -20,6 +22,10 @@ import CustomerElement from './Admin/AdminComponents/CustomerElement/CustomerEle
 import AdminWelcome from './Admin/AdminComponents/AdminWelcome/AdminWelcome';
 import CustomerDetail from './Admin/AdminComponents/CustomerDetail/CustomerDetail';
 import TrainerDetail from './Admin/AdminComponents/TrainerDetail/TrainerDetail';
+import EventList from './Admin/AdminComponents/EventList/EventList';
+import EventElement from './Admin/AdminComponents/EventElement/EventElement';
+import EventDetail from './Admin/AdminComponents/EventDetail/EventDetail';
+import EventAdd from './Admin/AdminComponents/EventAdd/EventAdd';
 import CustomerInfor from './CustomerInfor/CustomerInfor';
 import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
@@ -28,7 +34,8 @@ import MyCalendar from './MyCalendar/MyCalendar';
 import TrainerInfor from './TrainerInfor/TrainerInfor'
 
 
-export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback }
-export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
+export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Feedback }
+export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome ,EventList, EventDetail, EventElement, EventAdd};
 export { CustomerDetail, TrainerDetail };
 export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor }
+export { Ct_Event_List, Ct_Event_Element, Ct_Event_Detail }

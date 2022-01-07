@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import { Routes, Route } from 'react-router-dom'
-import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail } from './../'
+import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail, EventList, EventDetail, EventAdd} from './../'
 import Notfoundpage from '../../pages/Notfoundpage'
 import './Admin.css'
 import authAPI from '../../api/authAPI'
@@ -43,6 +43,9 @@ function Admin() {
                                     <Route path="customers" element={<CustomerList />} />
                                     <Route path="customers/detail" element={<CustomerDetail />} />
                                     <Route path="" element={<AdminWelcome />} />
+                                    <Route path="events" element={<EventList />} />
+                                    <Route path="events/add" element={<EventAdd />} />
+                                    <Route path="events/detail/:id" element={<EventDetail />} />
                                 </Routes>
                             </div>
                         </div>

@@ -23,7 +23,28 @@ const managementAPI = {
             console.log("khong oke");
             alert(err.message)
         }
-    }
+    },
+    eventList: async (params) => {
+        try {
+            const url = '/admin/events/list';
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
+    eventDetail: async (params) => {
+        try {
+            const url = '/admin/events/?id=';
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
+    
 
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Footer, Header, Content_Package} from '../components'
 
-function Goi_tap() {
+function Package() {
     return (
         <>
             <Header />
@@ -11,4 +11,4 @@ function Goi_tap() {
     )
 }
 
-export default Goi_tap
+export default Package
