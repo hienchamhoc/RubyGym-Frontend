@@ -2,12 +2,14 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import { Routes, Route } from 'react-router-dom'
-import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail } from './../'
+import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail, RenewPackage } from './../'
 import Notfoundpage from '../../pages/Notfoundpage'
 import './Admin.css'
+import { useNavigate } from 'react-router-dom'
 import authAPI from '../../api/authAPI'
 
 function Admin() {
+    const navigate = useNavigate();
     return (
         <div className="admin-wrapper">
             <div className="admin-header-wrapper">
@@ -22,7 +24,10 @@ function Admin() {
                         </div>
                         <div
                             className="admin-header-logout"
-                            onClick={() => { authAPI.logout(); }}
+                            onClick={() => { 
+                                authAPI.logout(); 
+                                navigate('/');
+                            }}
                         ><i class="fas fa-sign-out-alt"></i>
                             Đăng xuất
                         </div>
@@ -42,6 +47,8 @@ function Admin() {
                                     <Route path="trainers/detail/:id" element={<TrainerDetail />} />
                                     <Route path="customers" element={<CustomerList />} />
                                     <Route path="customers/detail" element={<CustomerDetail />} />
+                                    <Route path="packages/renew/:member_id" element={<RenewPackage />} />
+                                    <Route path="packages/renew" element={<RenewPackage />} />
                                     <Route path="" element={<AdminWelcome />} />
                                 </Routes>
                             </div>

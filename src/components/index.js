@@ -20,7 +20,9 @@ import CustomerElement from './Admin/AdminComponents/CustomerElement/CustomerEle
 import AdminWelcome from './Admin/AdminComponents/AdminWelcome/AdminWelcome';
 import CustomerDetail from './Admin/AdminComponents/CustomerDetail/CustomerDetail';
 import TrainerDetail from './Admin/AdminComponents/TrainerDetail/TrainerDetail';
+import RenewPackage from './Admin/AdminComponents/RenewPackage/RenewPackage';
 import CustomerInfor from './CustomerInfor/CustomerInfor';
+import TrainingInfor from './TrainingInfor/TrainingInfor';
 import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
 import CalendarPopup from './CalendarPopup/CalendarPopup';
@@ -29,6 +31,6 @@ import TrainerInfor from './TrainerInfor/TrainerInfor'
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback }
-export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
+export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome, RenewPackage };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor }
+export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor, TrainingInfor }

@@ -56,7 +56,7 @@ function TrainerDetail() {
                             </h2>
                             <h2 className="trainer-birthday">
                                 <span className="trainer-birthday-title">Ngày sinh:</span>
-                                {trainerInfor.birthday}
+                                {function(){if (trainerInfor.birthday) return trainerInfor.birthday.substring(0, 10)}()}
                             </h2>
                             <h2 className="trainer-phone">
                                 <span className="trainer-phone-title">Số điện thoại:</span>

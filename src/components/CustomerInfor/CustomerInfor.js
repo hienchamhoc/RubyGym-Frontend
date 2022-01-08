@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import avatar from "./../../store/imgs/avatar.jpg";
-import { Popup, MyCalendar } from "./../";
+import { Popup, MyCalendar, TrainingInfor } from "./../";
 import userProfileAPI from "./../../api/userProfileAPI";
 
 import styles from "./CustomerInfor.module.css";
@@ -99,7 +99,10 @@ function CustomerInfor() {
         // setUserProfile(userProfile);
         //console.log(userProfile);
         const response = await userProfileAPI.updateProfile(userProfile);
-        if (response && response.status) setShowPopup((prev) => !prev);
+        if (response && response.status) {
+            setShowPopup((prev) => !prev);
+            setUserProfile({...profileOnChange});
+        }
         if (response && !response.status && response.message) {
             alert(response.message);
         }
@@ -450,8 +453,13 @@ function CustomerInfor() {
 
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
+                <TrainingInfor />
+            </div>
+            
+            {/* Lịch tập luyện */}
+            <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>
-                    Thông tin tập luyện
+                    Lịch tập
                 </h1>
                 <MyCalendar />
             </div>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import './Header.css'
 import logo from './../../store/imgs/logo.png';
 import { useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import authAPI from "./../../api/authAPI";
 
 
 function Header() {
+    const navigate = useNavigate();
     let user = useSelector(store => store.auth.user)
     // user = 1;
     let [showOption, setShowOpTion] = useState(false);
@@ -17,6 +18,7 @@ function Header() {
 
     const handleLogout = () => {
         authAPI.logout();
+        navigate('/login');
     }
 
     return (
