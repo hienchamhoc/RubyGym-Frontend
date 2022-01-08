@@ -15,18 +15,18 @@ function TrainerInfor() {
     let [showPopup, setShowPopup] = useState(false);
 
     let [userProfile, setUserProfile] = useState({
-        id: '',
-        name: '',
-        phone: '',
-        birthday: '',
-        gender: '',
-        address: '',
-        created_at: '',
-        expired_at: '',
-        avatar_url: '',
+        id: "",
+        name: "",
+        phone: "",
+        birthday: "",
+        gender: "",
+        address: "",
+        created_at: "",
+        expired_at: "",
+        avatar_url: "",
     });
     let [profileOnChange, setProfileOnChange] = useState({
-        id: '',
+        id: "",
         name: userProfile.name,
         phone: userProfile.phone,
         birthday: userProfile.birthday,
@@ -52,7 +52,7 @@ function TrainerInfor() {
         }
         return () => {
             clearTimeout(id);
-        }
+        };
     }, [showPopup]);
 
     // Lấy profile về
@@ -102,8 +102,8 @@ function TrainerInfor() {
         // console.log(userProfile);
         const response = await trainerProfileAPI.updateProfile(userProfile);
         if (response && response.status) {
-            setShowPopup(prev => !prev);
-            setUserProfile({...profileOnChange});
+            setShowPopup((prev) => !prev);
+            setUserProfile({ ...profileOnChange });
         }
         if (response && !response.status && response.message) {
             alert(response.message);
@@ -150,38 +150,38 @@ function TrainerInfor() {
                     {/* Avatar */}
                     <div className="col l-5 m-0 c-0">
                         <div className={clsx(styles.avatarAndName)}>
-                        <div
-                            className={clsx(styles.avatar)}
-                            style={{
-                                backgroundImage: userProfile.avatar_url
-                                    ? `url(${userProfile.avatar_url})`
-                                    : `url(${avatar})`,
-                                backgroundPosition: "center",
-                                backgroundSize: "cover",
-                                backgroundRepeat: "no-repeat",
-                            }}
-                        >
-                            <label
-                                htmlFor="avatarChoose"
-                                className={clsx(styles.chooseAvatar)}
+                            <div
+                                className={clsx(styles.avatar)}
+                                style={{
+                                    backgroundImage: userProfile.avatar_url
+                                        ? `url(${userProfile.avatar_url})`
+                                        : `url(${avatar})`,
+                                    backgroundPosition: "center",
+                                    backgroundSize: "cover",
+                                    backgroundRepeat: "no-repeat",
+                                }}
                             >
-                                <i
-                                    className={clsx(
-                                        styles.chooseAvatarIcon,
-                                        "fas fa-camera"
-                                    )}
-                                ></i>
-                            </label>
-                            <input
-                                type="file"
-                                id="avatarChoose"
-                                hidden
-                                onChange={handleUploadAvatar}
-                            />
-                        </div>
-                        <div className={clsx(styles.userName)}>
+                                <label
+                                    htmlFor="avatarChoose"
+                                    className={clsx(styles.chooseAvatar)}
+                                >
+                                    <i
+                                        className={clsx(
+                                            styles.chooseAvatarIcon,
+                                            "fas fa-camera"
+                                        )}
+                                    ></i>
+                                </label>
+                                <input
+                                    type="file"
+                                    id="avatarChoose"
+                                    hidden
+                                    onChange={handleUploadAvatar}
+                                />
+                            </div>
+                            <div className={clsx(styles.userName)}>
                                 {userProfile.name}
-                        </div>
+                            </div>
                         </div>
                     </div>
 
@@ -247,44 +247,58 @@ function TrainerInfor() {
                                     </div>
                                 </div>
 
-                            </div>
-
-                            {/* Ngày sinh */}
-                            <div className={clsx(styles.inforWrapper)}>
-                                <div className={clsx(styles.inforContent)}>
-                                    <h3 className={clsx(styles.inforLabel)}>Ngày sinh</h3>
-                                    {isPTag ? (
-                                        // <input>{userProfile.birthday.substring(0, 10)}</input>
-                                        <input
-                                            readOnly={true}
-                                            // ref={birthdayRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={function(){
-                                                // const date = userProfile.birthday.substring(0, 10).split('-');
-                                                // const date = new Date(userProfile.birthday);
-                                                // console.log('date');
-                                                // console.log(date);
-                                                return userProfile.birthday.slice(0, 10);
-                                            }()}
-                                            id='trainer-birthday' />
-                                    ) : (
-                                        <input
-                                            // readOnly={!birthdayUpdating}
-                                            // ref={birthdayRef}
-                                            type="date"
-                                            className={clsx(styles.inforText)}
-                                            value={new Date(profileOnChange.birthday).toString().substring(0, 10)}
-                                            onChange={(e) => {
-                                                setProfileOnChange({
-                                                    ...profileOnChange,
-                                                    birthday: e.target.value
-                                                })
-                                            }}
-                                            id='trainer-birthday' />
-                                    )}
+                                {/* Ngày sinh */}
+                                <div className={clsx(styles.inforWrapper)}>
+                                    <div className={clsx(styles.inforContent)}>
+                                        <h3 className={clsx(styles.inforLabel)}>
+                                            Ngày sinh
+                                        </h3>
+                                        {isPTag ? (
+                                            // <input>{userProfile.birthday.substring(0, 10)}</input>
+                                            <input
+                                                readOnly={true}
+                                                // ref={birthdayRef}
+                                                type="date"
+                                                className={clsx(
+                                                    styles.inforText
+                                                )}
+                                                value={(function () {
+                                                    // const date = userProfile.birthday.substring(0, 10).split('-');
+                                                    // const date = new Date(userProfile.birthday);
+                                                    // console.log('date');
+                                                    // console.log(date);
+                                                    return userProfile.birthday.slice(
+                                                        0,
+                                                        10
+                                                    );
+                                                })()}
+                                                id="trainer-birthday"
+                                            />
+                                        ) : (
+                                            <input
+                                                // readOnly={!birthdayUpdating}
+                                                // ref={birthdayRef}
+                                                type="date"
+                                                className={clsx(
+                                                    styles.inforText
+                                                )}
+                                                value={new Date(
+                                                    profileOnChange.birthday
+                                                )
+                                                    .toString()
+                                                    .substring(0, 10)}
+                                                onChange={(e) => {
+                                                    setProfileOnChange({
+                                                        ...profileOnChange,
+                                                        birthday:
+                                                            e.target.value,
+                                                    });
+                                                }}
+                                                id="trainer-birthday"
+                                            />
+                                        )}
+                                    </div>
                                 </div>
-
                                 {/* Giới tính */}
                                 <div className={clsx(styles.inforWrapper)}>
                                     <div className={clsx(styles.inforContent)}>
@@ -292,9 +306,13 @@ function TrainerInfor() {
                                             Giới tính
                                         </h3>
                                         {isPTag ? (
-                                            <b className={clsx(
-                                                styles.inforGender
-                                            )}>{userProfile.gender}</b>
+                                            <b
+                                                className={clsx(
+                                                    styles.inforGender
+                                                )}
+                                            >
+                                                {userProfile.gender}
+                                            </b>
                                         ) : (
                                             <select
                                                 // disabled={!genderUpdating}
@@ -364,23 +382,7 @@ function TrainerInfor() {
                                         />
                                     </div>
                                 </div>
-
                             </div>
-
-                            {isPTag ? (
-                                <button onClick={handleEdit}
-                                    className="btn btn-primary"
-                                >chỉnh sửa</  button>
-                            ) : (
-                                <div>
-                                    <button onClick={handleUpdate}
-                                        className="btn btn-success"
-                                    >Lưu</  button>
-                                    <button onClick={handleCancel}
-                                        className="btn btn-danger"
-                                    >Huỷ</ button>
-                                </div>
-                            )} */}
                         </div>
                     </div>
                 </div>
@@ -388,7 +390,9 @@ function TrainerInfor() {
 
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
-                <h1 className={clsx(styles.inforHeading)}>Thông tin tập luyện</h1>
+                <h1 className={clsx(styles.inforHeading)}>
+                    Thông tin tập luyện
+                </h1>
                 <MyCalendar />
             </div>
 

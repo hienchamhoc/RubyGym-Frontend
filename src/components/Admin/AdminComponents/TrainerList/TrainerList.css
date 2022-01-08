@@ -6,7 +6,7 @@
     height: 60px;
 }
 
-.trainer-heading {
+.trainer-headingg {
     color: white;
     font-size: 35px;
     font-weight: 700;
@@ -32,7 +32,8 @@
 .trainer-add-btn:hover {
   background-color: #ebebeb;
   color: var(--primary-color);
-  border:#ebebeb;
+  border: 2px solid #ebebeb;
+
 }
 
 

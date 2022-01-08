@@ -1,7 +1,7 @@
 import React from 'react'
 import { Footer, Header, Content_Event} from '../components'
 
-function Su_kien() {
+function Event() {
     return (
         <>
             <Header />
@@ -11,4 +11,4 @@ function Su_kien() {
     )
 }
 
-export default Su_kien
+export default Event

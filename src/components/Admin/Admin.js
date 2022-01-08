@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from './../../store/imgs/logo.png'
 import { Routes, Route } from 'react-router-dom'
-import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail, RenewPackage } from './../'
+import { TrainerList, CustomerList, Category, AdminWelcome, TrainerDetail, CustomerDetail, RenewPackage, EventList, EventDetail, EventAdd} from './../'
 import Notfoundpage from '../../pages/Notfoundpage'
 import './Admin.css'
 import { useNavigate } from 'react-router-dom'
@@ -50,6 +50,9 @@ function Admin() {
                                     <Route path="packages/renew/:member_id" element={<RenewPackage />} />
                                     <Route path="packages/renew" element={<RenewPackage />} />
                                     <Route path="" element={<AdminWelcome />} />
+                                    <Route path="events" element={<EventList />} />
+                                    <Route path="events/add" element={<EventAdd />} />
+                                    <Route path="events/detail/:id" element={<EventDetail />} />
                                 </Routes>
                             </div>
                         </div>

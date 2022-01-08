@@ -32,7 +32,7 @@
 .customer-add-btn:hover {
   background-color: #ebebeb;
   color: var(--primary-color);
-  border:#ebebeb;
+  border:2px solid #ebebeb;
 }
 
 

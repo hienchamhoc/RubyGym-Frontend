@@ -423,29 +423,7 @@ function CustomerInfor() {
                                     </div>
                                 </div>
                             </div>
-                            {/* {isPTag ? (
-                                <button
-                                    onClick={handleEdit}
-                                    className="btn btn-primary"
-                                >
-                                    chỉnh sửa
-                                </button>
-                            ) : (
-                                <div>
-                                    <button
-                                        onClick={handleUpdate}
-                                        className="btn btn-success"
-                                    >
-                                        Lưu
-                                    </button>
-                                    <button
-                                        onClick={handleCancel}
-                                        className="btn btn-danger"
-                                    >
-                                        Huỷ
-                                    </button>
-                                </div>
-                            )} */}
+                            
                         </div>
                     </div>
                 </div>
