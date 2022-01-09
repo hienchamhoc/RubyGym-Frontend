@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
-import avatar from "./../../store/imgs/avatar.jpg";
-import { Popup, MyCalendar } from "./../";
-import trainerProfileAPI from "./../../api/trainerProfileAPI";
+import avatar from "../../../store/imgs/avatar.jpg";
+import { Popup, MyCalendar } from "../../";
+import trainerProfileAPI from "../../../api/trainerProfileAPI"
 
 import styles from "./TrainerInfor.module.css";
 

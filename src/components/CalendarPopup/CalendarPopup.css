@@ -27,6 +27,19 @@
 }
 .table-caption{
     text-align: center;
+    position: absolute;
+
+
+/* font-family: Saira Condensed;
+font-style: normal;
+font-weight: 500;
+font-size: 1  0px;
+line-height: 47px;
+display: flex;
+align-items: center;
+letter-spacing: 0.05em;
+
+text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
     font-size: 20px;
     padding: 10px;
 }

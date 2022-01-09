@@ -12,7 +12,6 @@ import Content_Feedback from './Content_Feedback/Content_Feedback';
 import Banner from './Banner/Banner';
 import ScrollToTop from './ScrollToTop/ScrollToTop';
 import Admin from './Admin/Admin';
-import Trainer from './Trainer/Trainer'
 import Customer from './Customer/Customer';
 import TrainerList from './Admin/AdminComponents/TrainerList/TrainerList';
 import CustomerList from './Admin/AdminComponents/CustomerList/CustomerList';
@@ -33,14 +32,17 @@ import Popup from './Popup/Popup';
 import ChangePassword from './ChangePassword/ChangePassword';
 import CalendarPopup from './CalendarPopup/CalendarPopup';
 import MyCalendar from './MyCalendar/MyCalendar';
-import TrainerInfor from './TrainerInfor/TrainerInfor'
+import TrainerInfor from './Trainer/TrainerInfor/TrainerInfor'
+import AddSchedule from './Trainer/AddSchedule/AddSchedule';
+import TrainerRating from './Trainer/TrainerRating/TrainerRating';
+import MemberList from './Trainer/MemberList/MemberList';
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Feedback }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome, RenewPackage };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor, TrainingInfor }
+export { Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor, TrainingInfor, AddSchedule, TrainerRating, MemberList }
 
-export { EventList, EventDetail, EventElement, EventAdd};
+export { EventList, EventDetail, EventElement, EventAdd };
 
 export { Ct_Event_List, Ct_Event_Element, Ct_Event_Detail }

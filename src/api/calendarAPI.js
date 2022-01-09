@@ -66,6 +66,24 @@ const calendarAPI = {
         } catch (err) {
             alert(err.message);
         }
+    },
+    getPracticeLocations: async () => {
+        try {
+            const url = ''
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (error) {
+            alert(error.message);
+        }
+    },
+    AddSchedule: async (params) => {
+        try {
+            const url = '';
+            const response = await axiosClient.post(url, params)
+            return response;
+        } catch (error) {
+            alert(error.message);
+        }
     }
 }
 
