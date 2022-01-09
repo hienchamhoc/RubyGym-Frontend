@@ -146,7 +146,7 @@ function CalendarPopup(props) {
                             props.setTrigger(false)
                         }}
                     ></button>
-                    {props.data.length > 0 ? <Table
+                    {props.data && props.data.length > 0 ? <Table
                         columns={column}
                         data={function () {
                             calendarList = props.data;

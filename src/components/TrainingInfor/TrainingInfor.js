@@ -92,6 +92,15 @@ function TrainingInfor() {
                             </button>
                         </div>
                     )}
+                    
+                    <div>
+                            <button
+                                onClick={handleEdit}
+                                className={clsx(styles.btnEdit)}
+                            >
+                                Lịch sử
+                            </button>                       
+                    </div>
                 </div>
 
                 <div className="row">
