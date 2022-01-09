@@ -18,7 +18,7 @@
     padding: 0px;
     width: 100%;
     max-width: 400px;
-    background-color: rgba(255, 255, 255, 0.918);
+    background-color: rgb(255, 255, 255);
 }
 .AddSchedule-Container{
     padding-top: 20px;
@@ -27,7 +27,7 @@
     box-shadow: 5px 5px 8px #888888;
 }
 .AddSchedule-Text{
-    font-family: Saira Condensed;
+    /* font-weight: 40px; */
     font-size: 25px;
     line-height:45px;
     margin-right: 10px;
@@ -68,7 +68,25 @@
     height: 30px;
     margin-bottom: 12px;
 }
+.AddSchedule-InputText{
+    border: 1px solid black; 
+    box-shadow: 1px 2px 3.6px #888888;
+    height: 30px;
+}
+.AddSchedule-InputCheckbox{
+    margin-top: 0px;
+     width: 20px;
+     height: 20px;
+}
+.AddSchedule-Repeat{
+    /* padding-bottom: 40px; */
+}
+.AddSchedule-ConfirmFalse{
+    margin-left: 95px;
+    color: red;
+}
 .AddSchedule-Button-Confirm{
+    
     float: left;
     width: 25%;
     margin-left: 40px;
