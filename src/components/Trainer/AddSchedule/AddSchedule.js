@@ -7,6 +7,8 @@ import trainerProfileAPI from '../../../api/trainerProfileAPI';
 import calendarAPI from '../../../api/calendarAPI';
 // import calendarAPI from '../../../api/calendarAPI';
 import './AddSchedule.css'
+import { ToastBody } from 'react-bootstrap';
+
 function AddSchedule(props) {
     const ref = useRef();
     let [schedule, setSchedule] = useState({
@@ -91,84 +93,117 @@ function AddSchedule(props) {
         <>
             <div className='AddSchedule-popupWrapper'>
                 <div className='AddSchedule-popupInner' ref={ref} >
+                    <div className='AddSchedule-Container'>
+                        <div className='AddSchedule-MemberList'>
+                            <b className='AddSchedule-Text'>Học viên</b>
+                            <Select
+                                className='AddSchedule-Select AddSchedule-Select-Name '
+                                classNamePrefix='AddSchedule-Select-Prefix'
+                                // isSearchable="true"
+                                placeholder="Họ tên"
+                                options={function () {
+                                    var myMembersList = member.map((item) => {
+                                        return {
+                                            label: item.name,
+                                            member_id: item.member_id
+                                        }
+                                    })
+                                    return myMembersList;
+                                }()}
+                                onChange={(e) => {
+                                    schedule.member_id = e.member_id;
+                                    console.log(e);
+                                    console.log(schedule.member_id);
+                                }}
+                            />
+                        </div>
+                        <div className='AddSchedule-Day'>
+                            <b className='AddSchedule-Text' >Thời gian</b>
+                            {/* <DayPickerInput
+                                onDayChange={(date) => {
+                                    schedule.start_time = new Date(date);
+                                    schedule.finish_time = new Date(date);
+                                }}
+                                classNames='AddSchedule-DayPicker'
+                                placeholder='Ngày'
+                            /> */}
+                            <input
+                                type="date"
+                                className='AddSchedule-DayPicker'
 
-                    <b>Học viên</b>
-                    <Select
-                        options={function () {
-                            var myMembersList = member.map((item) => {
-                                return {
-                                    label: item.name,
-                                    member_id: item.member_id
-                                }
-                            })
-                            return myMembersList;
-                        }()}
-                        onChange={(e) => {
-                            schedule.member_id = e.member_id;
-                            console.log(e);
-                            console.log(schedule.member_id);
-                        }}
-                    />
-                    <b>Ngày</b>
-                    <DayPickerInput onDayChange={(date) => {
-                        schedule.start_time = new Date(date);
-                        schedule.finish_time = new Date(date);
-                    }} />
-                    <b>Bắt đầu</b>
-                    <Select
-                        options={startTimeOptions}
-                        onChange={(e) => {
-                            stateOnChange.start = e.value;
-                        }}
-                    />
-                    <b>Kết thúc</b>
-                    <Select
-                        options={endTimeOptions}
-                        onChange={(e) => {
-                            stateOnChange.end = e.value;
-                        }}
-                    />
-                    <b>Địa điểm</b>
-                    <input
-                        type="text"
-                        onChange={(e) => {
-                            schedule.location = e.target.value;
-                        }}
-                    >
-                    </input><br />
-                    {/* <Select
-                        options={function () {
-                            var myPlacesList = practiceLocations.map((item) => {
-                                return {
-                                    label: item.location
-                                }
-                            })
-                            return myPlacesList;
-                        }()}
-                        onChange={(e) => {
-                            schedule.location = e.label;
-                            console.log(schedule.location);
-                        }}
-                    /> */}
-                    <b>Lặp lại</b>
-                    <input
-                        type="checkbox"
-                        onChange={(e) => {
+                                onChange={(e) => {
+                                    console.log(e.target.value);
+                                    schedule.start_time = new Date(e.target.value);
+                                    schedule.finish_time = new Date(e.target.value);
+                                }}
+                            ></input>
 
-                            console.log(e);
-                            var repeat_weekly = e.target.checked;
-                            setSchedule({
-                                ...schedule,
-                                repeat_weekly: repeat_weekly
-                            })
-                        }}
-                        defaultChecked="true"
-                    ></input><br />
-                    <button
-                        onClick={handleConfirm}
-                    >Xác nhận</button>
-                    <button>Huỷ</button>
+                            <br />
+                            {/* <b className='AddSchedule-Text'>Giờ</b><br /> */}
 
+                            <div className='AddSchedule-Day-Start'>
+                                {/* <b className='AddSchedule-Text'>Bắt đầu</b> */}
+                                <Select
+                                    className='AddSchedule-Select AddSchedule-Select-StartEnd'
+                                    placeholder="Bắt đầu"
+                                    options={startTimeOptions}
+                                    onChange={(e) => {
+                                        stateOnChange.start = e.value;
+                                    }}
+                                />
+                            </div>
+                            <div className='AddSchedule-Day-End '>
+                                {/* <b className='AddSchedule-Text'>Kết thúc</b> */}
+                                <Select
+                                    className='AddSchedule-Select AddSchedule-Select-StartEnd'
+                                    placeholder="Kết thúc"
+                                    options={endTimeOptions}
+                                    onChange={(e) => {
+                                        stateOnChange.end = e.value;
+                                    }}
+                                />
+                            </div>
+                        </div>
+                        <div className='AddSchedule-Location'>
+                            <b className='AddSchedule-Text'>Địa điểm</b>
+                            <input
+                                type="text"
+                                placeholder="MM/DD/YYYY"
+                                onChange={(e) => {
+                                    schedule.location = e.target.value;
+                                }}
+                            >
+                            </input><br />
+                        </div>
+                        <div className='AddSchedule-Repeat'>
+                            <b className='AddSchedule-Text'>Lặp lại</b>
+                            <input
+                                type="checkbox"
+                                onChange={(e) => {
+
+                                    console.log(e);
+                                    var repeat_weekly = e.target.checked;
+                                    setSchedule({
+                                        ...schedule,
+                                        repeat_weekly: repeat_weekly
+                                    })
+                                }}
+                                defaultChecked="true"
+                            ></input><br />
+                        </div>
+                        <div className='AddSchedule-Button'>
+                            <button
+                                className='btn btn-success AddSchedule-Button-Confirm'
+                                onClick={handleConfirm}
+                            >Xác nhận</button>
+                            <button
+                                className='btn btn-danger AddSchedule-Button-Cancel'
+                                onClick={() => {
+                                    props.setTrigger(false);
+                                }}
+                            >Huỷ</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
