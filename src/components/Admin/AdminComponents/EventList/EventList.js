@@ -2,18 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { EventElement } from "./../../../";
 import "./EventList.css";
-import managementAPI from "../../../../api/managementAPI";
-import sk1_event from "../../../../store/imgs/sk1_event.png";
+import eventAPI from "../../../../api/eventAPI";
 
 function EventList() {
     let [events, setEvents] = useState([]);
 
     useEffect(() => {
         (async () => {
-            const res = await managementAPI.EventList();
+            const res = await eventAPI.eventList();
             events = res.data.data.event_list;
             setEvents(events);
-
         })();
     }, []);
 
@@ -47,27 +45,27 @@ function EventList() {
                         <th className="finish">Ngày kết thúc</th>
                         <th className="btn-delete"></th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>
-                            <img src={sk1_event} alt="" />
-                        </td>
-                        <td>
-                            <Link to={`detail/1`} className="event-link">
-                                ĐIỀU ƯỚC GIÁNG SINH
-                            </Link>
-                        </td>
-                        <td>07/12/2021</td>
-                        <td>24/12/2021</td>
-                        <td>
-                            <button>Xóa</button>
-                        </td>
-                    </tr>
-                    
-                    <EventElement />
-                    <EventElement />
-                    <EventElement />
-                    <EventElement />
+                    {
+                        events.map((event)=>{
+                            return <EventElement id={event.id} title={event.title} 
+                                start_time={function(){
+                                    const _date = new Date(event.start_time);
+                                    const year = _date.getFullYear();
+                                    const month = _date.getMonth() + 1;
+                                    const date = _date.getDate();
+                                    return date + '/' + month + '/' + year;
+                                }()}
+                                finish_time={function(){
+                                    const _date = new Date(event.finish_time);
+                                    const year = _date.getFullYear();
+                                    const month = _date.getMonth() + 1;
+                                    const date = _date.getDate();
+                                    return date + '/' + month + '/' + year;
+                                }()}
+                                thumbnail_image_url={event.thumbnail_image_url}
+                            />
+                        })
+                    }
                 </table>
             </div>
         </div>
