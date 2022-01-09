@@ -52,11 +52,9 @@ function Table({ columns, data, date }) {
 
         <table {...getTableProps()} className="table table-hover table-bordered table-borderless caption-top tablepopup">
             <caption className="table-caption">
-                20/11/2019
-                {/* {data[0].date} */}
-                {/* {function () {
+                {function () {
                     return date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
-                }()} */}
+                }()}
             </caption>
             <thead className=" table-thread">
                 {headerGroups.map(headerGroup => (
@@ -127,8 +125,6 @@ function CalendarPopup(props) {
     const ref = useRef();
     useEffect(() => {
         const checkIfClickedOutside = (e) => {
-            // If the menu is open and the clicked target is not within the menu,
-            // then close the menu
             if (props.trigger && ref.current && !ref.current.contains(e.target)) {
                 props.setTrigger(false);
             }
@@ -137,7 +133,6 @@ function CalendarPopup(props) {
         document.addEventListener('click', checkIfClickedOutside, true);
 
         return () => {
-            // Cleanup the event listener
             document.removeEventListener('click', checkIfClickedOutside, true);
         };
     }, [props.trigger]);
@@ -155,22 +150,22 @@ function CalendarPopup(props) {
                         columns={column}
                         data={function () {
                             calendarList = props.data;
-                            // for (var i = 0; i < props.data.length; i++) {
-                            //     var startHour = new Date(calendarList[i].start_time).getHours().toString(),
-                            //         startMinute = new Date(calendarList[i].start_time).getMinutes().toString();
-                            //     if (startHour.length == 1) startHour += '0';
-                            //     if (startMinute.length == 1) startMinute += '0';
-                            //     var start_time_showed = startHour + ":" + startMinute;
+                            for (var i = 0; i < props.data.length; i++) {
+                                var startHour = new Date(calendarList[i].start_time).getHours().toString(),
+                                    startMinute = new Date(calendarList[i].start_time).getMinutes().toString();
+                                if (startHour.length == 1) startHour += '0';
+                                if (startMinute.length == 1) startMinute += '0';
+                                var start_time_showed = startHour + ":" + startMinute;
 
-                            //     var finishHour = new Date(calendarList[i].finish_time).getHours().toString(),
-                            //         finishMinute = new Date(calendarList[i].finish_time).getMinutes().toString();
+                                var finishHour = new Date(calendarList[i].finish_time).getHours().toString(),
+                                    finishMinute = new Date(calendarList[i].finish_time).getMinutes().toString();
 
-                            //     if (finishHour.length == 1) finishHour += '0';
-                            //     if (finishMinute.length == 1) finishMinute += '0';
-                            //     var finish_time_showed = finishHour + ":" + finishMinute;
+                                if (finishHour.length == 1) finishHour += '0';
+                                if (finishMinute.length == 1) finishMinute += '0';
+                                var finish_time_showed = finishHour + ":" + finishMinute;
 
-                            //     calendarList[i].time_showed = start_time_showed + ' - ' + finish_time_showed;
-                            // }
+                                calendarList[i].time_showed = start_time_showed + ' - ' + finish_time_showed;
+                            }
                             return calendarList;
                         }()}
                         date={props.date}
