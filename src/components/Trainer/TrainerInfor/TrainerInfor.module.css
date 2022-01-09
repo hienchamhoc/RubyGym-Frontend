@@ -43,6 +43,7 @@
     padding-bottom: 4px;
     color: var(--text-color);
     letter-spacing: 0.02em;
+    
 }
 
 .infor {
@@ -203,4 +204,9 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     letter-spacing: 0.05em;
     justify-content: center;
+}
+.infoHeading_PracticeInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
 }

@@ -11,6 +11,7 @@ import { ToastBody } from 'react-bootstrap';
 
 function AddSchedule(props) {
     const ref = useRef();
+    let [ConfirmFalse, setConfirmFalse] = useState(false);
     let [schedule, setSchedule] = useState({
         member_id: '',
         start_time: new Date(),
@@ -20,8 +21,8 @@ function AddSchedule(props) {
         repeat_weekly: true
     })
     let [stateOnChange, setStateOnChange] = useState({
-        start: '',
-        end: ''
+        start: 0,
+        end: 0
     });
     const member = [
         { member_id: 1, name: 'Hien' },
@@ -34,12 +35,29 @@ function AddSchedule(props) {
         { value: '7', label: '7:00' },
         { value: '8', label: '8:00' },
         { value: '9', label: '9:00' },
+        { value: '10', label: '10:00' },
+        { value: '11', label: '11:00' },
+        { value: '12', label: '12:00' },
+        { value: '13', label: '13:00' },
+        { value: '14', label: '14:00' },
+        { value: '15', label: '15:00' },
+        { value: '16', label: '16:00' },
+        { value: '17', label: '17:00' },
     ];
     const endTimeOptions = [
         { value: '7', label: '7:00' },
         { value: '8', label: '8:00' },
         { value: '9', label: '9:00' },
         { value: '10', label: '10:00' },
+        { value: '11', label: '11:00' },
+        { value: '12', label: '12:00' },
+        { value: '13', label: '13:00' },
+        { value: '14', label: '14:00' },
+        { value: '15', label: '15:00' },
+        { value: '16', label: '16:00' },
+        { value: '17', label: '17:00' },
+        { value: '18', label: '18:00' },
+
     ];
     const practiceLocations = [
         { location: 'tang 1' },
@@ -80,14 +98,20 @@ function AddSchedule(props) {
     }, [props.trigger]);
 
     const handleConfirm = async () => {
-        schedule.start_time.setHours(stateOnChange.start);
-        schedule.finish_time.setHours(stateOnChange.end);
-        console.log(schedule);
-        console.log(schedule.repeat_weekly);
-        // const response = await calendarAPI.AddSchedule(schedule);
-        // if (response && !response.status) {
-        //     alert(response.message)
-        // }
+        if (stateOnChange.end - stateOnChange.start > 0) {
+            setConfirmFalse(false);
+            schedule.start_time.setHours(stateOnChange.start);
+            schedule.finish_time.setHours(stateOnChange.end);
+            console.log(schedule);
+            console.log(schedule.repeat_weekly);
+            // const response = await calendarAPI.AddSchedule(schedule);
+            // if (response && !response.status) {
+            //     alert(response.message)
+            // }
+        } else {
+            setConfirmFalse(true);
+            console.log(stateOnChange.start);
+        }
     }
     return props.trigger ? (
         <>
@@ -101,6 +125,7 @@ function AddSchedule(props) {
                                 classNamePrefix='AddSchedule-Select-Prefix'
                                 // isSearchable="true"
                                 placeholder="Họ tên"
+                                maxMenuHeight={180}
                                 options={function () {
                                     var myMembersList = member.map((item) => {
                                         return {
@@ -146,6 +171,9 @@ function AddSchedule(props) {
                                 <Select
                                     className='AddSchedule-Select AddSchedule-Select-StartEnd'
                                     placeholder="Bắt đầu"
+                                    menuPlacement="auto"
+                                    maxMenuHeight={180}
+
                                     options={startTimeOptions}
                                     onChange={(e) => {
                                         stateOnChange.start = e.value;
@@ -157,6 +185,7 @@ function AddSchedule(props) {
                                 <Select
                                     className='AddSchedule-Select AddSchedule-Select-StartEnd'
                                     placeholder="Kết thúc"
+                                    maxMenuHeight={180}
                                     options={endTimeOptions}
                                     onChange={(e) => {
                                         stateOnChange.end = e.value;
@@ -167,10 +196,23 @@ function AddSchedule(props) {
                         <div className='AddSchedule-Location'>
                             <b className='AddSchedule-Text'>Địa điểm</b>
                             <input
+                                className='AddSchedule-InputText'
                                 type="text"
-                                placeholder="MM/DD/YYYY"
+                                placeholder="VD: Tầng 1 Phòng 2"
                                 onChange={(e) => {
                                     schedule.location = e.target.value;
+                                }}
+                            >
+                            </input><br />
+                        </div>
+                        <div className='AddSchedule-Lecture'>
+                            <b className='AddSchedule-Text'>Bài học</b>
+                            <input
+                                className='AddSchedule-InputText'
+                                type="text"
+                                placeholder="VD: Tập bụng"
+                                onChange={(e) => {
+                                    schedule.lecture = e.target.value;
                                 }}
                             >
                             </input><br />
@@ -178,9 +220,9 @@ function AddSchedule(props) {
                         <div className='AddSchedule-Repeat'>
                             <b className='AddSchedule-Text'>Lặp lại</b>
                             <input
+                                className='AddSchedule-InputCheckbox'
                                 type="checkbox"
                                 onChange={(e) => {
-
                                     console.log(e);
                                     var repeat_weekly = e.target.checked;
                                     setSchedule({
@@ -190,6 +232,9 @@ function AddSchedule(props) {
                                 }}
                                 defaultChecked="true"
                             ></input><br />
+                        </div>
+                        <div>
+                            {ConfirmFalse ? (<b className='AddSchedule-ConfirmFalse'>Nhập chưa chính xác!</b>) : null}
                         </div>
                         <div className='AddSchedule-Button'>
                             <button

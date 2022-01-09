@@ -3,6 +3,7 @@ import clsx from "clsx";
 import avatar from "../../../store/imgs/avatar.jpg";
 import { Popup, MyCalendar } from "../../";
 import trainerProfileAPI from "../../../api/trainerProfileAPI"
+import AddSchedule from "../AddSchedule/AddSchedule";
 
 import styles from "./TrainerInfor.module.css";
 
@@ -13,6 +14,7 @@ function TrainerInfor() {
     let [isPTag, setPTag] = useState(true);
 
     let [showPopup, setShowPopup] = useState(false);
+    let [showPopupAddSchedule, setShowPopupAddSchedule] = useState(false);
 
     let [userProfile, setUserProfile] = useState({
         id: "",
@@ -389,15 +391,25 @@ function TrainerInfor() {
             </div>
 
             {/* Lịch tập luyện */}
+            <br />
             <div className={clsx(styles.inforField)}>
-                <h1 className={clsx(styles.inforHeading)}>
-                    Thông tin tập luyện
-                </h1>
+                <div className={clsx(styles.infoHeading_PracticeInfo)}>
+                    <h1 className={clsx(styles.inforHeading)}>
+                        Thông tin tập luyện
+                    </h1>
+                    <button
+                        className={clsx(styles.btnEdit)}
+                        onClick={() => {
+                            setShowPopupAddSchedule(true);
+                        }}
+                    >Thêm lịch</button>
+                </div>
+                <AddSchedule trigger={showPopupAddSchedule} setTrigger={setShowPopupAddSchedule} />
                 <MyCalendar />
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />
-        </div>
+        </div >
     );
 }
 
