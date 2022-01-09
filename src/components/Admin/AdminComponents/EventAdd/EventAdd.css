@@ -156,3 +156,9 @@
     transform: scale(1.005);
     transform: translateY(-2px);
 }
+.form-false-event-create {
+    text-align: center;
+    padding-top: 15px;
+    font-size: 24px;
+    color: #C51022;
+}

@@ -8,16 +8,16 @@ import Popup from '../../../Popup/Popup'
 
 function RenewPackage() {
     const navigate = useNavigate();
-    let [memberID, setMemberID] = useState(0);
+    let [memberID, setMemberID] = useState(1);
     let [memberList, setMemberList] = useState([]);
-    let [packageRenewID, setPackageRenewID] = useState(0);
+    let [packageRenewID, setPackageRenewID] = useState(1);
     let [packageList, setPackageList] = useState([]);
     let [formFalse, setFormFalse] = useState(false);
     let [errMsg, setErrMsg] = useState(false);
     let [showPopup, setShowPopup] = useState(false);
 
     let {member_id} = useParams();
-    if (!member_id) member_id = 0;
+    if (!member_id) member_id = 1;
     // console.log(member_id);
 
     useEffect(() =>{
@@ -34,11 +34,11 @@ function RenewPackage() {
             setPackageList(packageList);
             // console.log(packageList);
 
-            if (memberList.find(member => member.id == member_id) == null) memberID = 0;
+            if (memberList.find(member => member.id == member_id) == null) memberID = 1;
             else memberID = member_id;
             setMemberID(memberID);
 
-            packageRenewID = 0;
+            packageRenewID = 1;
             setPackageRenewID(packageRenewID);
             console.log(memberID);
             console.log(packageRenewID);

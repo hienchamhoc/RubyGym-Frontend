@@ -1,25 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./EventElement.css";
-import sk1_event from "../../../../store/imgs/sk1_event.png";
+import eventAPI from "../../../../api/eventAPI";
+import Popup from '../../../Popup/Popup'
 
-function EventElement() {
-    const id = 1;
+function EventElement(props) {
+    let [showPopup, setShowPopup] = useState(false);
+    const { id, title, start_time, finish_time, thumbnail_image_url } = props;
     return (
         <tr>
-            <td>1</td>
+            <td>{id}</td>
             <td>
-                <img src={sk1_event} alt="" />
+                <img src={process.env.REACT_APP_API_URL + thumbnail_image_url} alt="Anh minh hoa" />
             </td>
             <td>
-                <Link to={`detail/1`} className="event-link">
-                    ĐIỀU ƯỚC GIÁNG SINH
+                <Link to={`detail/${id}`} className="event-link">
+                    {title}
                 </Link>
             </td>
-            <td>07/12/2021</td>
-            <td>24/12/2021</td>
+            <td>{start_time}</td>
+            <td>{finish_time}</td>
             <td>
-                <button>Xóa</button>
+                <button
+                onClick={async (e) => {
+                    const res = await eventAPI.deleteEvent(id);
+                    if (res.data.status) {
+                        console.log("ok");
+                    }
+                    else {
+
+                    }
+                }}
+                >Xóa</button>
             </td>
         </tr>
     );

@@ -1,34 +1,70 @@
 import React, { useState, useEffect } from "react";
 import "./EventDetail.css";
-import { useParams } from "react-router-dom";
-import managementAPI from "../../../../api/managementAPI";
-import sk1_event from "../../../../store/imgs/sk1_event.png";
-import sk1 from "../../../../store/imgs/sk1.png";
+import { useParams, useNavigate } from "react-router-dom";
+import Popup from '../../../Popup/Popup'
+import eventAPI from "../../../../api/eventAPI";
 
-function EventDetail() {
+function EventDetail(props) {
+    const navigate = useNavigate();
     let [isPTag, setPTag] = useState(true);
-    // let [eventInfor, setEventInfor] = useState({});
+    let [showPopup, setShowPopup] = useState(false);
+    let [eventInfor, setEventInfor] = useState({
+        id: '',
+        title: '',
+        detail_title: '',
+        content: '',
+        start_time: new Date(),
+        finish_time: '',
+        thumbnail_image_url: '',
+        detail_image_url: ''
+    });
+    let [eventInforOnChange, setEventInforOnChange] = useState({
+        id: '',
+        title: '',
+        detail_title: '',
+        content: '',
+        start_time: '',
+        finish_time: '',
+        thumbnail_image_url: '',
+        detail_image_url: ''
+    });
     const handleEdit = () => {
         setPTag(false);
     };
     const handleCancel = () => {
         setPTag(true);
+        setEventInforOnChange({...eventInfor});
     };
     const handleUpdate = async () => {
-        setPTag(true);
+        //console.log(eventInforOnChange);
+        const response = await eventAPI.updateEvent(eventInfor.id, eventInforOnChange);
+        //console.log(response);
+        if (response && response.status) {
+            setShowPopup((prev) => !prev);
+            setEventInfor({...eventInforOnChange});
+            setPTag(true);
+            setTimeout(() => {
+                setShowPopup((prev) => !prev);
+            }, 1000);
+        }
+        if (response && !response.status && response.message) {
+            alert(response.message);
+        }
     };
 
     const { id } = useParams();
 
-    // useEffect(() => {
-    //     (async () => {
-    //         console.log("hi");
-    //         const res = await managementAPI.eventDetail({ id });
-    //         eventInfor = res.data.data;
-    //         setEventInfor(eventInfor);
-    //         console.log(eventInfor);
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            //console.log("hi");
+            const res = await eventAPI.eventDetail({ id });
+            eventInfor = res.data.data;
+            eventInforOnChange = res.data.data;
+            setEventInfor(eventInfor);
+            setEventInforOnChange(eventInforOnChange);
+            //console.log(eventInforOnChange);
+        })();
+    }, []);
 
     return (
         <div className="event-detail-wrapperr">
@@ -45,7 +81,7 @@ function EventDetail() {
                 <h2>Ảnh sự kiện</h2>
                 <div className={isPTag ? "img-event" : "img-event edit-active"}>
                     <div className="thumbnail-img-event">
-                        <img src={sk1_event} alt="" />
+                        <img src={process.env.REACT_APP_API_URL + eventInfor.thumbnail_image_url} alt="" />
                         {!isPTag && (
                             <button className="thumbnail-img-btn">
                                 <i class="fal fa-camera"></i>
@@ -54,7 +90,7 @@ function EventDetail() {
                         <div>(350 x 250)</div>
                     </div>
                     <div className="detail-img-event">
-                        <img src={sk1} alt="" />
+                        <img src={process.env.REACT_APP_API_URL + eventInfor.detail_image_url} alt="" />
                         {!isPTag && (
                             <button className="detail-img-btn">
                                 <i class="fal fa-camera"></i>
@@ -66,39 +102,116 @@ function EventDetail() {
 
                 {/* Tiêu đề */}
                 <h2>Tiêu đề</h2>
-                <div className={isPTag ? "infor-event" : "infor-event edit-active"}>ĐIỀU ƯỚC GIÁNG SINH</div>
+                {isPTag ? 
+                    <div className={isPTag ? "infor-event" : "infor-event edit-active"}>
+                        {eventInfor.title}
+                    </div>
+                    : <input className="infor-event edit-active" type="text"
+                        value={eventInforOnChange.title}
+                        onChange={(e) => {
+                            eventInforOnChange = {
+                                title: e.target.value,
+                                detail_title: eventInforOnChange.detail_title,
+                                content: eventInforOnChange.content,
+                                start_time: eventInforOnChange.start_time,
+                                finish_time: eventInforOnChange.finish_time,
+                                thumbnail_image_url: eventInforOnChange.thumbnail_image_url,
+                                detail_image_url: eventInforOnChange.detail_image_url
+                            }
+                            setEventInforOnChange(eventInforOnChange);
+                            // //console.log(eventInforOnChange);
+                        }}                
+                    ></input>
+                }
 
                 {/* Tiêu đề chi tiết */}
                 <h2>Tiêu đề chi tiết</h2>
-                <div className={isPTag ? "infor-event" : "infor-event edit-active"}>
-                    THAM GIA VÒNG QUAY GIÁNG SINH, NHẬN NGAY IPHONE 13 PROMAX
-                    TẠI RUBYGYM!
-                </div>
+                {isPTag ? 
+                <div className="infor-event">
+                    {eventInfor.detail_title}
+                </div> 
+                : <input className="infor-event edit-active" type="text"
+                    value={eventInforOnChange.detail_title}
+                    onChange={(e) => {
+                        eventInforOnChange = {
+                            title: eventInforOnChange.title,
+                            detail_title: e.target.value,
+                            content: eventInforOnChange.content,
+                            start_time: eventInforOnChange.start_time,
+                            finish_time: eventInforOnChange.finish_time,
+                            thumbnail_image_url: eventInforOnChange.thumbnail_image_url,
+                            detail_image_url: eventInforOnChange.detail_image_url
+                        }
+                        setEventInforOnChange(eventInforOnChange);
+                        // //console.log(eventInforOnChange);
+                    }}                
+                ></input>}
 
                 {/* Thời gian */}
                 <div className="time-event">
                     <div className="start-time">
                         <h2>Ngày bắt đầu</h2>
-                        <div className={isPTag ? "infor-event" : "infor-event edit-active"}>07/12/2021</div>
+                        <input type='date' disabled={isPTag}
+                            value={isPTag ? eventInfor.start_time.toString().substring(0, 10) : eventInforOnChange.start_time.toString().substring(0, 10)}
+                            onChange={(e) => {
+                                eventInforOnChange = {
+                                    title: eventInforOnChange.title,
+                                    detail_title: eventInforOnChange.detail_title,
+                                    content: eventInforOnChange.content,
+                                    start_time: e.target.value,
+                                    finish_time: eventInforOnChange.finish_time,
+                                    thumbnail_image_url: eventInforOnChange.thumbnail_image_url,
+                                    detail_image_url: eventInforOnChange.detail_image_url
+                                }
+                                setEventInforOnChange(eventInforOnChange);
+                                // //console.log(eventInforOnChange);
+                            }}
+                        ></input>
                     </div>
                     <div className="finish-time">
                         <h2>Ngày kết thúc</h2>
-                        <div className={isPTag ? "infor-event" : "infor-event edit-active"}>24/12/2021</div>
+                        <input type='date' disabled={isPTag}
+                            value={isPTag ? eventInfor.finish_time.toString().substring(0, 10) : eventInforOnChange.finish_time.toString().substring(0, 10)}
+                            onChange={(e) => {
+                                eventInforOnChange = {
+                                    title: eventInforOnChange.title,
+                                    detail_title: eventInforOnChange.detail_title,
+                                    content: eventInforOnChange.content,
+                                    start_time: eventInforOnChange.start_time,
+                                    finish_time: e.target.value,
+                                    thumbnail_image_url: eventInforOnChange.thumbnail_image_url,
+                                    detail_image_url: eventInforOnChange.detail_image_url
+                                }
+                                setEventInforOnChange(eventInforOnChange);
+                                // //console.log(eventInforOnChange);
+                            }}
+                        ></input>
                     </div>
                 </div>
 
                 {/* Nội dung */}
                 <h2>Nội dung</h2>
-                <div className={isPTag ? "infor-event" : "infor-event edit-active"}>
-                    Chào mừng Giáng Sinh sắp tới, cả nhà cùng tham gia sự kiện
-                    vòng quay Giáng Sinh tại trung tâm RUBYGYM nha! Cách thức
-                    tham gia vô cùng đơn giản, chỉ cần tham gia là có quà mà
-                    phần thưởng thì vô cùng hấp dẫn và giá trị nhé! Đối tượng
-                    tham gia: Tất cả các hội viên của trung tâm Cách thức tham
-                    gia: Quay trực tiếp tại trung tâm Cơ cấu giải thưởng: Thẻ
-                    điện thoại 100k, Thẻ hội viên 3 tháng miễn phí, Phiếu mua
-                    hàng, và đặc biệt là Iphone 13 PROMAX
-                </div>
+                {isPTag ? 
+                    <div className={isPTag ? "infor-event" : "infor-event edit-active"}>
+                        {eventInfor.content}
+                    </div>
+                    : <input className="infor-event edit-active" type="text"
+                        value={eventInforOnChange.content}
+                        onChange={(e) => {
+                            eventInforOnChange = {
+                                title: eventInforOnChange.title,
+                                detail_title: eventInforOnChange.detail_title,
+                                content: e.target.value,
+                                start_time: eventInforOnChange.start_time,
+                                finish_time: eventInforOnChange.finish_time,
+                                thumbnail_image_url: eventInforOnChange.thumbnail_image_url,
+                                detail_image_url: eventInforOnChange.detail_image_url
+                            }
+                            setEventInforOnChange(eventInforOnChange);
+                            // //console.log(eventInforOnChange);
+                        }}                
+                    ></input>
+                }
             </div>
             <div className="btn-update-cancel">
                 {!isPTag && (
@@ -118,6 +231,7 @@ function EventDetail() {
                     </div>
                 )}
             </div>
+            <Popup trigger={showPopup} message="Cập nhật thành công" />
         </div>
     );
 }
