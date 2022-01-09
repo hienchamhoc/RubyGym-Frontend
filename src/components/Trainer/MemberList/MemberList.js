@@ -1,7 +1,7 @@
 import { React, useState, useRef, useEffect } from 'react'
 import { useTable } from 'react-table';
-import { TrainerRating } from '..';
-import avatar from "./../../store/imgs/avatar.jpg";
+import { TrainerRating } from './../../';
+import avatar from "../../../store/imgs/avatar.jpg";
 import "./MemberList.css"
 
 

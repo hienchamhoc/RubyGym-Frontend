@@ -25,9 +25,9 @@ const authAPI = {
     logout: async () => {
         try {
             const url = '/auth/logout'
-            const response = await axiosClient.post(url);
             localStorage.removeItem('token');
             store.dispatch(Actions.removeUserOutOfRedux(null))
+            const response = await axiosClient.post(url);
         } catch (err) {
             alert(err.message);
         }

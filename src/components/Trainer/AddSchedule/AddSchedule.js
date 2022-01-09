@@ -3,8 +3,9 @@ import Select from 'react-select'
 import Calendar from 'react-calendar';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
-import trainerProfileAPI from '../../api/trainerProfileAPI';
-import calendarAPI from '../../api/calendarAPI';
+import trainerProfileAPI from '../../../api/trainerProfileAPI';
+import calendarAPI from '../../../api/calendarAPI';
+// import calendarAPI from '../../../api/calendarAPI';
 import './AddSchedule.css'
 function AddSchedule(props) {
     const ref = useRef();

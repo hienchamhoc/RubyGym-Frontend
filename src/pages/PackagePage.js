@@ -1,14 +1,14 @@
 import React from 'react'
-import { Footer, Header, Content_Package} from '../components'
+import { Footer, Header, RenewPackage} from '../components'
 
-function Goi_tap() {
+function Package() {
     return (
         <>
             <Header />
-            <Content_Package />
+            <RenewPackage />
             <Footer />
         </>
     )
 }
 
-export default Goi_tap
+export default Package

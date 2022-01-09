@@ -39,7 +39,7 @@ function Banner() {
                 counter = 1;
                 setCounter(counter)
             }
-        }, 5000)
+        }, 8000)
 
         return () => {
             console.log('clear')

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import './Header.css'
 import logo from './../../store/imgs/logo.png';
 import { useSelector } from 'react-redux'
@@ -7,6 +7,7 @@ import authAPI from "./../../api/authAPI";
 
 
 function Header() {
+    const navigate = useNavigate();
     let user = useSelector(store => store.auth.user)
     // user = 1;
     let [showOption, setShowOpTion] = useState(false);
@@ -17,6 +18,7 @@ function Header() {
 
     const handleLogout = () => {
         authAPI.logout();
+        navigate('/login');
     }
 
     return (
@@ -34,7 +36,6 @@ function Header() {
                                 <li className="nav-item"><NavLink to="/service">Dịch vụ</NavLink></li>
                                 <li className="nav-item"><NavLink to="/event">Sự kiện</NavLink></li>
                                 <li className="nav-item"><NavLink to="/package">Gói tập</NavLink></li>
-                                <li className="nav-item"><NavLink to="/blog">Blog</NavLink></li>
                                 <li className="nav-item"><NavLink to="/feedback">Góp ý - Phản hồi</NavLink></li>
                             </ul>
                         </nav>
@@ -57,7 +58,7 @@ function Header() {
                                         <li onClick={() => {
                                             handleShowOption();
                                             handleLogout();
-                                        }} className='user-option-item'><Link to="">Đăng xuất</Link></li>
+                                        }} className='user-option-item'><Link to="/">Đăng xuất</Link></li>
                                     </ul>
                                 </div>
                             }

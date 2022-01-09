@@ -1,0 +1,206 @@
+.avatar {
+    width: 280px;
+    margin-top: 40px;
+    border-radius: 50%;
+    height: 280px;
+    position: relative;
+}
+
+.chooseAvatar {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #4E4F50;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.chooseAvatar:hover {
+    opacity: 1;
+    transition: 0.4s;
+}
+.chooseAvatarIcon {
+    color: #E7E9EC;
+    font-size: 20px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.inforHeading {
+    font-size: 30px;
+    font-weight: 600;
+    padding-bottom: 4px;
+    color: var(--text-color);
+    letter-spacing: 0.02em;
+}
+
+.infor {
+    letter-spacing: 0.02em;
+    height: 100%;
+    display: flex;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+}
+.inforWrapperAll{
+    width: 90%;
+    margin: 10px 0 20px 30px;
+
+}
+.inforWrapper {
+    width: 100%;
+    padding:6px 0 4px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .inforWrapper:not(:last-child) {
+    margin-bottom: 20px;
+} */
+
+.inforContent {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.inforContent b{
+    font-weight: 500;
+    font-size: 18px;
+    padding: 1px 2px;
+}
+.inforContent input{
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    font-size: 18px;
+}
+.inforContent select{
+    font-weight: 500;
+    font-size: 18px;
+}
+.inforGender{
+    height: 30px;
+}
+.inforLabel {
+    margin: 0 0 8px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.inforText {
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.inforBtn {
+    margin-left: 8px;
+    height: 36px;
+    padding: 0 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    color: var(--text-color);
+    border: 1px solid #333;
+    opacity: 0.4;
+}
+
+.inforBtn i {
+    font-size: 12px;
+    margin-right: 4px;
+}
+
+.inforBtn:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.inforSave {
+    color: white;
+    background-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 10px;
+    border-radius: 20px;
+    opacity: 0.9;
+}
+
+.inforSave:hover {
+    opacity: 1;
+    cursor: pointer;
+}
+.btn-edit{
+    width: 20px;
+}
+.avatarAndName{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+    min-height: 250px;
+    background-color: white;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.userName{
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 0.05em;
+    margin-top: 50px;
+}
+.btnUpdate{
+    height: 40px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #129617;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.btnCancel{
+    margin-left: 40px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #C51022;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.btnEdit{
+    height: 40px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #129617;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}

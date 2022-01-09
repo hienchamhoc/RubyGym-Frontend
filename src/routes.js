@@ -9,7 +9,7 @@ import ChangePasswordPage from './pages/ChangePasswordPage';
 import ServicePage from './pages/ServicePage';
 import EventPage from './pages/EventPage';
 import PackagePage from './pages/PackagePage';
-import BlogPage from './pages/BlogPage';
+import FeedbackPage from './pages/FeedbackPage';
 
 import TestPage from './pages/TestPage';
 
@@ -24,7 +24,7 @@ const routes = [
         element: <ServicePage />
     },
     {
-        path: '/event',
+        path: '/event/*',
         element: <EventPage />
     },
     {
@@ -32,8 +32,8 @@ const routes = [
         element: <PackagePage />
     },
     {
-        path: '/blog',
-        element: <BlogPage />
+        path: '/feedback',
+        element: <FeedbackPage />
     },
     {
         path: '/login',

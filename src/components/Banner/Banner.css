@@ -110,7 +110,7 @@
 }
 
 #radio3:checked ~ .first {
-    margin-left: -40%
+    margin-left: -40%;
 }
 
 #radio4:checked ~ .first {

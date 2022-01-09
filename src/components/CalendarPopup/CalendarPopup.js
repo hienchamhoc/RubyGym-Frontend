@@ -95,12 +95,12 @@ function CalendarPopup(props) {
                 Cell: <input type='checkbox' />
             },
             {
-                Header: 'Sua Xoa',
+                Header: 'Tùy chọn',
                 accessor: 'EditAndDelete',
                 Cell: row => (
                     <div>
                         {/* <button onClick={() => handleEdit(row)} className="btn btn-success">Sửa</button> */}
-                        <button onClick={() => handleDelete(row)} className="btn btn-danger">Xoá</button>
+                        <button onClick={() => handleDelete(row)} className="btn btn-danger">Xóa</button>
                     </div>
                 )
             }
@@ -113,25 +113,16 @@ function CalendarPopup(props) {
                 Header: 'Nghỉ', accessor: 'is_cancelled',
                 Cell: <input type='checkbox' disabled={true} />
             },
-            {
-                Header: 'Sua Xoa',
-                accessor: 'EditAndDelete',
-                Cell: row => (
-                    <div>
-                        {/* <button onClick={() => handleEdit(row)} className="btn btn-success">Sửa</button> */}
-                        <button onClick={() => handleDelete(row)} className="btn btn-danger">Xoá</button>
-                    </div>
-                )
-            }
         ];
     // const handleEdit = () => {
 
     // }
     const handleDelete = async (row) => {
-        // console.log(row.cell.row.id);
-        // const currentSchedulesId = calendarList[row.cell.row.id].schedule_id;
-        // const response = await calendarAPI.deleteCalendarDaily(currentSchedulesId);
-        // console.log(response);
+        console.log(row.cell.row.id);
+        const currentSchedulesId = calendarList[row.cell.row.id].id;
+        console.log(currentSchedulesId);
+        const response = await calendarAPI.deleteCalendarDaily(currentSchedulesId);
+        console.log(response);
     }
     const ref = useRef();
     useEffect(() => {

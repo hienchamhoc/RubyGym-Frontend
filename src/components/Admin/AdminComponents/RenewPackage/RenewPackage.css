@@ -1,0 +1,217 @@
+:root {
+    --header-height: 75px;
+    background-color: #f0f0f0;
+}
+
+.form-header-wrapper {
+    height: var(--header-height);
+    width: 100%;
+    background-color: #350409;
+}
+
+.form-header {
+    height: var(--header-height);
+}
+
+.form-header-logo {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.form-body {
+    display: flex;
+    width: 100%;
+    color: #f0f0f0;
+    align-items: center;
+    margin: auto;
+    height: 510px;
+}
+
+.form-field-renew-package {
+    color: #000000;
+    font-size: 28px;
+    margin: auto;
+    letter-spacing: 0.03em;
+    font-weight:550;
+}
+
+.form-field-container {
+    text-align: center;
+}
+
+.form-body-wrapper {
+    border-radius: 4px;
+    width: 430px;
+    margin: auto;
+}
+
+.form-inner-renew-package {
+    padding: 30px 20px;
+    margin: 20px 20px;
+    height: 300px;
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #9f9f9f;
+    border-radius: 10px;
+}
+
+.form-body-heading {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    color: rgb(0, 0, 0);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 35px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+
+.form-role {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+}
+
+.role-detail {
+    padding: 4px;
+    background-color: #c9c9c9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 550;
+    letter-spacing: 7%;
+    cursor: pointer;
+    border-radius: 0px;
+    transition: all ease 0.1s;
+    position: relative;
+    opacity: 0.7;
+    box-shadow: inset 0px 4px 4px rgba(255, 255, 255, 0.3);
+}
+
+.role-detail:hover {
+    opacity: 1;
+}
+
+.role-active {
+    background-color: #C51022;
+    color: white;
+    opacity: 1;
+}
+
+.role-detail-wrapper {
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.role-detail-wrapper .role-detail{
+    width: 50%;
+}
+
+
+.role-detail-wrapper .role-detail:first-child {
+    margin-right: 10px;
+}
+
+.role-detail i {
+    padding: 0 15px 0 10px;
+}
+
+.form-renew-package {
+    align-items: center;
+}
+
+.form-group-renew-package {
+    width: 100%;
+    padding: 10px 20px 20px 20px;
+    text-align: center;
+}
+
+.select-renew-package {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    border-radius: 8px;
+    font-size: 18px;
+}
+.option-renew-package {
+    /* font-size: 20px; */
+    /* width: 100%;
+    padding-left: 10px;
+    padding-right: 10px; */
+}
+
+.userinput {
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-top: 10px;
+    padding: 10px;
+    height: 40px;
+    font-size: 18px;
+    letter-spacing: 0.01em;
+    font-weight: 450;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    outline: none;
+    background-color: #F7F7F7;
+    display: inline-block;
+}
+
+.form-false {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: -10px;
+    color: var(--primary-color);
+}
+
+.usersubmit-btnn {
+    margin-top: 10px;
+    width: 120px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    background-color: #129617;
+    border: none;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
+    color: white;
+    border-radius: 0px;
+    cursor: pointer;
+    display: inline;
+}
+
+.usersubmit-btnn.inactive {
+    background-color: #c9c9c9;
+    cursor: default;
+}
+
+.user-cancel-btn {
+    margin-top: 10px;
+    width: 120px;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    background-color: #C51022;
+    border: none;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
+    color: white;
+    border-radius: 0px;
+    cursor: pointer;
+    display: inline;
+}
+
+.btn-group {
+    text-align: center;
+}

@@ -1,7 +1,7 @@
 import { React, useState, useRef, useEffect } from 'react'
-import practiceInfoAPI from '../../api/practiceInfoAPI';
+import practiceInfoAPI from '../../../api/practiceInfoAPI';
 import './TrainerRating.css';
-import avatar from "./../../store/imgs/avatar.jpg";
+import avatar from "../../../store/imgs/avatar.jpg";
 function TrainerRating(props) {
     const ref = useRef();
     let [ratingState, setRatingState] = useState({
