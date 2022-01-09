@@ -29,7 +29,16 @@ const trainerProfileAPI = {
         } catch (err) {
             alert(err.message);
         }
-    }
+    },
+    getMyUser: async () => {
+        try {
+            const url = '/trainer/members';
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (err) {
+            alert(err.message);
+        }
+    },
 }
 
 export default trainerProfileAPI

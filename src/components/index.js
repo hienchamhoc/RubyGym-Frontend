@@ -26,9 +26,12 @@ import ChangePassword from './ChangePassword/ChangePassword';
 import CalendarPopup from './CalendarPopup/CalendarPopup';
 import MyCalendar from './MyCalendar/MyCalendar';
 import TrainerInfor from './TrainerInfor/TrainerInfor'
+import AddSchedule from './AddSchedule/AddSchedule';
+import TrainerRating from './TrainerRating/TrainerRating';
+import MemberList from './MemberList/MemberList';
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Blog, Content_Feedback }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome };
 export { CustomerDetail, TrainerDetail };
-export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor }
+export { Trainer, Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor, AddSchedule, TrainerRating, MemberList }

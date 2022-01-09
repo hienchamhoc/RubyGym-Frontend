@@ -5,7 +5,9 @@ import { Popup } from '../components';
 import 'react-calendar/dist/Calendar.css';
 import CalendarPopup from '../components/CalendarPopup/CalendarPopup';
 import MyCalendar from '../components/MyCalendar/MyCalendar';
-
+import { AddSchedule } from '../components';
+import { TrainerRating } from '../components';
+import { MemberList } from '../components';
 
 function TestPage() {
     let [showPopup, setShowPopup] = useState(false);
@@ -26,6 +28,18 @@ function TestPage() {
         { id: "9", starttime: "9h", finishtime: "10h", location: "tầng 2", lecture: "tập bụng", absent: "vắng" },
 
     ]
+    const members = [
+        { name: 'Hien' },
+        { name: 'Dai' },
+        { name: 'Dung' },
+        { name: 'Duong' }
+    ];
+    const places = [
+        { location: 'tang 1' },
+        { location: 'tang 2' },
+        { location: 'tang 3' }
+    ];
+
     // useEffect(() => {
     //     if (showPopup) {
     //         var id = setTimeout(() => {
@@ -59,48 +73,21 @@ function TestPage() {
     //         console.log(trainerState.id);
     //     })()
     // })
-    const handleClick = () => {
+    const handleAddCalendar = () => {
+
         setShowPopup(true);
     }
-    const handleEnter = () => {
-        console.log("enter");
-    }
-    const handleLeave = () => {
-        console.log("leave");
-    }
-    const hanldeClickDay = (e) => {
-        console.log(e);
-        setTestDate(e);
-        console.log(testDate);
-    }
-    const tileDisabledTrainer = (e) => {
-        //e.getDay() === 0
-    }
-
     return (
         <>
-            {/* <h1>day la test page</h1>
+            <h1>day la test page</h1>
 
             <button
-                onClick={handleClick}
-                onMouseEnter={handleEnter}
-                onMouseLeave={handleLeave}
-            >day ne</button>
-            <Popup trigger={showPopup} message="Cập nhật thành công nhé" /> */}
-            {/* <Calendar
-                onClickDay={hanldeClickDay}
-                tileClassName={}
-            ></Calendar> */}
-            <button
-                className="btn btn-primary"
-                onClick={() => {
-                    setShowPopup(true)
-                }}
-            >bam vao day</button>
-            <p>Ngày {date.getDay()}/{date.getMonth()}</p>
-            <p>Giờ là {date.getHours()}:{date.getMinutes()}</p>
-            {/* <MyCalendar /> */}
-            <CalendarPopup trigger={showPopup} setTrigger={setShowPopup} data={datas} />
+                className="btn btn-success"
+                onClick={handleAddCalendar}
+            >Them</button>
+            <AddSchedule trigger={showPopup} setTrigger={setShowPopup} />
+            {/* <TrainerRating trigger={showPopup} setTrigger={setShowPopup} />
+            <MemberList /> */}
         </>
     )
 }
