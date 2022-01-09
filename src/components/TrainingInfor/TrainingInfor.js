@@ -29,6 +29,7 @@ function TrainingInfor() {
             console.log(response);
             if (response && response.status && response.data.status) {
                 trainingInformation = { ...response.data.data };
+                trainingInformation.bmi =  Math.round(trainingInformation.weight/trainingInformation.height/trainingInformation.height*10000) / 10
                 setTrainingInforOnChange(trainingInformation);
                 setTrainingInfor(trainingInformation);
                 console.log(trainingInformation);
