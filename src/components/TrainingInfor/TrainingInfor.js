@@ -215,7 +215,7 @@ function TrainingInfor() {
                                             Đánh giá của huấn luyện viên
                                         </h3>
                                         <b>
-                                            hihi
+                                            {trainingInformation.evaluation}
                                         </b>
                                     </div>
                                 </div>
