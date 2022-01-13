@@ -4,7 +4,7 @@ import avatar from "../../../store/imgs/avatar.jpg";
 import { Popup, MyCalendar } from "../../";
 import trainerProfileAPI from "../../../api/trainerProfileAPI"
 import AddSchedule from "../AddSchedule/AddSchedule";
-
+import MemberList from "../MemberList/MemberList";
 import styles from "./TrainerInfor.module.css";
 
 // Trang này có thể hiển thị với cả học viên, huấn luyện viên và admin
@@ -388,6 +388,16 @@ function TrainerInfor() {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <br />
+            <div className={clsx(styles.inforField)}>
+                <h1 className={clsx(styles.inforHeading)}>
+                    Danh sách hội viên
+                </h1>
+                {/* <AddSchedule trigger={showPopupAddSchedule} setTrigger={setShowPopupAddSchedule} /> */}
+                {/* <MyCalendar /> */}
+                <MemberList />
             </div>
 
             {/* Lịch tập luyện */}

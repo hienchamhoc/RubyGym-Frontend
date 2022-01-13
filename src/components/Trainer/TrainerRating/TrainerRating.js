@@ -4,6 +4,7 @@ import './TrainerRating.css';
 import avatar from "../../../store/imgs/avatar.jpg";
 function TrainerRating(props) {
     const ref = useRef();
+    let [showConfirmFalse, setShowConfirmFalse] = useState(false);
     let [ratingState, setRatingState] = useState({
         height: '1m6',
         weight: '80kg',
@@ -37,10 +38,20 @@ function TrainerRating(props) {
     //     })();
     // }, []);
     const hanleConfirm = async () => {
-        // const response = await practiceInfoAPI.updateRating(ratingState);
-        // if (response && !response.status && response.message) {
-        //     alert(response.message);
-        // }
+        if (ratingState.rating == '') {
+            setShowConfirmFalse(true);
+            console.log(ratingState.rating);
+            // console.log(ratingState.rating);
+        } else {
+            console.log(ratingState.rating);
+
+            setShowConfirmFalse(false);
+            props.setTrigger(false);
+            // const response = await practiceInfoAPI.updateRating(ratingState);
+            // if (response && !response.status && response.message) {
+            //     alert(response.message);
+            // }
+        }
     }
     return props.trigger ? (
         <>
@@ -83,6 +94,7 @@ function TrainerRating(props) {
                                 })
                             }}
                         ></input><br />
+                        {showConfirmFalse ? (<p>Bạn chưa đánh giá</p>) : null}
                         <button
                             onClick={hanleConfirm}
                             className='btn btn-success '

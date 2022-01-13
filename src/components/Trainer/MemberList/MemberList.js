@@ -3,7 +3,7 @@ import { useTable } from 'react-table';
 import { TrainerRating } from './../../';
 import avatar from "../../../store/imgs/avatar.jpg";
 import "./MemberList.css"
-
+import trainerProfileAPI from '../../../api/trainerProfileAPI';
 
 
 
@@ -52,16 +52,29 @@ function Table({ columns, data, date }) {
     )
 }
 function MemberList() {
+
     let [showPopup, setShowPopup] = useState(false);
+
+    const data = [
+        { avatar_url: '', name: 'Hien', birthday: '20/11/2008', gender: 'Nam', phone: '0968372613' }
+
+    ];
+
 
     const column = [
         {
             Header: 'Ảnh', accessor: 'avatar',
             Cell: row =>
-                <img className="MemberList-Avatar"
-
-                    src={avatar}
-                ></img>
+                <div className="MemberList-Avatar"
+                    style={{
+                        backgroundImage: data.avatar_url
+                            ? `url(${data.avatar_url})`
+                            : `url(${avatar})`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                    }}
+                ></div>
         },
         { Header: 'Họ tên', accessor: 'name', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
         { Header: 'Ngày sinh', accessor: 'birthday', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
@@ -83,17 +96,23 @@ function MemberList() {
             )
         }
     ]
-    const datas = [
-        { avatar: '', name: 'Hien', birthday: '20/11/2008', gender: 'Nam', phone: '0968372613' }
 
-    ]
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await trainerProfileAPI.getMyUser();
+    //         if (response && response.status && response.data.status) {
+    //             data = response.data.data
+    //         }
+    //     })();
+    // }, []);
+
     return (
         <>
             <Table
                 columns={column}
-                data={datas}
+                data={data}
             />
-            <TrainerRating trigger={showPopup} setTrigger={setShowPopup} />
+            <TrainerRating trigger={showPopup} setTrigger={setShowPopup} data={data} />
         </>
     )
 }

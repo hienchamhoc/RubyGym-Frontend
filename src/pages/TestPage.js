@@ -85,9 +85,9 @@ function TestPage() {
                 className="btn btn-success"
                 onClick={handleAddCalendar}
             >Them</button>
-            <AddSchedule trigger={showPopup} setTrigger={setShowPopup} />
-            {/* <TrainerRating trigger={showPopup} setTrigger={setShowPopup} />
-            <MemberList /> */}
+            {/* <AddSchedule trigger={showPopup} setTrigger={setShowPopup} /> */}
+            {/* <TrainerRating trigger={showPopup} setTrigger={setShowPopup} /> */}
+            <MemberList />
         </>
     )
 }
