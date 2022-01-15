@@ -6,10 +6,13 @@ import Popup from '../../../Popup/Popup'
 
 function EventElement(props) {
     let [showPopup, setShowPopup] = useState(false);
-    const { id, title, start_time, finish_time, thumbnail_image_url } = props;
+    const { index, id, title, start_time, finish_time, thumbnail_image_url } = props;
+
+
+
     return (
         <tr>
-            <td>{id}</td>
+            <td>{index}</td>
             <td>
                 <img src={process.env.REACT_APP_API_URL + thumbnail_image_url} alt="Anh minh hoa" />
             </td>
@@ -26,6 +29,7 @@ function EventElement(props) {
                     const res = await eventAPI.deleteEvent(id);
                     if (res.data.status) {
                         console.log("ok");
+                        props.handleDeleteEvent(id);
                     }
                     else {
 

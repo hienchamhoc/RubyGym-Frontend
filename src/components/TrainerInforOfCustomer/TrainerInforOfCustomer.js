@@ -7,7 +7,9 @@ import avatarTrainer from "./../../store/imgs/avatar.jpg";
 
 import styles from "./TrainerInforOfCustomer.module.css";
 
-function TrainerInforOfCustomer({ member }) {
+function TrainerInforOfCustomer({ member, trainer_id }) {
+    let [trainers, setTrainers] = useState([]);
+    let [myTrainer, setMyTrainer] = useState({});
 
     let [isPTag, setPTag] = useState(true);
 
@@ -23,7 +25,7 @@ function TrainerInforOfCustomer({ member }) {
         return () => {
             clearTimeout(id);
         }
-    }, [showPopup])
+    }, [showPopup]);
 
     const handleEdit = () => {
         setPTag(false);
@@ -32,26 +34,6 @@ function TrainerInforOfCustomer({ member }) {
         setPTag(true);
     };
 
-
-
-    let [trainers, setTrainers] = useState([
-
-        {
-            id: 2, name: 'Dũng', birthday: '2021-12-03', gender: "Nữ", phone: "012"
-        },
-        {
-            id: 3, name: 'Hùng', birthday: '2020-12-14', gender: "Nam", phone: "0928328"
-        },
-        {
-            id: 1, name: 'Đương', birthday: '2021-12-03', gender: "Nam", phone: "09120201"
-        }
-    ]);
-    let [myTrainer, setMyTrainer] = useState(
-        {
-            id: 3, name: 'Hùng', birthday: '2020-12-14', gender: "Nam", phone: "0928328"
-        }
-    );
-
     useEffect(() => {
         (async () => {
             const response = await managementAPI.trainerDetail({ id: member.trainer_id });
@@ -59,37 +41,42 @@ function TrainerInforOfCustomer({ member }) {
                 myTrainer = response.data.data;
                 setMyTrainer(myTrainer);
             }
-        })()
-    }, [])
-
-    useEffect(() => {
-        (async () => {
-            const response = await managementAPI.trainerList();
-            if (response && response.data.status) {
-                trainers = response.data.data.trainer_list;
+            
+            const _trainers = await managementAPI.trainerList();
+            if (_trainers && _trainers.data.status) {
+                trainers = _trainers.data.data.trainer_list;
                 setTrainers(trainers);
             }
         })()
     }, [])
 
+    // useEffect(() => {
+    //     (async () => {
+    //         const response = await managementAPI.trainerDetail({ id: member.trainer_id });
+    //         if (response && response.data.status) {
+    //             myTrainer = response.data.data;
+    //             setMyTrainer(myTrainer);
+    //         }
+    //     })()
+    // }, [isPTag]);
 
-    const handleChangeTrainer = (id) => {
-        console.log(id);
-        myTrainer = trainers.find(trainer => {
-            return trainer.id == id;
-        })
-        console.log(myTrainer);
-        myTrainer = { ...myTrainer }
-        setMyTrainer(myTrainer);
+
+    const handleChangeTrainer = async (id) => {
+        const response = await managementAPI.trainerDetail({ id: id });
+        if (response && response.data.status) {
+            myTrainer = response.data.data;
+            setMyTrainer(myTrainer);
+        }
     }
 
     const handleUpdate = async () => {
         setPTag(true);
-        console.log(myTrainer.id);
+        console.log(myTrainer);
         const response = await managementAPI.changeTrainer(member.id, myTrainer.id)
-        if (response && response.data.status) {
-            setShowPopup((prev) => !prev);
-        }
+        console.log(response);
+        // if (response && response.data.status) {
+        //     setShowPopup((prev) => !prev);
+        // }
     };
 
 
@@ -148,7 +135,7 @@ function TrainerInforOfCustomer({ member }) {
                                             </div>
                                         ) : (
                                             <select
-                                                // value={myTrainer.phone}
+                                                value={myTrainer.id}
                                                 onChange={(e) => {
                                                     console.log(e.target.value)
                                                     handleChangeTrainer(e.target.value);
@@ -158,7 +145,7 @@ function TrainerInforOfCustomer({ member }) {
                                                     trainers.map(trainer => {
                                                         return (<option
                                                             selected={trainer.id == myTrainer.id}
-                                                            value={trainer.id}>{trainer.name}</option>
+                                                            value={trainer.id}>{trainer.name + ' - ' + trainer.phone}</option>
                                                         )
                                                     })
                                                 }
@@ -172,14 +159,11 @@ function TrainerInforOfCustomer({ member }) {
                                         <input
                                             readOnly={true}
                                             type="date"
-                                            // value={(function () {
-                                            //     return userProfile.birthday.slice(
-                                            //         0,
-                                            //         10
-                                            //     );
-                                            // })()}
                                             id="trainer-birthday"
-                                            value={myTrainer.birthday}
+                                            value={myTrainer.birthday ? myTrainer.birthday.substring(
+                                                0,
+                                                10
+                                            ) : ''}
                                         />
                                     </div>
                                     <div

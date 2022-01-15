@@ -274,10 +274,10 @@ function CustomerInfor() {
                                                 className={clsx(
                                                     styles.inforText
                                                 )}
-                                                value={userProfile.birthday.substring(
+                                                value={userProfile.birthday ? userProfile.birthday.substring(
                                                     0,
                                                     10
-                                                )}
+                                                ) : ''}
                                                 onChange={(e) => {
                                                     setProfileOnChange({
                                                         ...profileOnChange,
@@ -295,10 +295,10 @@ function CustomerInfor() {
                                                 className={clsx(
                                                     styles.inforText
                                                 )}
-                                                value={profileOnChange.birthday.substring(
+                                                value={profileOnChange.birthday ? profileOnChange.birthday.substring(
                                                     0,
                                                     10
-                                                )}
+                                                ) : ''}
                                                 onChange={(e) => {
                                                     setProfileOnChange({
                                                         ...profileOnChange,
@@ -388,10 +388,10 @@ function CustomerInfor() {
                                             // ref={birthdayRef}
                                             type="date"
                                             className={clsx(styles.inforText)}
-                                            value={userProfile.created_at.substring(
+                                            value={userProfile.created_at ? userProfile.created_at.substring(
                                                 0,
                                                 10
-                                            )}
+                                            ) : ''}
                                         />
                                     </div>
                                 </div>

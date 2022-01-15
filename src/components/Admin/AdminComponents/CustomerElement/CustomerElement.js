@@ -106,7 +106,7 @@ function CustomerElement({ infor, admin }) {
                             color: 'rgb(48, 48, 240)'
                         }}
                     ></i>
-                    <div className={clsx(styles.inforContent)}>Nguyễn Văn Tùng</div>
+                    <div className={clsx(styles.inforContent)}>{infor.trainer_name}</div>
                 </div>
 
             </Link>

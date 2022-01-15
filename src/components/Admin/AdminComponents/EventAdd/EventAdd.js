@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import "./EventAdd.css";
 import eventAPI from "../../../../api/eventAPI";
 import Popup from '../../../Popup/Popup'
+import userProfileAPI from "./../../../../api/userProfileAPI";
 
 function EventAdd() {
     const navigate = useNavigate();
@@ -54,6 +55,48 @@ function EventAdd() {
     const handleCancel = () => {
         navigate('/admin/events');
     };
+    
+    // Upload Avatar
+    const handleUploadImage = async (e) => {
+        console.log(e.target.id);
+        const file = e.target.files[0];
+        const formData = new FormData();
+        formData.append("image", file);
+
+        const response = await userProfileAPI.updateAvatar(formData);
+
+        if (e.target.id == 'thumbnailImageChoose') {
+            eventInfor = {
+                ...eventInfor,
+                thumbnail_image_url:response.data.data.imageURL
+            }
+            setEventInfor(eventInfor);
+            console.log(eventInfor);
+        }
+        else {
+            eventInfor = {
+                ...eventInfor,
+                detail_image_url:response.data.data.imageURL
+            }
+            setEventInfor(eventInfor);
+            console.log(eventInfor);
+        }
+        // if (
+        //     response &&
+        //     response.status &&
+        //     response.data &&
+        //     response.data.data
+        // ) {
+        //     userProfile = {
+        //         ...userProfile,
+        //         avatar_url: response.data.data.imageURL,
+        //     };
+        //     setUserProfile(userProfile);
+        // }
+        // if (response && !response.status) {
+        //     alert(response.message);
+        // }
+    };
     return (
         <div>
             <div className="event-detail-header">
@@ -64,17 +107,29 @@ function EventAdd() {
                 <h2>Ảnh sự kiện</h2>
                 <div className="img-event edit-active">
                     <div className="thumbnail-img-event">
-                        <img src="" alt="" />
-                        <button className="thumbnail-img-btn">
+                        <img src={process.env.REACT_APP_API_URL + eventInfor.thumbnail_image_url} alt="" />
+                        <label className="thumbnail-img-btn" htmlFor="thumbnailImageChoose">
                             <i class="fal fa-camera"></i>
-                        </button>
+                        </label>
+                        <input
+                            type="file"
+                            id="thumbnailImageChoose"
+                            hidden
+                            onChange={handleUploadImage}
+                        />
                         <div>(350 x 250)</div>
                     </div>
                     <div className="detail-img-event">
-                        <img src="" alt="" />
-                        <button className="detail-img-btn">
+                        <img src={process.env.REACT_APP_API_URL + eventInfor.detail_image_url} alt="" />
+                        <label className="detail-img-btn" htmlFor="detailImageChoose">
                             <i class="fal fa-camera"></i>
-                        </button>
+                        </label>
+                        <input
+                            type="file"
+                            id="detailImageChoose"
+                            hidden
+                            onChange={handleUploadImage}
+                        />
                         <div>(1080 x 480)</div>
                     </div>
                 </div>

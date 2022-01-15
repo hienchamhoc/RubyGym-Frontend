@@ -21,6 +21,7 @@ function CustomerDetail() {
         created_at: "",
         expired_at: "",
         avatar_url: "",
+        trainer_id: ''
     });
     let [profileOnChange, setProfileOnChange] = useState({
         name: userProfile.name,
@@ -432,7 +433,7 @@ function CustomerDetail() {
                 <div className={clsx(styles.inforHeading)}>
                     {/* Thông tin huấn luyện viên */}
                 </div>
-                <TrainerInforOfCustomer member={userProfile} />
+                {userProfile.trainer_id && <TrainerInforOfCustomer member={userProfile} trainer_id={userProfile.trainer_id}/>}
             </div>
 
             {/* Lịch tập luyện */}

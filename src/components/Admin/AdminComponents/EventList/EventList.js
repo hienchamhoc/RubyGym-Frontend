@@ -6,6 +6,10 @@ import eventAPI from "../../../../api/eventAPI";
 
 function EventList() {
     let [events, setEvents] = useState([]);
+    const handleDeleteEvent = (id) => {
+        events = events.filter(event => event.id !== id);
+        setEvents(events);
+    };
 
     useEffect(() => {
         (async () => {
@@ -46,8 +50,8 @@ function EventList() {
                         <th className="btn-delete"></th>
                     </tr>
                     {
-                        events.map((event)=>{
-                            return <EventElement id={event.id} title={event.title} 
+                        events.map((event, index)=>{
+                            return <EventElement id={event.id} index={index + 1} title={event.title} handleDeleteEvent={handleDeleteEvent}
                                 start_time={function(){
                                     const _date = new Date(event.start_time);
                                     const year = _date.getFullYear();

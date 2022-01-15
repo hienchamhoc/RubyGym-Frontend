@@ -66,7 +66,8 @@ const managementAPI = {
     },
     changeTrainer: async (id, trainerId) => {
         try {
-            const url = `admin/members/${id}`
+            console.log(id, trainerId);
+            const url = `admin/members/${id}/trainers`
             const response = await axiosClient.put(url, { trainer_id: trainerId });
             return response;
         } catch (err) {
