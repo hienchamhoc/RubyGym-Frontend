@@ -39,15 +39,15 @@ import MemberList from './Trainer/MemberList/MemberList';
 import AddMember from './Admin/AdminComponents/AddMember/AddMember';
 import AddTrainer from './Admin/AdminComponents/AddTrainer/AddTrainer';
 import AdminHeader from './Admin/AdminComponents/AdminHeader/AdminHeader';
+import TrainerInforOfCustomer from './TrainerInforOfCustomer/TrainerInforOfCustomer';
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Feedback }
 export { Admin, TrainerList, CustomerList, Category, TrainerElement, CustomerElement, AdminWelcome, RenewPackage };
 export { CustomerDetail, TrainerDetail };
 export { Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalendar, TrainerInfor, TrainingInfor, AddSchedule, TrainerRating, MemberList }
-
 export { EventList, EventDetail, EventElement, EventAdd };
 
 export { Ct_Event_List, Ct_Event_Element, Ct_Event_Detail }
 
-export { AddTrainer, AddMember, AdminHeader }
+export { AddTrainer, AddMember, AdminHeader, TrainerInforOfCustomer }

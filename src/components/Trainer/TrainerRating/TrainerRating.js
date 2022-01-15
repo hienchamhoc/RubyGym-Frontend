@@ -33,15 +33,15 @@ function TrainerRating(props) {
             document.removeEventListener("click", checkIfClickedOutside, true);
         };
     }, [props.trigger]);
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await practiceInfoAPI.getPracticeInfo();
-    //         if (response && response.status && response.data.status) {
-    //             ratingState = response.data.data;
-    //             setRatingState(ratingState);
-    //         }
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const response = await practiceInfoAPI.getPracticeInfo();
+            if (response && response.status && response.data.status) {
+                ratingState = response.data.data;
+                setRatingState(ratingState);
+            }
+        })();
+    }, []);
     const hanleConfirm = async () => {
         if (ratingState.rating == "") {
             setShowConfirmFalse(true);
@@ -52,10 +52,10 @@ function TrainerRating(props) {
 
             setShowConfirmFalse(false);
             props.setTrigger(false);
-            // const response = await practiceInfoAPI.updateRating(ratingState);
-            // if (response && !response.status && response.message) {
-            //     alert(response.message);
-            // }
+            const response = await practiceInfoAPI.updateRating(ratingState);
+            if (response && !response.status && response.message) {
+                alert(response.message);
+            }
         }
     };
     return props.trigger ? (

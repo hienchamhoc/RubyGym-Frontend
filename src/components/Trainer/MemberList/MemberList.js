@@ -98,14 +98,14 @@ function MemberList() {
         }
     ]
 
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await trainerProfileAPI.getMyUser();
-    //         if (response && response.status && response.data.status) {
-    //             data = response.data.data
-    //         }
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const response = await trainerProfileAPI.getMyUser();
+            if (response && response.status && response.data.status) {
+                data = response.data.data
+            }
+        })();
+    }, []);
 
     return (
         <>

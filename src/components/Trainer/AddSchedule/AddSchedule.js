@@ -64,22 +64,22 @@ function AddSchedule(props) {
         { location: 'tang 2' },
         { location: 'tang 3' },
     ]
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await trainerProfileAPI.getMyUser();
-    //         if (response && response.status && response.data.status) {
-    //            member = response.data.data
-    //         }
-    //     })();
-    // }, []);
-    // useEffect(() => {
-    //     (async () => {
-    //         const response = await calendarAPI.getPracticeLocations();
-    //         if (response && response.status && response.data.status) {
-    //             practiceLocations = response.data.data;
-    //         }
-    //     })();
-    // }, []);
+    useEffect(() => {
+        (async () => {
+            const response = await trainerProfileAPI.getMyUser();
+            if (response && response.status && response.data.status) {
+                member = response.data.data
+            }
+        })();
+    }, []);
+    useEffect(() => {
+        (async () => {
+            const response = await calendarAPI.getPracticeLocations();
+            if (response && response.status && response.data.status) {
+                practiceLocations = response.data.data;
+            }
+        })();
+    }, []);
     useEffect(() => {
         const checkIfClickedOutside = (e) => {
             // If the menu is open and the clicked target is not within the menu,
@@ -104,10 +104,10 @@ function AddSchedule(props) {
             schedule.finish_time.setHours(stateOnChange.end);
             console.log(schedule);
             console.log(schedule.repeat_weekly);
-            // const response = await calendarAPI.AddSchedule(schedule);
-            // if (response && !response.status) {
-            //     alert(response.message)
-            // }
+            const response = await calendarAPI.AddSchedule(schedule);
+            if (response && !response.status) {
+                alert(response.message)
+            }
         } else {
             setConfirmFalse(true);
             console.log(stateOnChange.start);
