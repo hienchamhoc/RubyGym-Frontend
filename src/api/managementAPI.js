@@ -43,7 +43,7 @@ const managementAPI = {
             console.log("khong oke");
             alert(err.message)
         }
-    },    
+    },
     memberDetail: async (params) => {
         try {
             const url = '/admin/members/?id=' + params.id;
@@ -61,6 +61,15 @@ const managementAPI = {
             return response;
         } catch (err) {
             console.log("khong oke");
+            alert(err.message)
+        }
+    },
+    changeTrainer: async (id, trainerId) => {
+        try {
+            const url = `admin/members/${id}`
+            const response = await axiosClient.put(url, { trainer_id: trainerId });
+            return response;
+        } catch (err) {
             alert(err.message)
         }
     },

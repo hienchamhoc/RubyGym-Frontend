@@ -3,11 +3,11 @@ import { useParams } from 'react-router-dom'
 import clsx from 'clsx'
 import avatar from './../../../../store/imgs/trainer1.jpg'
 import styles from './CustomerDetail.module.css'
-import { Popup, MyCalendar, TrainingInfor } from "../../../";
+import { Popup, MyCalendar, TrainingInfor, TrainerInforOfCustomer } from "../../../";
 import managementAPI from '../../../../api/managementAPI'
 
 function CustomerDetail() {
-    const {id} = useParams();
+    const { id } = useParams();
     let [isPTag, setPTag] = useState(true);
 
     let [showPopup, setShowPopup] = useState(false);
@@ -54,7 +54,7 @@ function CustomerDetail() {
     // Lấy profile về
     useEffect(() => {
         (async () => {
-            const response = await managementAPI.memberDetail({id: id});
+            const response = await managementAPI.memberDetail({ id: id });
             console.log(response);
             if (response && response.status && response.data.status) {
                 userProfile = { ...response.data.data };
@@ -121,7 +121,7 @@ function CustomerDetail() {
                                 className={clsx(styles.btnEdit)}
                             >
                                 Chỉnh sửa
-                            </button>                       
+                            </button>
                         </div>
                     )}
                     {!isPTag && (
@@ -401,43 +401,51 @@ function CustomerDetail() {
                                             Ngày hết hạn
                                         </h3>
                                         <input
-                                        //     readOnly={true}
-                                        //     type="date"
-                                        //     className={clsx(styles.inforText)}
-                                        //     value={userProfile.expired_at.substring(
-                                        //         0,
-                                        //         10
-                                        //     )}
-                                        // />
-                                        readOnly={true}
-                                        // ref={birthdayRef}
-                                        type="date"
-                                        className={clsx(styles.inforText)}
-                                        value={userProfile.expired_at ? userProfile.expired_at.substring(
-                                            0,
-                                            10
-                                        ) : ""}
+                                            //     readOnly={true}
+                                            //     type="date"
+                                            //     className={clsx(styles.inforText)}
+                                            //     value={userProfile.expired_at.substring(
+                                            //         0,
+                                            //         10
+                                            //     )}
+                                            // />
+                                            readOnly={true}
+                                            // ref={birthdayRef}
+                                            type="date"
+                                            className={clsx(styles.inforText)}
+                                            value={userProfile.expired_at ? userProfile.expired_at.substring(
+                                                0,
+                                                10
+                                            ) : ""}
                                         />
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* Ghép đôi */}
+            <div className={clsx(styles.inforField)}>
+                <div className={clsx(styles.inforHeading)}>
+                    {/* Thông tin huấn luyện viên */}
+                </div>
+                <TrainerInforOfCustomer member={userProfile} />
+            </div>
+
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
-                <TrainingInfor id={id}/>
+                <TrainingInfor id={id} />
             </div>
-            
+
             {/* Lịch tập luyện */}
             <div className={clsx(styles.inforField)}>
                 <h1 className={clsx(styles.inforHeading)}>
                     Lịch tập
                 </h1>
-                <MyCalendar id={id} role="member"/>
+                <MyCalendar id={id} role="member" />
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />

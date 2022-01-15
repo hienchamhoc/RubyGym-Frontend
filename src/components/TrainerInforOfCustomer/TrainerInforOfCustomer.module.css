@@ -1,0 +1,126 @@
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btnUpdate{
+    height: 40px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #129617;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.btnCancel{
+    margin-left:40px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #C51022;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.btnEdit{
+    height: 40px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #129617;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+
+.btnEditWrapper{
+    width:260px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.inforTrainerWrapper {
+    letter-spacing: 0.02em;
+    height: 100%;
+    display: flex;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.trainerAvatar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+.trainerAvatar img{
+    margin:30px 0;
+    width: 150px;
+    height: auto;
+}
+.inforTrainer{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.inforTrainerRow{
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
+    width: 90%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    
+}
+.inforTrainerDetail h3{
+    margin: 20px 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.inforTrainerDetail{
+    padding-bottom: 4px;
+}
+.inforText{
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    padding: 1px 2px 10px;
+    word-break: break-word;
+}
+.inforTrainerName{
+    padding-bottom: 4px;
+    width: 200px;
+}
+.inforTrainerName select{
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.02em;
+    width: 100%;
+}
+.inforTrainerName h3{
+    margin: 20px 0 10px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.inforTrainerDetail input{
+    font-weight: 500;
+    font-size: 18px;
+    border: none;
+    letter-spacing: 0.02em;
+}
