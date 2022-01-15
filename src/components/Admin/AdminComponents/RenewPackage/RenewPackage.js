@@ -60,7 +60,7 @@ function RenewPackage() {
         if (response && response.data && response.data.status) {
             console.log("OK"); 
             setShowPopup(true);
-            setTimeout(() => navigate('/admin/customers'), 2000);
+            setTimeout(() => navigate('/admin/members'), 2000);
             return;
         }
 
@@ -80,7 +80,7 @@ function RenewPackage() {
     
     const cancelForm = (e) =>{ 
         e.preventDefault();
-        navigate('/admin/customers');
+        navigate('/admin/members');
     }
 
     return (

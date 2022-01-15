@@ -36,6 +36,9 @@ import TrainerInfor from './Trainer/TrainerInfor/TrainerInfor'
 import AddSchedule from './Trainer/AddSchedule/AddSchedule';
 import TrainerRating from './Trainer/TrainerRating/TrainerRating';
 import MemberList from './Trainer/MemberList/MemberList';
+import AddMember from './Admin/AdminComponents/AddMember/AddMember';
+import AddTrainer from './Admin/AdminComponents/AddTrainer/AddTrainer';
+import AdminHeader from './Admin/AdminComponents/AdminHeader/AdminHeader';
 
 
 export { Header, Footer, Login, Content, Banner, ScrollToTop, Content_Service, Content_Event, Content_Package, Content_Feedback }
@@ -46,3 +49,5 @@ export { Customer, CustomerInfor, Popup, ChangePassword, CalendarPopup, MyCalend
 export { EventList, EventDetail, EventElement, EventAdd };
 
 export { Ct_Event_List, Ct_Event_Element, Ct_Event_Detail }
+
+export { AddTrainer, AddMember, AdminHeader }

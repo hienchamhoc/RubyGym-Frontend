@@ -1,24 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { CustomerDetail } from '../../..'
+import AdminHeader from '../AdminHeader/AdminHeader'
+import axiosClient from '../../../../api/axiosClient'
+import managementAPI from '../../../../api/managementAPI'
 
 import './CustomerList.css'
+import CustomerElement from '../CustomerElement/CustomerElement'
 
 
 function CustomerList() {
+    let [members, setMembers] = useState([]);
+
+    useEffect(() =>{
+        (async () =>{
+            const res = await managementAPI.memberList();
+            console.log(res);
+            members = res.data.data.memberList;
+            setMembers(members);
+            
+            // console.log(members)
+        })();
+        
+    },[]);
+
+
     return (
         <div className="customer-list-wrapper">
-            <div className="customer-list-header">
-                <h1 className="customer-heading">HỘI VIÊN</h1>
-                <div className="search-customer-box">
-                    <div className="search-customer-box-input">
-                        <span className="icon"><i className="fa fa-search"></i></span>
-                        <input type="search" id="search-customer" placeholder="Search..." />
-                    </div>
-                </div>
-                <button className="customer-add-btn">Thêm</button>
-            </div>
-            <div className="">
-                <CustomerDetail/>
+            <AdminHeader heading="Hội viên" />
+            <div className="customer-list-content">
+                {
+                    members.map((member) => {
+                        return <CustomerElement infor={member}/>
+                    })
+                }
             </div>
         </div>
     )

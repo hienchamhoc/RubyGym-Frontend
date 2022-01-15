@@ -415,10 +415,10 @@ function CustomerInfor() {
                                         // ref={birthdayRef}
                                         type="date"
                                         className={clsx(styles.inforText)}
-                                        value={userProfile.expired_at.substring(
+                                        value={userProfile.expired_at ? userProfile.expired_at.substring(
                                             0,
                                             10
-                                        )}
+                                        ) : ""}
                                         />
                                     </div>
                                 </div>

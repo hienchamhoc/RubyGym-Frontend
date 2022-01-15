@@ -1,0 +1,128 @@
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.contentWrapper {
+    /* position: fixed; */
+    margin: 50px 0;
+    top: 60px;
+    left: calc(240px);
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerWrapper {
+    width: 80%;
+    margin: auto;
+    /* border: 1px solid rgba(0, 0, 0, 0.15); */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 0 0 15px 0;
+}
+
+.heading {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 20px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    /* background-color: rgba(0, 0, 0, 0.05); */
+    background-color: var(--primary-color);
+    color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    /* margin: auto; */
+}
+
+.contentField {
+    margin: 0 auto;
+    width: 90%;
+    margin-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.contentField:first-child {
+    margin-top: 20px;
+}
+
+.contentField i {
+    font-size: 18px;
+    color: #333;
+    width: 30px;
+}
+
+.contentField select {
+    width: 100%;
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.1);
+    /* margin-top: 10px; */
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.contentField option {
+    border-radius: 3px;
+}
+
+.contentLabel {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 500;
+    padding-bottom: 4px;
+}
+
+.contentText {
+    box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.1);
+    /* margin-top: 10px; */
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    display: flex;
+    align-items: center;
+}
+
+.trainerAddBtn {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    background-color: #C51022;
+    border: none;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.5));
+    color: white;
+    border-radius: 0px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.trainerAddBtn:hover {
+    opacity: 1;
+}
+
+.trainerAddBtn.inactive {
+    background-color: #c9c9c9;
+    cursor: default;
+}
+
+.trainerAddBtn.inactive:hover {
+    opacity: 0.7;
+}

@@ -36,7 +36,7 @@ function Category() {
                                     Huấn luyện viên
                                 </div>
                             </Link>
-                            <Link to="customers">
+                            <Link to="members">
                                 <div
                                     className={
                                         clickUser === "customer"

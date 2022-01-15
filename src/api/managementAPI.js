@@ -24,9 +24,19 @@ const managementAPI = {
             alert(err.message)
         }
     },
+    trainerAdd: async (params) => {
+        try {
+            const url = '/admin/trainers';
+            const response = await axiosClient.post(url, params);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
     memberList: async (params) => {
         try {
-            const url = '/admin/members';
+            const url = '/admin/members/list';
             const response = await axiosClient.get(url);
             return response;
         } catch (err) {
@@ -38,6 +48,16 @@ const managementAPI = {
         try {
             const url = '/admin/members/?id=' + params.id;
             const response = await axiosClient.get(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
+    memberAdd: async (params) => {
+        try {
+            const url = '/admin/members';
+            const response = await axiosClient.post(url, params);
             return response;
         } catch (err) {
             console.log("khong oke");
