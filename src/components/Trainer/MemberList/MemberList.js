@@ -1,8 +1,9 @@
 import { React, useState, useRef, useEffect } from 'react'
 import { useTable } from 'react-table';
+import clsx from "clsx";
 import { TrainerRating } from './../../';
 import avatar from "../../../store/imgs/avatar.jpg";
-import "./MemberList.css"
+import styles from "./MemberList.module.css"
 import trainerProfileAPI from '../../../api/trainerProfileAPI';
 
 
@@ -24,11 +25,11 @@ function Table({ columns, data, date }) {
     // Render the UI for your table
     return (
 
-        <table {...getTableProps()} className="table table-hover table-bordered table-borderless tablepopup">
+        <table {...getTableProps()} className={clsx(styles.tableMemberList)}>
 
-            <thead className=" table-thread">
+            <thead>
                 {headerGroups.map(headerGroup => (
-                    <tr {...headerGroup.getHeaderGroupProps()}>
+                    <tr className={clsx(styles.tableHeader)} {...headerGroup.getHeaderGroupProps()}>
                         {headerGroup.headers.map(column => (
                             <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                         ))}
@@ -56,7 +57,7 @@ function MemberList() {
     let [showPopup, setShowPopup] = useState(false);
 
     const data = [
-        { avatar_url: '', name: 'Hien', birthday: '20/11/2008', gender: 'Nam', phone: '0968372613' }
+        { avatar_url: '', name: 'Trần Ngọc Hiển', birthday: '20/11/2008', gender: 'Nam', phone: '0968372613' }
 
     ];
 
@@ -76,7 +77,7 @@ function MemberList() {
                     }}
                 ></div>
         },
-        { Header: 'Họ tên', accessor: 'name', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
+        { Header: 'Họ và tên', accessor: 'name', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
         { Header: 'Ngày sinh', accessor: 'birthday', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
         { Header: 'Giới tính', accessor: 'gender', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
         { Header: 'Số điện thoại', accessor: 'phone', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
@@ -88,7 +89,7 @@ function MemberList() {
                 <div
                     style={{ textAlign: "center" }}
                 >
-                    <button className="btn btn-danger"
+                    <button className={clsx(styles.btnRating)}
                         onClick={() => {
                             setShowPopup(true);
                         }}>Đánh giá</button>

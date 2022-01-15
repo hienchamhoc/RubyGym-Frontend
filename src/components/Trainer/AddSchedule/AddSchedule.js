@@ -119,12 +119,12 @@ function AddSchedule(props) {
                 <div className='AddSchedule-popupInner' ref={ref} >
                     <div className='AddSchedule-Container'>
                         <div className='AddSchedule-MemberList'>
-                            <b className='AddSchedule-Text'>Học viên</b>
+                            <div className='AddSchedule-Text'>Hội viên</div>
                             <Select
                                 className='AddSchedule-Select AddSchedule-Select-Name '
                                 classNamePrefix='AddSchedule-Select-Prefix'
                                 // isSearchable="true"
-                                placeholder="Họ tên"
+                                placeholder="Hội viên"
                                 maxMenuHeight={180}
                                 options={function () {
                                     var myMembersList = member.map((item) => {
@@ -143,7 +143,7 @@ function AddSchedule(props) {
                             />
                         </div>
                         <div className='AddSchedule-Day'>
-                            <b className='AddSchedule-Text' >Thời gian</b>
+                            <div className='AddSchedule-Text' >Ngày</div>
                             {/* <DayPickerInput
                                 onDayChange={(date) => {
                                     schedule.start_time = new Date(date);
@@ -165,7 +165,7 @@ function AddSchedule(props) {
 
                             <br />
                             {/* <b className='AddSchedule-Text'>Giờ</b><br /> */}
-
+                            <div className='AddSchedule-Text' >Khung giờ</div>
                             <div className='AddSchedule-Day-Start'>
                                 {/* <b className='AddSchedule-Text'>Bắt đầu</b> */}
                                 <Select
@@ -194,7 +194,7 @@ function AddSchedule(props) {
                             </div>
                         </div>
                         <div className='AddSchedule-Location'>
-                            <b className='AddSchedule-Text'>Địa điểm</b>
+                            <div className='AddSchedule-Text'>Địa điểm</div>
                             <input
                                 className='AddSchedule-InputText'
                                 type="text"
@@ -206,7 +206,7 @@ function AddSchedule(props) {
                             </input><br />
                         </div>
                         <div className='AddSchedule-Lecture'>
-                            <b className='AddSchedule-Text'>Bài học</b>
+                            <div className='AddSchedule-Text'>Bài học</div>
                             <input
                                 className='AddSchedule-InputText'
                                 type="text"
@@ -218,7 +218,7 @@ function AddSchedule(props) {
                             </input><br />
                         </div>
                         <div className='AddSchedule-Repeat'>
-                            <b className='AddSchedule-Text'>Lặp lại</b>
+                            <div className='AddSchedule-Text'>Lặp lại theo tuần</div>
                             <input
                                 className='AddSchedule-InputCheckbox'
                                 type="checkbox"
@@ -238,11 +238,11 @@ function AddSchedule(props) {
                         </div>
                         <div className='AddSchedule-Button'>
                             <button
-                                className='btn btn-success AddSchedule-Button-Confirm'
+                                className='AddSchedule-Button-Confirm'
                                 onClick={handleConfirm}
                             >Xác nhận</button>
                             <button
-                                className='btn btn-danger AddSchedule-Button-Cancel'
+                                className='AddSchedule-Button-Cancel'
                                 onClick={() => {
                                     props.setTrigger(false);
                                 }}

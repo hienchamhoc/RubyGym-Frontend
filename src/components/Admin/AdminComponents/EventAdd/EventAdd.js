@@ -55,7 +55,7 @@ function EventAdd() {
         navigate('/admin/events');
     };
     return (
-        <div className="event-detail-wrapper">
+        <div>
             <div className="event-detail-header">
                 <h1 className="event-headingg">THÊM SỰ KIỆN</h1>
             </div>

@@ -1,0 +1,58 @@
+.MemberList-Avatar{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid #9F4A4A;
+}
+.tableMemberList{
+    width: 100%;
+    border: 0px solid #bebebe;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.tableHeader{
+    height: 50px;
+    color: white;
+    background-color: #9F4A4A;
+    font-size: 18px;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.05em;
+}
+.tableHeader th{
+    font-weight: 500;
+    border: 1.5px solid #bebebe;
+}
+.tableMemberList tbody{
+    border: 1.5px solid #bebebe;
+}
+.tableMemberList tbody td{
+    background-color: white;
+    border: 1.5px;
+    border-bottom: 1.5px solid #bebebe;
+    text-align: center;
+    height: 60px;
+    font-weight: 500;
+    font-size: 18px;
+    letter-spacing: 0.05em;
+}
+.btnRating{
+    height: 35px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #C51022;
+    box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.btnRating:hover{
+    transform: scale(1.005);
+    transform: translateY(-2px);
+}

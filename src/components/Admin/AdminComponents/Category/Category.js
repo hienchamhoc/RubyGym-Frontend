@@ -50,8 +50,8 @@ function Category() {
                                 </div>
                             </Link>
                             <Link to="packages/renew">
-                                <div className={clickUser === 'customer' ? "manage-account-active" : "manage-account"} 
-                                onClick={() => setClickUser('customer')}>
+                                <div className={clickUser === 'renew' ? "manage-account-active" : "manage-account"} 
+                                onClick={() => setClickUser('renew')}>
                                 <i className="fas fa-user"></i>
                                 Gia hạn gói tập
                                 </div>

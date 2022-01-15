@@ -4,7 +4,7 @@ import trainingAPI from "./../../api/trainingAPI";
 
 import styles from "./TrainingInfor.module.css";
 
-function TrainingInfor(params) {
+function TrainingInfor() {
     let [isPTag, setPTag] = useState(true);
 
     let [showPopup, setShowPopup] = useState(false);
@@ -25,11 +25,7 @@ function TrainingInfor(params) {
     // Lấy thông tin tập luyện về
     useEffect(() => {
         (async () => {
-            var response;
-            
-            if (localStorage.getItem('role') === 'member') response = await trainingAPI.getInfor();
-            else if (localStorage.getItem('role') === 'admin' || localStorage.getItem('role') === 'trainer') 
-                response = await trainingAPI.adminGetInfor(params.id);
+            const response = await trainingAPI.getInfor();
             console.log(response);
             if (response && response.status && response.data.status) {
                 trainingInformation = { ...response.data.data };
@@ -70,8 +66,16 @@ function TrainingInfor(params) {
                     <h1 className={clsx(styles.inforHeading)}>
                         Thông tin tập luyện
                     </h1>
+                    <div>
+                            <button
+                                onClick={handleEdit}
+                                className={clsx(styles.btnEditt)}
+                            >
+                                Lịch sử
+                            </button>                       
+                    </div>
                     {isPTag && (
-                        <div>
+                        <div className={clsx(styles.btnEditWrapper)}>
                             <button
                                 onClick={handleEdit}
                                 className={clsx(styles.btnEdit)}
@@ -97,14 +101,6 @@ function TrainingInfor(params) {
                         </div>
                     )}
                     
-                    <div>
-                            <button
-                                onClick={handleEdit}
-                                className={clsx(styles.btnEdit)}
-                            >
-                                Lịch sử
-                            </button>                       
-                    </div>
                 </div>
 
                 <div className="row">
@@ -198,24 +194,41 @@ function TrainingInfor(params) {
                                         {isPTag ? (
                                             <b>{trainingInformation.target}</b>
                                         ) : (
-                                            <input
-                                                type="text"
-                                                className={clsx(
-                                                    styles.inforText
-                                                )}
-                                                value={trainingInforOnChange.target}
-                                                onChange={(e) => {
-                                                    trainingInforOnChange = {
-                                                        weight: trainingInforOnChange.weight,
-                                                        height: trainingInforOnChange.height,
-                                                        bmi: trainingInforOnChange.bmi,
-                                                        target: e.target.value
-                                                    }
-                                                    setTrainingInforOnChange(trainingInforOnChange);
-                                                    console.log(trainingInforOnChange);
-                                                }}
-                                                id="trainer-name"
-                                            />
+                                            // <input
+                                            //     type="text"
+                                            //     className={clsx(
+                                            //         styles.inforText
+                                            //     )}
+                                            //     value={trainingInforOnChange.target}
+                                            //     onChange={(e) => {
+                                            //         trainingInforOnChange = {
+                                            //             weight: trainingInforOnChange.weight,
+                                            //             height: trainingInforOnChange.height,
+                                            //             bmi: trainingInforOnChange.bmi,
+                                            //             target: e.target.value
+                                            //         }
+                                            //         setTrainingInforOnChange(trainingInforOnChange);
+                                            //         console.log(trainingInforOnChange);
+                                            //     }}
+                                            //     id="trainer-name"
+                                            // />
+                                            <textarea v-model="message" 
+                                            className={clsx(
+                                                styles.inforText
+                                            )}
+                                            value={trainingInforOnChange.target}
+                                            onChange={(e) => {
+                                                trainingInforOnChange = {
+                                                    weight: trainingInforOnChange.weight,
+                                                    height: trainingInforOnChange.height,
+                                                    bmi: trainingInforOnChange.bmi,
+                                                    target: e.target.value
+                                                }
+                                                setTrainingInforOnChange(trainingInforOnChange);
+                                                console.log(trainingInforOnChange);
+                                            }}
+                                            ></textarea>
+                                            
                                         )}
                                     </div>
                                 </div>

@@ -8,12 +8,12 @@
     height: 100%;
     background-color: rgba(37, 37, 37, 0.2);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
 .AddSchedule-popupInner{
-    border: 1px solid #000000;
     position: relative;
     padding: 0px;
     width: 100%;
@@ -28,18 +28,17 @@
 }
 .AddSchedule-Text{
     /* font-weight: 40px; */
-    font-size: 25px;
-    line-height:45px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height:40px;
     margin-right: 10px;
-    
+    letter-spacing: 0.03em;
 
 }
 .AddSchedule-Select{
-    border: 0.6px solid black; 
-    /* background-color: rgba(187, 12, 12, 0.733); */
-    box-shadow: 1px 2px 3.6px #888888;
-    /* box-shadow: 1px 2px 3.6px #888888; */
+    border: none;
 }
+
 .AddSchedule-Select-Name{
     width: 85%;
 }
@@ -63,15 +62,16 @@
     
 }
 .AddSchedule-DayPicker{
-    border: 1px solid black; 
-    box-shadow: 1px 2px 3.6px #888888;
-    height: 30px;
-    margin-bottom: 12px;
+    border: 1px solid hsl(0, 0%, 80%); 
+    border-radius: 4px;
+    width: 85%;
+    height: 38px;
 }
 .AddSchedule-InputText{
-    border: 1px solid black; 
-    box-shadow: 1px 2px 3.6px #888888;
-    height: 30px;
+    letter-spacing: 0.03em;
+    border: 1px solid hsl(0, 0%, 80%); 
+    height: 38px;
+    width: 85%;
 }
 .AddSchedule-InputCheckbox{
     margin-top: 0px;
@@ -79,22 +79,51 @@
      height: 20px;
 }
 .AddSchedule-Repeat{
-    /* padding-bottom: 40px; */
+    display: flex;
+    align-items: center;
+    width: 60%;
+    justify-content: space-between;
 }
 .AddSchedule-ConfirmFalse{
     margin-left: 95px;
     color: red;
 }
 .AddSchedule-Button-Confirm{
-    
     float: left;
+    margin: 10px 40px 20px 10px;
     width: 25%;
-    margin-left: 40px;
-    box-shadow: 2px 4px 3px #888888;
+    height: 35px;
+    width: 120px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #129617;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
 }
 .AddSchedule-Button-Cancel{
     float: left;
     width: 25%;
-    margin-left: 50px;
-    box-shadow: 2px 4px 3px #888888;
+    margin: 10px 0 20px;
+    height: 35px;
+    width: 100px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #C51022;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    letter-spacing: 0.05em;
+    justify-content: center;
+}
+.AddSchedule-Button-Confirm:hover,
+.AddSchedule-Button-Cancel:hover{
+    transform: scale(1.005);
+    transform: translateY(-2px);
 }
