@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TrainerElement } from './../../../'
+import AdminHeader from '../AdminHeader/AdminHeader'
 import './TrainerList.css'
 import managementAPI from '../../../../api/managementAPI'
 
@@ -21,16 +22,7 @@ function TrainerList() {
 
     return (
         <div className="trainer-list-wrapper">
-            <div className="trainer-list-header">
-                <h1 className="trainer-headingg">HUẤN LUYỆN VIÊN</h1>
-                <div className="search-trainer-box">
-                    <div className="search-trainer-box-input">
-                        <span className="icon"><i className="fa fa-search"></i></span>
-                        <input type="search" id="search-trainer" placeholder="Search..." />
-                    </div>
-                </div>
-                <button className="trainer-add-btn">Thêm</button>
-            </div>
+        <AdminHeader trainer="true" heading="Huấn luyện viên" />
             <div className="row">
                 {
                     trainers.map((trainer)=>{
