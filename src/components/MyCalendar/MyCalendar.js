@@ -33,27 +33,30 @@ function MyCalendar({ id, role }) {
   //   })();
   // }, [calendarList]);
 
-  const tileContent = ({ date, view }) => {
+  const tileClassName = ({ date, view }) => {
     if (view !== "month") return;
 
     const l = calendarList.length;
-    var content = [];
+    // var content = [];
 
     for (var i = 0; i < l; i++) {
-      const _date = new Date(calendarList[i].date);
+      const _date = new Date(calendarList[i].start_time);
+      // console.log(calendarList[i])
 
       if (date.getDate() === _date.getDate()
         && date.getMonth() === _date.getMonth()
         && date.getYear() === _date.getYear()) {
-        content.push(<p>{calendarList[i].start_time}h - {calendarList[i].finish_time}h</p>);
+          // console.log('hi')
+        // content.push(<p>{new Date(calendarList[i].start_time).getHours()}h - {new Date(calendarList[i].finish_time).getHours()}h</p>);
+          return 'day-training';
       }
     }
 
     // if (content.length !== 0) 
-    if (content.length === 0)
-      return null;
+    // if (content.length === 0)
+    //   return null;
 
-    return content;
+    return;
   }
 
   const getCalendarDaily = async (value, event) => {
@@ -79,7 +82,7 @@ function MyCalendar({ id, role }) {
       <Calendar
         onChange={onChange}
         value={value}
-        tileContent={tileContent}
+        tileClassName={tileClassName}
         onClickDay={getCalendarDaily}
       />
       <CalendarPopup

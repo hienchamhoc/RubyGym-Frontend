@@ -130,7 +130,7 @@ background-color: #e6e6e6;
 .react-calendar__month-view__days__day abbr{
     width: 35px;
     height: 35px;
-    background-color: rgb(102, 236, 102);
+    /* background-color: rgb(102, 236, 102); */
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -152,4 +152,15 @@ abbr[title]{
     background-color: #9F4A4A;
     color: #FFFFFF;
     border: 0.25px solid #c5c5c5;
+}
+
+
+.day-training abbr{
+    width: 35px;
+    height: 35px;
+    background-color: rgb(102, 236, 102);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

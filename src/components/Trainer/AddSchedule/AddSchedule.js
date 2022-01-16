@@ -24,12 +24,7 @@ function AddSchedule(props) {
         start: 0,
         end: 0
     });
-    const member = [
-        { member_id: 1, name: 'Hien' },
-        { member_id: 2, name: 'Dai' },
-        { member_id: 3, name: 'Dung' },
-        { member_id: 4, name: 'Duong' }
-    ];
+    let [members, setMembers] = useState([]);
     const startTimeOptions = [
         { value: '6', label: '6:00' },
         { value: '7', label: '7:00' },
@@ -67,17 +62,19 @@ function AddSchedule(props) {
     useEffect(() => {
         (async () => {
             const response = await trainerProfileAPI.getMyUser();
-            if (response && response.status && response.data.status) {
-                member = response.data.data
-            }
+            if (response && response.data.status) {
+                members = response.data.data.member_list;
+                setMembers(members);
+                console.log(members);
+            }            
         })();
     }, []);
     useEffect(() => {
         (async () => {
-            const response = await calendarAPI.getPracticeLocations();
-            if (response && response.status && response.data.status) {
-                practiceLocations = response.data.data;
-            }
+            // const response = await calendarAPI.getPracticeLocations();
+            // if (response && response.status && response.data.status) {
+            //     practiceLocations = response.data.data;
+            // }
         })();
     }, []);
     useEffect(() => {
@@ -98,6 +95,7 @@ function AddSchedule(props) {
     }, [props.trigger]);
 
     const handleConfirm = async () => {
+        // console.log(schedule)
         if (stateOnChange.end - stateOnChange.start > 0) {
             setConfirmFalse(false);
             schedule.start_time.setHours(stateOnChange.start);
@@ -105,6 +103,7 @@ function AddSchedule(props) {
             console.log(schedule);
             console.log(schedule.repeat_weekly);
             const response = await calendarAPI.AddSchedule(schedule);
+            console.log(response);
             if (response && !response.status) {
                 alert(response.message)
             }
@@ -127,18 +126,18 @@ function AddSchedule(props) {
                                 placeholder="Hội viên"
                                 maxMenuHeight={180}
                                 options={function () {
-                                    var myMembersList = member.map((item) => {
+                                    var myMembersList = members.map((item) => {
                                         return {
                                             label: item.name,
-                                            member_id: item.member_id
+                                            member_id: item.id
                                         }
                                     })
                                     return myMembersList;
                                 }()}
                                 onChange={(e) => {
                                     schedule.member_id = e.member_id;
-                                    console.log(e);
-                                    console.log(schedule.member_id);
+                                    // console.log(e);
+                                    // console.log(schedule.member_id);
                                 }}
                             />
                         </div>
@@ -157,7 +156,7 @@ function AddSchedule(props) {
                                 className='AddSchedule-DayPicker'
 
                                 onChange={(e) => {
-                                    console.log(e.target.value);
+                                    // console.log(e.target.value);
                                     schedule.start_time = new Date(e.target.value);
                                     schedule.finish_time = new Date(e.target.value);
                                 }}

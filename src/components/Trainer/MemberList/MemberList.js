@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { TrainerRating } from './../../';
 import avatar from "../../../store/imgs/avatar.jpg";
 import styles from "./MemberList.module.css"
+import practiceInfoAPI from "../../../api/practiceInfoAPI";
 import trainerProfileAPI from '../../../api/trainerProfileAPI';
 
 
@@ -56,6 +57,9 @@ function MemberList() {
 
     let [showPopup, setShowPopup] = useState(false);
     let [data, setData] = useState([]);
+    let [id, setId] = useState(0);
+    let [avatarUrl, setAvatarUrl] = useState('');
+    let [memberTraingInfor, setMemberTraingiInfor] = useState({});
 
 
     const column = [
@@ -109,7 +113,8 @@ function MemberList() {
                 >
                     <button className={clsx(styles.btnRating)}
                         onClick={() => {
-                            setShowPopup(true);
+                            id = row.data[row.cell.row.id].id
+                            setId(id);
                         }}>Đánh giá</button>
                 </div>
             )
@@ -121,12 +126,37 @@ function MemberList() {
             const response = await trainerProfileAPI.getMyUser();
             // console.log(response);
             if (response && response.data.status) {
-                console.log(response.data.data.member_list)
+                // console.log(response.data.data.member_list)
                 data = response.data.data.member_list;
                 setData(data);
-            }
+            }            
         })();
     }, []);
+
+    useEffect(() => {
+        (async () => {
+            if (showPopup == false) setId(0);
+        })();
+    }, [showPopup]);
+
+    
+    useEffect(() => {
+        (async () => {
+            if (!id) return;
+
+            const response = await practiceInfoAPI.getPracticeInfo(id);
+            
+            if (response && response.status && response.data.status) {
+                memberTraingInfor = response.data.data.member_training_information;
+                setMemberTraingiInfor(memberTraingInfor);
+
+                avatarUrl = data.filter(member => member.id == id)[0].avatar_url;
+                setAvatarUrl(avatarUrl);
+                // console.log(memberTraingInfor);
+                setShowPopup(true);
+            }
+        })();   
+    }, [id]); 
 
     return (
         <>
@@ -134,7 +164,7 @@ function MemberList() {
                 columns={column}
                 data={data}
             />
-            <TrainerRating trigger={showPopup} setTrigger={setShowPopup} data={data} />
+            <TrainerRating trigger={showPopup} setTrigger={setShowPopup} ratingState={memberTraingInfor} avatarUrl={avatarUrl} />
         </>
     )
 }

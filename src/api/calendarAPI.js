@@ -78,7 +78,7 @@ const calendarAPI = {
     },
     AddSchedule: async (params) => {
         try {
-            const url = '';
+            const url = '/trainer/schedules';
             const response = await axiosClient.post(url, params)
             return response;
         } catch (error) {

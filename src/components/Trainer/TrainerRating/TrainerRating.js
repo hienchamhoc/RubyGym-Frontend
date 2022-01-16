@@ -7,11 +7,12 @@ function TrainerRating(props) {
     const ref = useRef();
     let [showConfirmFalse, setShowConfirmFalse] = useState(false);
     let [ratingState, setRatingState] = useState({
+        id: '',
         height: "160",
         weight: "80",
         bmi: "1.5",
         target: "40kg",
-        rating: "",
+        evaluation: "",
     });
     useEffect(() => {
         const checkIfClickedOutside = (e) => {
@@ -35,27 +36,23 @@ function TrainerRating(props) {
     }, [props.trigger]);
     useEffect(() => {
         (async () => {
-            const response = await practiceInfoAPI.getPracticeInfo();
-            if (response && response.status && response.data.status) {
-                ratingState = response.data.data;
-                setRatingState(ratingState);
-            }
+            ratingState = props.ratingState;
+            setRatingState(ratingState);
         })();
-    }, []);
+    }, [props.trigger]);
     const hanleConfirm = async () => {
-        if (ratingState.rating == "") {
+        if (ratingState.evaluation == "") {
             setShowConfirmFalse(true);
-            console.log(ratingState.rating);
+            console.log(ratingState.evaluation);
             // console.log(ratingState.rating);
         } else {
-            console.log(ratingState.rating);
-
-            setShowConfirmFalse(false);
-            props.setTrigger(false);
-            const response = await practiceInfoAPI.updateRating(ratingState);
+            console.log(ratingState.evaluation);
+            const response = await practiceInfoAPI.updateRating(props.ratingState.member_id, ratingState);
+            console.log(response);
             if (response && !response.status && response.message) {
                 alert(response.message);
             }
+            props.setTrigger(false);
         }
     };
     return props.trigger ? (
@@ -67,7 +64,7 @@ function TrainerRating(props) {
                     </div>
                     <div className="TrainerRating-Avatar">
                         <img
-                            src={avatar}
+                            src={process.env.REACT_APP_API_URL + props.avatarUrl}
                             className="TrainerRating-Avatar-Img"
                         ></img>
                     </div>
@@ -75,15 +72,15 @@ function TrainerRating(props) {
                         <div className="TrainerRating-Info-1">
                             <div className="TrainerRating-Height">
                                 <p>Chiều cao (cm)</p>
-                                <b>{ratingState.height}</b>
+                                <b>{ratingState.height/10}</b>
                             </div>
                             <div className="TrainerRating-Weight">
                                 <p>Cân nặng (kg)</p>
-                                <b>{ratingState.weight}</b>
+                                <b>{ratingState.weight/1000}</b>
                             </div>
                             <div className="TrainerRating-BMI">
                                 <p>Chỉ số BMI</p>
-                                <b>{ratingState.bmi}</b>
+                                <b>{Math.round(ratingState.weight/ratingState.height/ratingState.height*10000) / 10}</b>
                             </div>
                         </div>
                         <div className="TrainerRating-Info-2">
@@ -92,10 +89,11 @@ function TrainerRating(props) {
                         </div>
                         <div className="TrainerRating-Info-3">
                         <p>Đánh giá</p>
-                        <textarea v-model="message" onChange={(e) => {
+                        <textarea v-model="message" value={ratingState.evaluation} onChange={(e) => {
+                                setShowConfirmFalse(false);
                                 setRatingState({
                                     ...ratingState,
-                                    rating: e.target.value,
+                                    evaluation: e.target.value,
                                 });
                             }}
                             placeholder="Đánh giá"></textarea>
