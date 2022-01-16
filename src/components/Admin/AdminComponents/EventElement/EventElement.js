@@ -8,7 +8,7 @@ function EventElement(props) {
     let [showPopup, setShowPopup] = useState(false);
     const { index, id, title, start_time, finish_time, thumbnail_image_url } = props;
 
-
+    console.log(props)
 
     return (
         <tr>

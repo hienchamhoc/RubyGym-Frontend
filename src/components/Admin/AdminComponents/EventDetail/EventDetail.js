@@ -56,13 +56,13 @@ function EventDetail(props) {
 
     useEffect(() => {
         (async () => {
-            //console.log("hi");
-            const res = await eventAPI.eventDetail({ id });
+            console.log("hi", id);
+            const res = await eventAPI.eventDetail(id);
+            console.log(res);
             eventInfor = res.data.data;
             eventInforOnChange = res.data.data;
             setEventInfor(eventInfor);
             setEventInforOnChange(eventInforOnChange);
-            //console.log(eventInforOnChange);
         })();
     }, []);
 

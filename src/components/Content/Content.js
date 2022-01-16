@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import "./Content.css";
-import sk1 from "./../../store/imgs/sk1.png";
-import sk2 from "./../../store/imgs/sk2.png";
-import sk3 from "./../../store/imgs/sk3.png";
+
+import eventAPI from "./../../api/eventAPI";
+import packageAPI from "./../../api/packageAPI";
+
+// import sk1 from "./../../store/imgs/sk1.png";
+// import sk2 from "./../../store/imgs/sk2.png";
+// import sk3 from "./../../store/imgs/sk3.png";
 
 function Content() {
     let [counterEvent, setCounterEvent] = useState(1);
+    let [price, setPrice] = useState([]);
+    let [sk1, setSk1] = useState('');
+    let [sk2, setSk2] = useState('');
+    let [sk3, setSk3] = useState('');
 
     let handlePrevEvent = () => {
         counterEvent = counterEvent + 1;
@@ -25,6 +33,34 @@ function Content() {
             setCounterEvent(counterEvent);
         }
     };
+    
+    useEffect(() => {
+        (async () => {
+            const response = await eventAPI.eventList();
+            console.log(response);
+            if (response && response.status && response.data.status) {
+                const eventList = response.data.data.event_list;
+                sk1 = eventList[eventList.length-1].detail_image_url;
+                sk2 = eventList[eventList.length-2].detail_image_url;
+                sk3 = eventList[eventList.length-3].detail_image_url;
+                setSk1(sk1);
+                setSk2(sk2);
+                setSk3(sk3);
+            }
+            
+            const responsePrice = await packageAPI.getPackageList();
+            console.log(responsePrice);
+            if (responsePrice && responsePrice.status && responsePrice.data.status) {
+                var _price = [];
+                const tempPackages = responsePrice.data.data.package_list;
+                _price.push(tempPackages[0].price);
+                _price.push(tempPackages[1].price);
+                _price.push(tempPackages[2].price);
+                price = _price;
+                setPrice(price);
+            }
+        })();
+    }, []);
 
     useEffect(() => {
         console.log("thaydoiEvent");
@@ -122,13 +158,13 @@ function Content() {
                             />
 
                             <div className="slide-event first-event">
-                                <img src={sk1} alt="" />
+                                <img src={process.env.REACT_APP_API_URL + sk1} alt="" />
                             </div>
                             <div className="slide-event">
-                                <img src={sk2} alt="" />
+                                <img src={process.env.REACT_APP_API_URL + sk2} alt="" />
                             </div>
                             <div className="slide-event">
-                                <img src={sk3} alt="" />
+                                <img src={process.env.REACT_APP_API_URL + sk3} alt="" />
                             </div>
                             <div className="navigation-auto-event">
                                 <div className="navigation-auto1-event"></div>
@@ -137,6 +173,12 @@ function Content() {
                             </div>
                         </div>
                     </div>
+                    
+                </div>
+                <div className="btn-goi-tap">
+                    <NavLink to="/event" className="link-gt">
+                        <button className="btn-gt">XEM THÊM</button>
+                    </NavLink>
                 </div>
             </div>
 
@@ -154,7 +196,7 @@ function Content() {
                                     <div className="tong-chi-phi">
                                         TỔNG CHI PHÍ
                                     </div>
-                                    <div className="price">2.990.000</div>
+                                    <div className="price">{price[0]}</div>
                                     <div className="vnd">VNĐ</div>
                                 </div>
                             </div>
@@ -164,7 +206,7 @@ function Content() {
                                     <div className="tong-chi-phi">
                                         TỔNG CHI PHÍ
                                     </div>
-                                    <div className="price">4.990.000</div>
+                                    <div className="price">{price[1]}</div>
                                     <div className="vnd">VNĐ</div>
                                 </div>
                             </div>
@@ -174,7 +216,7 @@ function Content() {
                                     <div className="tong-chi-phi">
                                         TỔNG CHI PHÍ
                                     </div>
-                                    <div className="price">8.990.000</div>
+                                    <div className="price">{price[2]}</div>
                                     <div className="vnd">VNĐ</div>
                                 </div>
                             </div>
@@ -193,11 +235,6 @@ function Content() {
                         và tham gia trung tâm.
                     </li>
                 </ul>
-                <div className="btn-goi-tap">
-                    <NavLink to="/package" className="link-gt">
-                        <button className="btn-gt">XEM THÊM</button>
-                    </NavLink>
-                </div>
             </div>
         </div>
     );

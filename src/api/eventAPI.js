@@ -14,9 +14,9 @@ const eventAPI = {
             alert(err.message)
         }
     },
-    eventDetail: async (params) => {
+    eventDetail: async (id) => {
         try {
-            const url = '/admin/events/' + params.id;
+            const url = '/admin/events/' + id;
             const response = await axiosClient.get(url);
             return response;
         } catch (err) {

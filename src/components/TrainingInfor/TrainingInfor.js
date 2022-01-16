@@ -66,15 +66,7 @@ function TrainingInfor() {
                     <h1 className={clsx(styles.inforHeading)}>
                         Thông tin tập luyện
                     </h1>
-                    <div>
-                            <button
-                                onClick={handleEdit}
-                                className={clsx(styles.btnEditt)}
-                            >
-                                Lịch sử
-                            </button>                       
-                    </div>
-                    {isPTag && (
+                    {(localStorage.getItem('role') == 'customer' && isPTag) && (
                         <div className={clsx(styles.btnEditWrapper)}>
                             <button
                                 onClick={handleEdit}
@@ -84,7 +76,7 @@ function TrainingInfor() {
                             </button>                       
                         </div>
                     )}
-                    {!isPTag && (
+                    {(localStorage.getItem('role') == 'customer' && !isPTag) && (
                         <div>
                             <button
                                 onClick={handleUpdate}

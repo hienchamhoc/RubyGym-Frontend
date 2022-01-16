@@ -1,5 +1,6 @@
 import React, { useParams, useState, useEffect } from 'react'
 import clsx from 'clsx'
+import avatar from './../../../../store/imgs/loading.gif'
 import { Link } from 'react-router-dom'
 
 
@@ -12,7 +13,7 @@ import { Popup } from './../../../'
 
 function CustomerElement({ infor, admin }) {
     let [showPopup, setShowPopup] = useState(false);
-
+console.log(infor);
     useEffect(() => {
         if (showPopup) {
             var id = setTimeout(() => {
@@ -45,14 +46,14 @@ function CustomerElement({ infor, admin }) {
                     <div
                         style={
                             infor.avatar_url ? {
-                                background: `url(${infor.avatar_url})`,
+                                background: `url(${process.env.REACT_APP_API_URL + infor.avatar_url})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
-                                height: '50px',
-                                width: '50px',
+                                height: '60px',
+                                width: '60px',
                             } : {
-                                background: `url(${infor.avatar_url})`,
+                                background: `url(${avatar})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 backgroundRepeat: 'no-repeat',
@@ -67,7 +68,7 @@ function CustomerElement({ infor, admin }) {
 
                 <div className={clsx(styles.inforField)}>
                     {
-                        infor.status == "Hoạt động"
+                        infor.active == 1
                             ? <div className={clsx(styles.inforContent, styles.status)}>Hoạt động</div>
                             : <div className={clsx(styles.inforContent, styles.status, styles.inactive)}>Không hoạt động</div>
                     }
@@ -75,11 +76,11 @@ function CustomerElement({ infor, admin }) {
                 </div>
 
                 <div className={clsx(styles.inforField)}>
-                    <i class={clsx(styles.inforIcon, styles.gender, "fas fa-male")}></i>
+                    <i class={clsx(styles.inforIcon, styles.gender, infor.gender === 'Nữ' ? "fas fa-female" : "fas fa-male")}></i>
                     <div className={clsx(styles.inforContent)}>{infor.gender}</div>
                 </div>
 
-                <div className={clsx(styles.inforField)}>
+                {/* <div className={clsx(styles.inforField)}>
                     <i
                         class={clsx(styles.inforIcon, styles.birthday, "fas fa-birthday-cake")}
                         style={{
@@ -87,7 +88,7 @@ function CustomerElement({ infor, admin }) {
                         }}
                     ></i>
                     <div className={clsx(styles.inforContent)}>{infor.birthday}</div>
-                </div>
+                </div> */}
 
                 <div className={clsx(styles.inforField)}>
                     <i

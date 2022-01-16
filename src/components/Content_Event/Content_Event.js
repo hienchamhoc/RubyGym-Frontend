@@ -10,7 +10,7 @@ function Content_Event() {
             <img className="banner-event" src={sukien} alt="" />
             <Routes>
                 <Route path="" element={<Ct_Event_List />} />
-                <Route path="detail/1" element={<Ct_Event_Detail />} />
+                <Route path="detail/:id" element={<Ct_Event_Detail />} />
             </Routes>
         </div>
     );

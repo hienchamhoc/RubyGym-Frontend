@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import clsx from 'clsx'
-import avatar from './../../../../store/imgs/trainer1.jpg'
+import avatar from './../../../../store/imgs/loading.gif'
 import styles from './CustomerDetail.module.css'
 import { Popup, MyCalendar, TrainingInfor, TrainerInforOfCustomer } from "../../../";
 import managementAPI from '../../../../api/managementAPI'
@@ -151,7 +151,7 @@ function CustomerDetail() {
                                 className={clsx(styles.avatar)}
                                 style={{
                                     backgroundImage: userProfile.avatar_url
-                                        ? `url(${userProfile.avatar_url})`
+                                        ? `url(${process.env.REACT_APP_API_URL + userProfile.avatar_url})`
                                         : `url(${avatar})`,
                                     backgroundPosition: "center",
                                     backgroundSize: "cover",
