@@ -55,30 +55,48 @@ function Table({ columns, data, date }) {
 function MemberList() {
 
     let [showPopup, setShowPopup] = useState(false);
-
-    const data = [
-        { avatar_url: '', name: 'Trần Ngọc Hiển', birthday: '20/11/2008', gender: 'Nam', phone: '0968372613' }
-
-    ];
+    let [data, setData] = useState([]);
 
 
     const column = [
         {
-            Header: 'Ảnh', accessor: 'avatar',
+            Header: 'Ảnh', accessor: 'avatar_url',
             Cell: row =>
-                <div className="MemberList-Avatar"
-                    style={{
-                        backgroundImage: data.avatar_url
-                            ? `url(${data.avatar_url})`
-                            : `url(${avatar})`,
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                        backgroundRepeat: "no-repeat",
-                    }}
-                ></div>
+                // <div className="MemberList-Avatar"
+                //     style={{
+                //         backgroundImage: row.value
+                //             ? `url(${process.env.REACT_APP_API_URL + row.value})`
+                //             : `url(${avatar})`,
+                //         backgroundPosition: "center",
+                //         backgroundSize: "cover",
+                //         backgroundRepeat: "no-repeat",
+                //     }}
+                // ></div>
+                <div
+                        style={
+                            row.value ? {
+                                background: `url(${process.env.REACT_APP_API_URL + row.value})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                height: '60px',
+                                width: '60px',
+                                margin: 'auto'
+                            } : {
+                                background: `url(${avatar})`,
+                                backgroundPosition: 'center',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                height: '50px',
+                                width: '50px',
+                                margin: 'auto'
+                            }}
+                        // className={clsx(styles.avatarImg)}
+                    >
+                    </div>
         },
         { Header: 'Họ và tên', accessor: 'name', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
-        { Header: 'Ngày sinh', accessor: 'birthday', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
+        { Header: 'Ngày sinh', accessor: 'birthday', Cell: row => <div style={{ textAlign: "center" }}>{row.value ? row.value.substring(0, 10) : ''}</div> },
         { Header: 'Giới tính', accessor: 'gender', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
         { Header: 'Số điện thoại', accessor: 'phone', Cell: row => <div style={{ textAlign: "center" }}>{row.value}</div> },
 
@@ -101,8 +119,11 @@ function MemberList() {
     useEffect(() => {
         (async () => {
             const response = await trainerProfileAPI.getMyUser();
-            if (response && response.status && response.data.status) {
-                data = response.data.data
+            // console.log(response);
+            if (response && response.data.status) {
+                console.log(response.data.data.member_list)
+                data = response.data.data.member_list;
+                setData(data);
             }
         })();
     }, []);
