@@ -4,22 +4,30 @@ import { useParams } from 'react-router-dom'
 import avatar from './../../../../store/imgs/trainer-1.png'
 import { Popup, MyCalendar } from "../../../";
 import Timetablee from './../../../Timetablee.js'
+import { useNavigate } from "react-router-dom";
 import managementAPI from '../../../../api/managementAPI'
 
 function TrainerDetail() {
+    const navigate = useNavigate();
     let [trainerInfor, setTrainerInfor] = useState({});
+    let [members, setMembers] = useState({});
 
     const {id} = useParams();
     
     useEffect(() =>{
         (async () =>{
-            console.log('hi');
+            // console.log('hi');
             const res = await managementAPI.trainerDetail({id});
             // console.log(res);
             trainerInfor = res.data.data;
             setTrainerInfor(trainerInfor);
-            console.log(trainerInfor);
+            // console.log(trainerInfor);
             
+            const _members = await managementAPI.memberListOfTrainer(id);
+            // console.log(res);
+            members = _members.data.data.member_list;
+            setMembers(members);
+            // console.log(members);
             // console.log(trainers)
         })();
         
@@ -36,10 +44,11 @@ function TrainerDetail() {
                     <div className="col l-4">
                         <div className="trainer-avatar"
                             style={{
-                                backgroundImage: `url(${avatar})`,
+                                backgroundImage: `url(${process.env.REACT_APP_API_URL + trainerInfor.avatar_url})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
-                                backgroundRepeat: 'no-repeat'
+                                backgroundRepeat: 'no-repeat',
+                                height: '300px'
                             }}
                         >
                         </div>
@@ -89,98 +98,6 @@ function TrainerDetail() {
                 <div className="row">
                     <div className="trainer-schedule">
                         <h2 className="trainer-schedule-heading">Lịch huấn luyện</h2>
-                        {/* <table className="schedule-table">
-                            <thead className="schedule-table-header">
-                                <tr >
-                                    <th>Thứ</th>
-                                    <th>Thời gian</th>
-                                    <th>Học viên</th>
-                                    <th>Ghi chú</th>
-                                </tr>
-                            </thead>
-                            <tbody className="schedule-table-body">
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-                                <tr>
-                                    <td rowspan="3">Thứ 2</td>
-                                    <td rowspan="3">8h-12h</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td rowspan="3">Ghi chú</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyễn Văn Đương</td>
-                                </tr>
-
-
-
-                            </tbody>
-                        </table> */}
                         {/* <Timetablee /> */}
                         <MyCalendar 
                         id={id}
@@ -196,48 +113,36 @@ function TrainerDetail() {
                                 <tr >
                                     <th>Thứ tự</th>
                                     <th>Họ và tên</th>
-                                    <th>Tuổi</th>
+                                    {/* <th>Tuổi</th> */}
                                     <th>Giới tính</th>
                                     <th>Số điện thoại</th>
                                     <th></th>
                                 </tr>
                             </thead>
+                            
                             <tbody className="students-table-body">
-                                <tr>
+                                {members.length &&
+                                    members.map((member, index) => {
+                                        return <tr>
+                                                <td>{index + 1}</td>
+                                                <td>{member.name}</td>
+                                                {/* <td>{member.name}</td> */}
+                                                <td>{member.gender}</td>
+                                                <td>{member.phone}</td>
+                                                <td><button onClick={(e) => {
+                                                    navigate('/admin/members/detail/' + member.id);
+                                                }}>Chi tiết</button></td>
+                                            </tr>
+                                    })
+                                }
+                                {/* <tr>
                                     <td>1</td>
                                     <td>Nguyễn Văn Đương</td>
                                     <td>29</td>
                                     <td>Nam</td>
                                     <td>0123455674</td>
                                     <td><button>Xóa</button></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td>29</td>
-                                    <td>Nam</td>
-                                    <td>0123455674</td>
-                                    <td><button>Xóa</button></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td>29</td>
-                                    <td>Nam</td>
-                                    <td>0123455674</td>
-                                    <td><button>Xóa</button></td>
-                                </tr><tr>
-                                    <td>4</td>
-                                    <td>Nguyễn Văn Đương</td>
-                                    <td>29</td>
-                                    <td>Nam</td>
-                                    <td>0123455674</td>
-                                    <td><button>Xóa</button></td>
-                                </tr>
-
-
-
-
+                                </tr> */}
                             </tbody>
                         </table>
                     </div>

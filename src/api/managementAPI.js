@@ -34,6 +34,16 @@ const managementAPI = {
             alert(err.message)
         }
     },
+    memberListOfTrainer: async (id) => {
+        try {
+            const url = '/admin/trainers/' + id + '/members';
+            const response = await axiosClient.get(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
     memberList: async (params) => {
         try {
             const url = '/admin/members/list';

@@ -152,7 +152,7 @@ function CustomerInfor() {
                                 className={clsx(styles.avatar)}
                                 style={{
                                     backgroundImage: userProfile.avatar_url
-                                        ? `url(${userProfile.avatar_url})`
+                                        ? `url(${process.env.REACT_APP_API_URL + userProfile.avatar_url})`
                                         : `url(${avatar})`,
                                     backgroundPosition: "center",
                                     backgroundSize: "cover",
