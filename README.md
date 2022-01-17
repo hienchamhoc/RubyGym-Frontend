@@ -15,6 +15,6 @@ Dùng lệnh "npm run build" để xây dựng chương trình.
 
 Liên hệ với email rubygym16351@gmail.com để tìm hiểu thêm về dự án.
 
-# RubyGym
+## RubyGym
 
 Project of Software Engineering
