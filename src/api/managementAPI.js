@@ -34,6 +34,26 @@ const managementAPI = {
             alert(err.message)
         }
     },
+    trainerDelete: async (params) => {
+        try {
+            const url = '/admin/trainers/' + params.id +'/delete';
+            const response = await axiosClient.put(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
+    trainerRestore: async (params) => {
+        try {
+            const url = '/admin/trainers/' + params.id +'/restore';
+            const response = await axiosClient.put(url);
+            return response;
+        } catch (err) {
+            console.log("khong oke");
+            alert(err.message)
+        }
+    },
     memberListOfTrainer: async (id) => {
         try {
             const url = '/admin/trainers/' + id + '/members';

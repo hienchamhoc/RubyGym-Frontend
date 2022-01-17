@@ -8,30 +8,30 @@ import managementAPI from '../../../../api/managementAPI'
 function TrainerList() {
     let [trainers, setTrainers] = useState([]);
 
-    useEffect(() =>{
-        (async () =>{
+    useEffect(() => {
+        (async () => {
             const res = await managementAPI.trainerList();
             // console.log(res);
             trainers = res.data.data.trainer_list
             setTrainers(trainers)
-            
+
             // console.log(trainers)
         })();
-        
-    },[]);
+
+    }, []);
 
     return (
         <div className="trainer-list-wrapper">
-        <AdminHeader trainer="true" heading="Huấn luyện viên" />
+            <AdminHeader trainer="true" heading="Huấn luyện viên" />
             <div className="row">
                 {
-                    trainers.map((trainer)=>{
-                        return <TrainerElement 
+                    trainers.map((trainer) => {
+                        return <TrainerElement
                             trainer={trainer}
                         />
                     })
                 }
-                
+
             </div>
         </div>
     )
