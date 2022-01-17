@@ -76,7 +76,7 @@ function TrainerInfor() {
     const handleUploadAvatar = async (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
-        formData.append("File", file);
+        formData.append("image", file);
 
         const response = await trainerProfileAPI.updateAvatar(formData);
         if (
@@ -90,6 +90,11 @@ function TrainerInfor() {
                 avatar_url: response.data.data.imageURL,
             };
             setUserProfile(userProfile);
+            profileOnChange = {
+                ...profileOnChange,
+                avatar_url: response.data.data.imageURL,
+            };
+            setProfileOnChange(profileOnChange);
         }
         if (response && !response.status) {
             alert(response.message);
@@ -101,7 +106,7 @@ function TrainerInfor() {
         setPTag(true);
         userProfile = { ...profileOnChange };
         // setUserProfile(userProfile);
-        // console.log(userProfile);
+        console.log(userProfile);
         const response = await trainerProfileAPI.updateProfile(userProfile);
         if (response && response.status) {
             setShowPopup((prev) => !prev);
@@ -156,30 +161,32 @@ function TrainerInfor() {
                                 className={clsx(styles.avatar)}
                                 style={{
                                     backgroundImage: userProfile.avatar_url
-                                        ? `url(${userProfile.avatar_url})`
+                                        ? `url(${process.env.REACT_APP_API_URL + userProfile.avatar_url})`
                                         : `url(${avatar})`,
                                     backgroundPosition: "center",
                                     backgroundSize: "cover",
                                     backgroundRepeat: "no-repeat",
                                 }}
                             >
-                                <label
-                                    htmlFor="avatarChoose"
-                                    className={clsx(styles.chooseAvatar)}
-                                >
-                                    <i
-                                        className={clsx(
-                                            styles.chooseAvatarIcon,
-                                            "fas fa-camera"
-                                        )}
-                                    ></i>
-                                </label>
-                                <input
-                                    type="file"
-                                    id="avatarChoose"
-                                    hidden
-                                    onChange={handleUploadAvatar}
-                                />
+                                {!isPTag &&
+                                    (<label
+                                        htmlFor="avatarChoose"
+                                        className={clsx(styles.chooseAvatar)}
+                                    >
+                                        <i
+                                            className={clsx(
+                                                styles.chooseAvatarIcon,
+                                                "fas fa-camera"
+                                            )}
+                                        ></i>
+                                    </label>)
+                                }
+                                    <input
+                                        type="file"
+                                        id="avatarChoose"
+                                        hidden
+                                        onChange={handleUploadAvatar}
+                                    />
                             </div>
                             <div className={clsx(styles.userName)}>
                                 {userProfile.name}

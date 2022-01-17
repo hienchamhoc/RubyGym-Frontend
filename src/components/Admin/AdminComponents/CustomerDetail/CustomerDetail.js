@@ -115,7 +115,7 @@ function CustomerDetail() {
                     <h1 className={clsx(styles.inforHeading)}>
                         Thông tin cá nhân
                     </h1>
-                    {isPTag && (
+                    {/* {isPTag && (
                         <div>
                             <button
                                 onClick={handleEdit}
@@ -140,7 +140,7 @@ function CustomerDetail() {
                                 Huỷ
                             </button>
                         </div>
-                    )}
+                    )} */}
                 </div>
 
                 <div className="row">

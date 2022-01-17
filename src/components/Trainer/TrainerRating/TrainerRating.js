@@ -3,8 +3,10 @@ import practiceInfoAPI from "../../../api/practiceInfoAPI";
 import styles from "./TrainerRating.css";
 import clsx from "clsx";
 import avatar from "../../../store/imgs/avatar.jpg";
+import { Popup } from "./../../";
 function TrainerRating(props) {
     const ref = useRef();
+    let [showPopup, setShowPopup] = useState(false);
     let [showConfirmFalse, setShowConfirmFalse] = useState(false);
     let [ratingState, setRatingState] = useState({
         id: '',
@@ -49,10 +51,16 @@ function TrainerRating(props) {
             console.log(ratingState.evaluation);
             const response = await practiceInfoAPI.updateRating(props.ratingState.member_id, ratingState);
             console.log(response);
+            if (response && response.status) {
+                setShowPopup(true);
+                setTimeout(() => {
+                    setShowPopup(false);
+                    props.setTrigger(false);
+                }, 2000);
+            }
             if (response && !response.status && response.message) {
                 alert(response.message);
             }
-            props.setTrigger(false);
         }
     };
     return props.trigger ? (
@@ -115,6 +123,7 @@ function TrainerRating(props) {
                         </div>
                     </div>
                 </div>
+            <Popup trigger={showPopup} message="Cập nhật thành công" />
             </div>
         </>
     ) : null;

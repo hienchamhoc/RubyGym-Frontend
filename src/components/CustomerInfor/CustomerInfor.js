@@ -72,7 +72,7 @@ function CustomerInfor() {
     const handleUploadAvatar = async (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
-        formData.append("File", file);
+        formData.append("image", file);
 
         const response = await userProfileAPI.updateAvatar(formData);
         if (
@@ -86,6 +86,11 @@ function CustomerInfor() {
                 avatar_url: response.data.data.imageURL,
             };
             setUserProfile(userProfile);
+            profileOnChange = {
+                ...profileOnChange,
+                avatar_url: response.data.data.imageURL,
+            };
+            setProfileOnChange(profileOnChange);
         }
         if (response && !response.status) {
             alert(response.message);
@@ -159,6 +164,7 @@ function CustomerInfor() {
                                     backgroundRepeat: "no-repeat",
                                 }}
                             >
+                            {!isPTag &&
                                 <label
                                     htmlFor="avatarChoose"
                                     className={clsx(styles.chooseAvatar)}
@@ -170,6 +176,7 @@ function CustomerInfor() {
                                         )}
                                     ></i>
                                 </label>
+                            }
                                 <input
                                     type="file"
                                     id="avatarChoose"

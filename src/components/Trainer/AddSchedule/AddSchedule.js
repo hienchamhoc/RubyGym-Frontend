@@ -4,6 +4,7 @@ import Calendar from 'react-calendar';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import trainerProfileAPI from '../../../api/trainerProfileAPI';
+import { Popup } from "./../../";
 import calendarAPI from '../../../api/calendarAPI';
 // import calendarAPI from '../../../api/calendarAPI';
 import './AddSchedule.css'
@@ -12,6 +13,8 @@ import { ToastBody } from 'react-bootstrap';
 function AddSchedule(props) {
     const ref = useRef();
     let [ConfirmFalse, setConfirmFalse] = useState(false);
+    let [showPopup, setShowPopup] = useState(false);
+    let [errMessage, setErrMessage] = useState('');
     let [schedule, setSchedule] = useState({
         member_id: '',
         start_time: new Date(),
@@ -100,16 +103,24 @@ function AddSchedule(props) {
             setConfirmFalse(false);
             schedule.start_time.setHours(stateOnChange.start);
             schedule.finish_time.setHours(stateOnChange.end);
-            console.log(schedule);
-            console.log(schedule.repeat_weekly);
+            // console.log(schedule);
+            // console.log(schedule.repeat_weekly);
             const response = await calendarAPI.AddSchedule(schedule);
-            console.log(response);
-            if (response && !response.status) {
-                alert(response.message)
+            // console.log(response);
+            if (response && response.data.status) {
+                setShowPopup(true);
+                setTimeout(()=>{
+                    setShowPopup(false);
+                    props.setTrigger(false);
+                }, 2000);
+            }
+            if (response && !response.data.status) {
+                setConfirmFalse(true);
+                setErrMessage(response.data.message);
             }
         } else {
             setConfirmFalse(true);
-            console.log(stateOnChange.start);
+            setErrMessage('Thời gian không hợp lệ!');
         }
     }
     return props.trigger ? (
@@ -233,7 +244,7 @@ function AddSchedule(props) {
                             ></input><br />
                         </div>
                         <div>
-                            {ConfirmFalse ? (<b className='AddSchedule-ConfirmFalse'>Nhập chưa chính xác!</b>) : null}
+                            {ConfirmFalse ? (<b className='AddSchedule-ConfirmFalse'>{errMessage}</b>) : null}
                         </div>
                         <div className='AddSchedule-Button'>
                             <button
@@ -249,6 +260,7 @@ function AddSchedule(props) {
                         </div>
                     </div>
                 </div>
+            <Popup trigger={showPopup} message="Thêm lịch thành công" />
             </div>
         </>
     ) : null;

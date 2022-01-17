@@ -37,7 +37,7 @@ function TrainerDetail() {
         <div className="trainer-detail-wrapper">
             <div className="trainer-detail-header">
             <h1 className="trainer-headingg">HUẤN LUYỆN VIÊN</h1>
-            <button className="trainer-add-btn">Chỉnh sửa</button>
+            {/* <button className="trainer-add-btn">Chỉnh sửa</button> */}
             </div>
             <div className="trainer-detail-content">
                 <div className="row">

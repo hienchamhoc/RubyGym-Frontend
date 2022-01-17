@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import clsx from "clsx";
 import trainingAPI from "./../../api/trainingAPI";
+import { Popup } from "./../";
 
 import styles from "./TrainingInfor.module.css";
 
@@ -50,7 +51,10 @@ function TrainingInfor() {
         // console.log(trainingInforOnChange);
         const response = await trainingAPI.updateInfor(trainingInformation);
         if (response && response.status) {
-            setShowPopup((prev) => !prev);
+            setShowPopup(true);
+            setTimeout(() => {
+                setShowPopup(false);
+            }, 2000);
             setTrainingInfor({...trainingInforOnChange});
         }
         if (response && !response.status && response.message) {
@@ -66,7 +70,7 @@ function TrainingInfor() {
                     <h1 className={clsx(styles.inforHeading)}>
                         Thông tin tập luyện
                     </h1>
-                    {(localStorage.getItem('role') == 'customer' && isPTag) && (
+                    {(localStorage.getItem('role') == 'member' && isPTag) && (
                         <div className={clsx(styles.btnEditWrapper)}>
                             <button
                                 onClick={handleEdit}
@@ -76,7 +80,7 @@ function TrainingInfor() {
                             </button>                       
                         </div>
                     )}
-                    {(localStorage.getItem('role') == 'customer' && !isPTag) && (
+                    {(localStorage.getItem('role') == 'member' && !isPTag) && (
                         <div>
                             <button
                                 onClick={handleUpdate}
@@ -266,7 +270,7 @@ function TrainingInfor() {
                 </div>
             </div>
 
-            {/* <Popup trigger={showPopup} message="Cập nhật thành công" /> */}
+            <Popup trigger={showPopup} message="Cập nhật thành công" />
         </div>
     );
 }

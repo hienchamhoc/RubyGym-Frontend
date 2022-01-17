@@ -121,7 +121,7 @@ function TrainerInforOfCustomer({ member, trainer_id }) {
                     <div className="col l-12 m-12 c-12">
                         <div className={clsx(styles.inforTrainerWrapper)}>
                             <div className={clsx(styles.trainerAvatar)}>
-                                <img src={avatarTrainer} alt="" />
+                                <img src={process.env.REACT_APP_API_URL + myTrainer.avatar_url} alt=""/>
                             </div>
                             <div className={clsx(styles.inforTrainer)}>
                                 <div className={clsx(styles.inforTrainerRow)}>

@@ -7,35 +7,32 @@ import { CalendarPopup } from './../';
 
 function MyCalendar({ id, role }) {
   const [value, onChange] = useState(new Date());
+  // const [refresh, setRefresh] = useState(0);
   const [calendarList, setCalendarList] = useState([]);
   const [calendarListDaily, setCalendarListDaily] = useState([]);
+  var [_activeStartDate, _setActiveStartDate] = useState(new Date());
   const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     (async () => {
-        const currentDate = new Date();
+        // const currentDate = new Date(_activeStartDate);
         let response;
       if (localStorage.getItem('role') === 'admin') {
-        response = await calendarAPI.getCalendarMonthlyUser(currentDate.getFullYear(), currentDate.getMonth() + 1, id, role);
+        response = await calendarAPI.getCalendarMonthlyUser(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1, id, role);
 
       }
       else {
-        response = await calendarAPI.getCalendarMonthly(currentDate.getFullYear(), currentDate.getMonth() + 1);
+        response = await calendarAPI.getCalendarMonthly(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1);
       }
       console.log(response.data.data);
       setCalendarList(prev => response.data.data);
     })();
-  }, []);
+  }, [_activeStartDate]);
 
-  // useEffect(() => { 
-  //   (async () => {
 
-  //   })();
-  // }, [calendarList]);
 
   const tileClassName = ({ date, view }) => {
     if (view !== "month") return;
-
     const l = calendarList.length;
     // var content = [];
 
@@ -58,6 +55,8 @@ function MyCalendar({ id, role }) {
 
     return;
   }
+
+
 
   const getCalendarDaily = async (value, event) => {
     const currentDate = new Date(value);
@@ -84,6 +83,12 @@ function MyCalendar({ id, role }) {
         value={value}
         tileClassName={tileClassName}
         onClickDay={getCalendarDaily}
+        onActiveStartDateChange={({ activeStartDate, view }) => {
+          if (view == 'month') {
+            _activeStartDate = activeStartDate;
+            _setActiveStartDate(activeStartDate);
+          }
+        }}
       />
       <CalendarPopup
         trigger={showPopup}

@@ -25,10 +25,11 @@ function TrainerElement({ trainer }) {
         event.stopPropagation();
         event.preventDefault();
         event.cancelBubble = true;
-        event.stopImmediatePropagation();
+        // event.stopImmediatePropagation();    
+        // console.log('delete');
 
         const res = await managementAPI.trainerDelete({ id: trainer.id });
-        console.log(res);
+        // console.log(res);
         if (res && res.data && res.data.status) {
             setShowPopup(true);
             trainer.active = 0;
@@ -39,7 +40,7 @@ function TrainerElement({ trainer }) {
         event.stopPropagation();
         event.preventDefault();
         event.cancelBubble = true;
-        event.stopImmediatePropagation();
+        // event.stopImmediatePropagation();
 
         const res = await managementAPI.trainerRestore({ id: trainer.id });
         console.log(res);
@@ -47,7 +48,7 @@ function TrainerElement({ trainer }) {
             setShowPopup(true);
             trainer.active = 1;
         }
-        console.log(trainer)
+        // console.log(trainer)
     }
     return (
         <div className="col l-3 m-4 c-6">

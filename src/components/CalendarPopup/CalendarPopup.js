@@ -116,11 +116,11 @@ function CalendarPopup(props) {
 
     // }
     const handleDelete = async (row) => {
-        console.log(row.cell.row.id);
+        // console.log(row.cell.row.id);
         const currentSchedulesId = calendarList[row.cell.row.id].id;
-        console.log(currentSchedulesId);
+        // console.log(currentSchedulesId);
         const response = await calendarAPI.deleteCalendarDaily(currentSchedulesId);
-        console.log(response);
+        // console.log(response);
     }
     const ref = useRef();
     useEffect(() => {
