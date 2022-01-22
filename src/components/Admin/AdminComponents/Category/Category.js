@@ -18,7 +18,7 @@ function Category() {
                     {trainerCustomer && (
                         <i class="fas fa-caret-down down-icon"></i>
                     )}
-                    Quản lý tài khoản
+                    Quản lý
                 </li>
                 {trainerCustomer && (
                     <li className="manage item">
@@ -52,8 +52,8 @@ function Category() {
                             <Link to="packages/renew">
                                 <div className={clickUser === 'renew' ? "manage-account-active" : "manage-account"} 
                                 onClick={() => setClickUser('renew')}>
-                                <i className="fas fa-user"></i>
-                                Gia hạn gói tập
+                                <i className="fas fa-box-open"></i>
+                                Gói tập
                                 </div>
                             </Link>
                         </div>

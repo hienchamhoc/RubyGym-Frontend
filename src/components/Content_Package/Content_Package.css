@@ -1,0 +1,52 @@
+.ct-goi-tap img{
+    width: 100%;
+    height: auto;
+}
+.ct-goi-tap h1{
+    padding-top: 40px;
+    margin: 0%;
+    font-weight: bold;
+    font-size: 50px;
+    color: #151515;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+
+.ct-goi-tap h2{
+    font-weight: 500;
+    font-size: 20px;
+    color: #151515;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    letter-spacing: 0.03em;
+}
+.price-package{
+    font-weight: 600;
+    font-size: 40px;
+    letter-spacing: 0.03em;
+}
+
+.price-1{
+    background-image: url(./../../store/imgs/goitap1.png);
+    height: 463px;
+    padding-top: 226px;
+    padding-left: 232px;
+}
+.price-2{
+    background-image: url(./../../store/imgs/goitap2.png);
+    height: 463px;
+    padding-top: 226px;
+    padding-left: 944px;
+    margin: 40px 0;
+}
+.price-3{
+    background-image: url(./../../store/imgs/goitap3.png);
+    height: 463px;
+    padding-top: 226px;
+    padding-left: 232px;
+}

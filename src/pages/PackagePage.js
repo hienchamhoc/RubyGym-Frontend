@@ -1,11 +1,11 @@
 import React from 'react'
-import { Footer, Header, RenewPackage} from '../components'
+import { Footer, Header, Content_Package} from '../components'
 
 function Package() {
     return (
         <>
             <Header />
-            <RenewPackage />
+            <Content_Package />
             <Footer />
         </>
     )
