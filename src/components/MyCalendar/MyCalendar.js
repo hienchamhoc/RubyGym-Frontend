@@ -24,12 +24,24 @@ function MyCalendar({ id, role }) {
       else {
         response = await calendarAPI.getCalendarMonthly(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1);
       }
-      console.log(response.data.data);
+      // console.log(response.data.data);
       setCalendarList(prev => response.data.data);
     })();
   }, [_activeStartDate]);
 
+  const refreshData = async () => {
+      // const currentDate = new Date(_activeStartDate);
+      let response;
+    if (localStorage.getItem('role') === 'admin') {
+      response = await calendarAPI.getCalendarMonthlyUser(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1, id, role);
 
+    }
+    else {
+      response = await calendarAPI.getCalendarMonthly(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1);
+    }
+    // console.log(response.data.data);
+    setCalendarList(prev => response.data.data);
+  };
 
   const tileClassName = ({ date, view }) => {
     if (view !== "month") return;
@@ -86,15 +98,19 @@ function MyCalendar({ id, role }) {
         onActiveStartDateChange={({ activeStartDate, view }) => {
           if (view == 'month') {
             _activeStartDate = activeStartDate;
-            _setActiveStartDate(activeStartDate);
+            _setActiveStartDate(_activeStartDate);
           }
         }}
+        refreshData={refreshData}
+        getCalendarDaily={getCalendarDaily}
       />
       <CalendarPopup
         trigger={showPopup}
         setTrigger={setShowPopup}
         data={calendarListDaily}
         date={value}
+        refreshData={refreshData}
+        getCalendarDaily={getCalendarDaily}
       />
       {/* <button onClick={callAPI}>Click me</button> */}
     </div>

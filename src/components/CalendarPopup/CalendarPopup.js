@@ -2,6 +2,7 @@ import { React, useState, useRef, useEffect } from 'react'
 import { useTable } from 'react-table';
 import './CalendarPopup.css';
 import calendarAPI from '../../api/calendarAPI';
+import { Popup } from "./../";
 
 var calendarList;
 
@@ -83,6 +84,8 @@ function Table({ columns, data, date }) {
 }
 function CalendarPopup(props) {
     let [showTable, setShowTable] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const [message, setMessage] = useState('');
     const column = localStorage.getItem('role') == 'trainer' ?
         [
             { Header: 'Khung giờ', accessor: 'time_showed' },
@@ -90,7 +93,18 @@ function CalendarPopup(props) {
             { Header: 'Bài học', accessor: 'lecture' },
             {
                 Header: 'Nghỉ', accessor: 'is_cancelled',
-                Cell: <input type='checkbox' />
+                Cell: row => <input onChange={async (e) => {
+                    const id = props.data[row.cell.row.id].id;
+                    if (id) { 
+                        const res = await calendarAPI.noteAbsent(id);
+                        if (res.data) if (res.data.status) {
+                            // setShowPopup(true);
+                            // setMessage("Đánh dấu thành công");
+                            // setTimeout(()=>{setShowPopup(false)}, 1000);
+                            props.getCalendarDaily(props.date);
+                        }
+                    }
+                }} type='checkbox' defaultChecked={props.data[row.cell.row.id].absence}/>
             },
             {
                 Header: 'Tùy chọn',
@@ -98,7 +112,15 @@ function CalendarPopup(props) {
                 Cell: row => (
                     <div>
                         {/* <button onClick={() => handleEdit(row)} className="btn btn-success">Sửa</button> */}
-                        <button onClick={() => handleDelete(row)} className="btn btn-danger">Xóa</button>
+                        <button onClick={() => {
+                            handleDelete(row);
+                            // setShowPopup(true);
+                            // setMessage("Xóa lịch tập thành công");
+                            // setTimeout(()=>{setShowPopup(false)}, 1000);
+                            props.refreshData();
+                            props.getCalendarDaily(props.date);
+                        }} className="btn btn-danger">Xóa</button>
+                        
                     </div>
                 )
             }
@@ -153,15 +175,15 @@ function CalendarPopup(props) {
                             for (var i = 0; i < props.data.length; i++) {
                                 var startHour = new Date(calendarList[i].start_time).getHours().toString(),
                                     startMinute = new Date(calendarList[i].start_time).getMinutes().toString();
-                                if (startHour.length == 1) startHour += '0';
-                                if (startMinute.length == 1) startMinute += '0';
+                                if (startHour.length == 1) startHour = '0' + startHour;
+                                if (startMinute.length == 1) startMinute = '0' + startMinute;
                                 var start_time_showed = startHour + ":" + startMinute;
 
                                 var finishHour = new Date(calendarList[i].finish_time).getHours().toString(),
                                     finishMinute = new Date(calendarList[i].finish_time).getMinutes().toString();
 
-                                if (finishHour.length == 1) finishHour += '0';
-                                if (finishMinute.length == 1) finishMinute += '0';
+                                if (finishHour.length == 1) finishHour = '0' + finishHour;
+                                if (finishMinute.length == 1) finishMinute = '0' + finishMinute;
                                 var finish_time_showed = finishHour + ":" + finishMinute;
 
                                 calendarList[i].time_showed = start_time_showed + ' - ' + finish_time_showed;
@@ -171,6 +193,7 @@ function CalendarPopup(props) {
                         date={props.date}
                     ></Table> : <h2 className='message'>Không có dữ liệu</h2>}
                 </div>
+            <Popup trigger={showPopup} message={message} />
             </div>
         </>
     ) : null;

@@ -84,6 +84,15 @@ const calendarAPI = {
         } catch (error) {
             alert(error.message);
         }
+    },
+    noteAbsent: async (id) => {
+        try {
+            const url = '/trainer/schedules/' + id + '/note-absent';
+            const response = await axiosClient.put(url);
+            return response;
+        } catch (error) {
+            alert(error.message);
+        }
     }
 }
 

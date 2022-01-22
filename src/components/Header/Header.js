@@ -48,11 +48,6 @@ function Header() {
                                 <li className="nav-item">
                                     <NavLink to="/package">Gói tập</NavLink>
                                 </li>
-                                <li className="nav-item">
-                                    <NavLink to="/feedback">
-                                        Góp ý - Phản hồi
-                                    </NavLink>
-                                </li>
                             </ul>
                         </nav>
                     </div>
@@ -77,9 +72,9 @@ function Header() {
                                 </div>
                             )}
                             <div className="header-user-name">
-                                Trần Quang Đại
+                                {localStorage.getItem("name")}
                             </div>
-                            <img src={avatar} className="header-user-avatar" alt="" />
+                            <img src={process.env.REACT_APP_API_URL + localStorage.getItem("avatar_url")} className="header-user-avatar" alt="" />
                             {showOption && (
                                 <div className="header-user-option">
                                     <ul className="user-option-list">
