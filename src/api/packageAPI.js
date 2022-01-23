@@ -22,7 +22,19 @@ const packageAPI = {
         } catch (err) {
             console.log(err);
         }
-    }
+    },
+
+    updatePackagePrice: async (prices) => {
+        try {
+            const url = `admin/packages/`;
+            const response = await axiosClient.put(url, {
+                prices: prices
+            });
+            return response;
+        } catch (err) {
+            console.log(err);
+        }
+    },
 }
 
 export default packageAPI;

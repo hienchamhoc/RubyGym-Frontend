@@ -71,7 +71,7 @@ function AddMember() {
                                         <input
                                             type="text"
                                             className={clsx(styles.contentText)}
-                                            placeholder="Nhập địa chỉ nha"
+                                            placeholder="Nhập địa chỉ nhà"
                                             onChange={(e) => {
                                                 setCustomer(prev => ({
                                                     ...customer,
@@ -135,37 +135,6 @@ function AddMember() {
                                             }}
                                         />
                                     </div>
-
-                                    {/* <div className={clsx(styles.contentField)}>
-                                        <i className="fas fa-mobile"></i>
-                                        <input
-                                            type="text"
-                                            className={clsx(styles.contentText)}
-                                            placeholder="Gói tập"
-                                            onChange={(e) => {
-                                                setCustomer(prev => ({
-                                                    ...customer,
-                                                    "package": e.target.value
-                                                }))
-                                            }}
-                                        />
-                                    </div> */}
-
-                                    {/* <div className={clsx(styles.contentField)}>
-                                        <i className="fas fa-mobile"></i>
-                                        <input
-                                            type="text"
-                                            className={clsx(styles.contentText)}
-                                            placeholder="Avatar url"
-                                            onChange={(e) => {
-                                                setCustomer(prev => ({
-                                                    ...customer,
-                                                    "avatar_url": e.target.value
-                                                }))
-                                            }}
-                                        />
-                                    </div> */}
-
 
                                     <div className={clsx(styles.contentField)}>
                                         <i className="fas fa-save"></i>

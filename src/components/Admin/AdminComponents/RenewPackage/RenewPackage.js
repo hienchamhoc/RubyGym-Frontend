@@ -12,6 +12,9 @@ function RenewPackage() {
     let [memberList, setMemberList] = useState([]);
     let [packageRenewID, setPackageRenewID] = useState(1);
     let [packageList, setPackageList] = useState([]);
+    let [packagePrice0, setPackagePrice0] = useState(0);
+    let [packagePrice1, setPackagePrice1] = useState(0);
+    let [packagePrice2, setPackagePrice2] = useState(0);
     let [formFalse, setFormFalse] = useState(false);
     let [errMsg, setErrMsg] = useState(false);
     let [showPopup, setShowPopup] = useState(false);
@@ -30,11 +33,19 @@ function RenewPackage() {
     };
     //Hủy
     const handleCancel = () => {
+        setPackagePrice0(packageList[0].price);
+        setPackagePrice1(packageList[1].price);
+        setPackagePrice2(packageList[2].price);
         setPTag(true);
     };
     //Lưu
     const handleUpdate = async () => {
-        setPTag(true);
+        const res = await packageAPI.updatePackagePrice([packagePrice0, packagePrice1, packagePrice2]);
+        if (res.data.status) {
+            setPTag(true);
+            const res = await packageAPI.getPackageList();
+            packageList = res.data.data.package_list;
+        }
     };
     // Để show PopupPrice sau khi cập nhật thành công
     useEffect(() => {
@@ -60,6 +71,9 @@ function RenewPackage() {
             const res = await packageAPI.getPackageList();
             packageList = res.data.data.package_list;
             setPackageList(packageList);
+            setPackagePrice0(packageList[0].price);
+            setPackagePrice1(packageList[1].price);
+            setPackagePrice2(packageList[2].price);
             // console.log(packageList);
 
             if (memberList.find((member) => member.id == member_id) == null)
@@ -122,36 +136,51 @@ function RenewPackage() {
                     <div className="col l-4 packagee">
                         <div className="name-packagee">Gói 3 tháng (VNĐ)</div>
                         {isPTag ? (
-                            <div className="price-packagee">3.000.000</div>
+                            <div className="price-packagee">{packagePrice0}</div>
                         ) : (
                             <input
                                 type="text"
                                 className="price-input"
-                                value="3.000.000"
+                                value={packagePrice0}
+                                onChange={(e) => {
+                                    // console.log(e.target.value);
+                                    packagePrice0 = e.target.value;
+                                    setPackagePrice0(packagePrice0);
+                                }}
                             />
                         )}
                     </div>
                     <div className="col l-4 packagee">
                         <div className="name-packagee">Gói 6 tháng (VNĐ)</div>
                         {isPTag ? (
-                            <div className="price-packagee">6.000.000</div>
+                            <div className="price-packagee">{packagePrice1}</div>
                         ) : (
                             <input
                                 type="text"
                                 className="price-input"
-                                value="6.000.000"
+                                value={packagePrice1}
+                                onChange={(e) => {
+                                    // console.log(e.target.value);
+                                    packagePrice1 = e.target.value;
+                                    setPackagePrice1(packagePrice1);
+                                }}
                             />
                         )}
                     </div>
                     <div className="col l-4 packagee">
                         <div className="name-packagee">Gói 1 năm (VNĐ)</div>
                         {isPTag ? (
-                            <div className="price-packagee">12.000.000</div>
+                            <div className="price-packagee">{packagePrice2}</div>
                         ) : (
                             <input
                                 type="text"
                                 className="price-input"
-                                value="12.000.000"
+                                value={packagePrice2}
+                                onChange={(e) => {
+                                    // console.log(e.target.value);
+                                    packagePrice2 = e.target.value;
+                                    setPackagePrice2(packagePrice2);
+                                }}
                             />
                         )}
                     </div>

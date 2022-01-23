@@ -108,7 +108,9 @@ function AddSchedule(props) {
             const response = await calendarAPI.AddSchedule(schedule);
             // console.log(response);
             if (response && response.data.status) {
+                props.refresh();
                 setShowPopup(true);
+
                 setTimeout(()=>{
                     setShowPopup(false);
                     props.setTrigger(false);

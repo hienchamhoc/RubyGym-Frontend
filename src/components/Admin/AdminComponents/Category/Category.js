@@ -64,8 +64,8 @@ function Category() {
                         <div className="manage-event">Sự kiện</div>
                     </Link>
                 </li>
-                <li className="manage-item">Tạo blog</li>
-                <li className="manage-item">Sản phẩm</li>
+                {/* <li className="manage-item">Tạo blog</li>
+                <li className="manage-item">Sản phẩm</li> */}
             </ul>
         </div>
     );

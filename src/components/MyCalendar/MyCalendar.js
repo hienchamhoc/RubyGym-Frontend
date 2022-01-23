@@ -5,7 +5,7 @@ import calendarAPI from '../../api/calendarAPI';
 import './MyCalendar.css';
 import { CalendarPopup } from './../';
 
-function MyCalendar({ id, role }) {
+function MyCalendar({ id, role, trigger }) {
   const [value, onChange] = useState(new Date());
   // const [refresh, setRefresh] = useState(0);
   const [calendarList, setCalendarList] = useState([]);
@@ -28,6 +28,22 @@ function MyCalendar({ id, role }) {
       setCalendarList(prev => response.data.data);
     })();
   }, [_activeStartDate]);
+
+  useEffect(() => {
+    (async () => {
+        // const currentDate = new Date(_activeStartDate);
+        let response;
+      if (localStorage.getItem('role') === 'admin') {
+        response = await calendarAPI.getCalendarMonthlyUser(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1, id, role);
+
+      }
+      else {
+        response = await calendarAPI.getCalendarMonthly(_activeStartDate.getFullYear(), _activeStartDate.getMonth() + 1);
+      }
+      // console.log(response.data.data);
+      setCalendarList(prev => response.data.data);
+    })();
+  }, [trigger]);
 
   const refreshData = async () => {
       // const currentDate = new Date(_activeStartDate);

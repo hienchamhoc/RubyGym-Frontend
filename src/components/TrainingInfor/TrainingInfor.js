@@ -5,7 +5,7 @@ import { Popup } from "./../";
 
 import styles from "./TrainingInfor.module.css";
 
-function TrainingInfor() {
+function TrainingInfor(props) {
     let [isPTag, setPTag] = useState(true);
 
     let [showPopup, setShowPopup] = useState(false);
@@ -26,7 +26,10 @@ function TrainingInfor() {
     // Lấy thông tin tập luyện về
     useEffect(() => {
         (async () => {
-            const response = await trainingAPI.getInfor();
+            var response;
+            
+            if (localStorage.getItem('role') == 'member') response = await trainingAPI.getInfor();
+            else response = await trainingAPI.adminGetInfor(props.id);
             console.log(response);
             if (response && response.status && response.data.status) {
                 trainingInformation = { ...response.data.data };

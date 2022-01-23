@@ -14,6 +14,7 @@ function TrainerInfor() {
     let [isPTag, setPTag] = useState(true);
 
     let [showPopup, setShowPopup] = useState(false);
+    let [refreshTrigger, setRefreshTrigger] = useState(0);
     let [showPopupAddSchedule, setShowPopupAddSchedule] = useState(false);
 
     let [userProfile, setUserProfile] = useState({
@@ -71,6 +72,10 @@ function TrainerInfor() {
             }
         })();
     }, []);
+
+    const refresh = async () => {
+        
+    }
 
     // Upload Avatar
     const handleUploadAvatar = async (e) => {
@@ -421,8 +426,8 @@ function TrainerInfor() {
                         }}
                     >Thêm lịch</button>
                 </div>
-                <AddSchedule trigger={showPopupAddSchedule} setTrigger={setShowPopupAddSchedule} />
-                <MyCalendar />
+                <AddSchedule trigger={showPopupAddSchedule} setTrigger={setShowPopupAddSchedule} refresh={setRefreshTrigger} />
+                <MyCalendar  trigger={showPopupAddSchedule}/>
             </div>
 
             <Popup trigger={showPopup} message="Cập nhật thành công" />
